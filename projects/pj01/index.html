@@ -1,0 +1,1446 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grandes Ideas en Arquitectura de Computadoras">
+      
+      
+        <meta name="author" content="CC-3">
+      
+      
+        <link rel="canonical" href="https://cc3-an.github.io/projects/pj01/">
+      
+      <link rel="icon" href="../../assets/img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Proyecto 1: C y RISC-V - Estructura de Máquinas</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#757575">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="grey" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#proyecto-1-c-y-risc-v" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Estructura de Máquinas" class="md-header__button md-logo" aria-label="Estructura de Máquinas" data-md-component="logo">
+      
+  <img src="../../assets/img/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Estructura de Máquinas
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Proyecto 1: C y RISC-V
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cc3-an/docs/" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cc3-an/docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Inicio
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../labs/lab00/" class="md-tabs__link">
+        Laboratorios
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Estructura de Máquinas" class="md-nav__button md-logo" aria-label="Estructura de Máquinas" data-md-component="logo">
+      
+  <img src="../../assets/img/logo.jpg" alt="logo">
+
+    </a>
+    Estructura de Máquinas
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cc3-an/docs/" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cc3-an/docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Laboratorios
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Laboratorios" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Laboratorios
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab00/" class="md-nav__link">
+        00: Git
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-de-conocimiento" class="md-nav__link">
+    Requisitos de Conocimiento
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecturas-recomendadas" class="md-nav__link">
+    Lecturas Recomendadas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risc-v-green-card" class="md-nav__link">
+    RISC-V Green Card
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-del-proyecto" class="md-nav__link">
+    Estructura del Proyecto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-emulador-de-risc-v" class="md-nav__link">
+    El emulador de RISC-V
+  </a>
+  
+    <nav class="md-nav" aria-label="El emulador de RISC-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-de-instrucciones" class="md-nav__link">
+    Set de Instrucciones
+  </a>
+  
+    <nav class="md-nav" aria-label="Set de Instrucciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipo-r" class="md-nav__link">
+    Tipo R
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-i" class="md-nav__link">
+    Tipo I
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-s" class="md-nav__link">
+    Tipo S
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-sb" class="md-nav__link">
+    Tipo SB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-u" class="md-nav__link">
+    Tipo U
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-uj" class="md-nav__link">
+    Tipo UJ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructura-del-codigo" class="md-nav__link">
+    Estructura del Código
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones-en-la-linea-de-comandos" class="md-nav__link">
+    Opciones en la línea de comandos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-1" class="md-nav__link">
+    Parte 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requisitos-parte-1" class="md-nav__link">
+    Requisitos Parte 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probando-la-parte-1" class="md-nav__link">
+    Probando la Parte 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calificacion-parte-1" class="md-nav__link">
+    Calificación Parte 1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-2" class="md-nav__link">
+    Parte 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requisitos" class="md-nav__link">
+    Requisitos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probando-la-parte-2" class="md-nav__link">
+    Probando la Parte 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calificacion-parte-2" class="md-nav__link">
+    Calificación Parte 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preguntas-frecuentes" class="md-nav__link">
+    Preguntas Frecuentes
+  </a>
+  
+    <nav class="md-nav" aria-label="Preguntas Frecuentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-como-puedo-empezar" class="md-nav__link">
+    1. ¿Cómo puedo empezar?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-en-mi-maquina-local-saco-100-y-en-el-autograder-0-por-que" class="md-nav__link">
+    2. En mi máquina local saco 100% y en el autograder 0, ¿por qué?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-me-da-floating-point-exception-core-dumped-al-hacer-algunas-operaciones-aritmeticas-por-que" class="md-nav__link">
+    3. Me da Floating-point Exception (core dumped) al hacer algunas operaciones aritméticas, ¿por qué?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-en-la-parte-1-el-formato-nunca-es-el-esperado-por-las-pruebas-por-que" class="md-nav__link">
+    4. En la parte 1 el formato nunca es el esperado por las pruebas, ¿por qué?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-puedo-crear-mis-propias-funciones" class="md-nav__link">
+    5. ¿Puedo crear mis propias funciones?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/cc3-an/docs/edit/main/docs/projects/pj01.md" title="Editar esta página" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="proyecto-1-c-y-risc-v">Proyecto 1: C y RISC-V</h1>
+<h2 id="objetivos">Objetivos</h2>
+<ul>
+<li>Mejorar sus habilidades de programación en C.</li>
+<li>Conocer algunos de los detalles de RISC-V.</li>
+<li>Prepararse para lo que viene más adelante en el curso.</li>
+</ul>
+<h2 id="requisitos-de-conocimiento">Requisitos de Conocimiento</h2>
+<p>Para realizar este proyecto ustedes tienen que tener claros algunos conceptos, de lo contrario será bastante difícil e incómodo empezar a trabajar. Les recomendamos que antes de empezar estén totalmente seguros que dominan al 100% los siguientes puntos:</p>
+<ul>
+<li>Operaciones binarias en C (<code>xor</code>, <code>or</code>, <code>and</code>, etc).</li>
+<li>Operaciones aritméticas con signo y sin signo en C.</li>
+<li>Type casting en C.</li>
+<li>Control de flujo en C (<code>switch</code>, <code>if</code>, etc).</li>
+<li>Funciones en C.</li>
+<li>Entender qué son las estructuras (<code>struct</code>) en C.</li>
+<li>Entender cómo funcionan las uniones (<code>union</code>) en C.</li>
+<li>Uso correcto de <code>printf</code>.</li>
+<li>Entender la estructura del set de instrucciones de RISC-V.</li>
+<li>Programar en lenguaje ensamblador RISC-V.</li>
+</ul>
+<p>Si creen que no tienen claro alguno de estos temas al 100%, por favor no duden en ir a consultar los libros y material correspondiente del curso, por ejemplo <strong>K&amp;R</strong>, es indispensable. En <a href="#lecturas-recomendadas">Lecturas Recomendadas</a> pueden encontrar algunas lecturas que tocan los puntos antes mencionados y otras cosas que también les pueden servir, nunca está demás tener un poco más de información.</p>
+<h2 id="lecturas-recomendadas">Lecturas Recomendadas</h2>
+<p><img alt="RISCV Book" src="/assets/img/RVB.jpg" />
+<img alt="KR" src="/assets/img/KR.jpg" />
+<img alt="PH" src="/assets/img/PH.jpg" /></p>
+<ul>
+<li>Guía Práctica de RISC-V: 2</li>
+<li>K&amp;R: 6</li>
+<li>P&amp;H: B-43</li>
+</ul>
+<h2 id="introduccion">Introducción</h2>
+<p>En este proyecto ustedes deben de crear un emulador que pueda ejecutar un subconjunto de instrucciones de <strong>RISC-V</strong>. Ustedes se van a encargar de hacer un programa que decodifique y ejecute varias instrucciones de RISC-V. Considérenlo como una versión miniatura de <strong>Jupiter</strong>.</p>
+<h2 id="risc-v-green-card">RISC-V Green Card</h2>
+<p>Aquí hay dos <strong>RISC-V Green Cards</strong> que pueden consultar y así tener más herramientras que les pueden ayudar a completar el proyecto. La primera tiene información acerca de los <em>opcodes</em> y otros campos de cada uno de los diferentes formatos de instrucción, por lo que esta sería su mejor opción.</p>
+<p align="center">
+  <a href="http://inst.eecs.berkeley.edu/~cs61c/fa17/img/riscvcard.pdf" target="_blank"><img src="/assets/img/berkeleyGC.png" alt="Berkeley Green Card" /></a>
+  <a href="https://www.cl.cam.ac.uk/teaching/1617/ECAD+Arch/files/docs/RISCVGreenCardv8-20151013.pdf" target="_blank"><img src="/assets/img/cambridgeGC.png" alt="Cambridge Green Card" /></a>
+</p>
+
+<h2 id="preparacion">Preparación</h2>
+<p><strong>Antes de comenzar asegúrense de que hayan <span style="color: red">leído y comprendido</span> todas las instrucciones del proyecto de principio a fin</strong>. Si tienen alguna pregunta pueden consultar la sección de preguntas frecuentes para ver si ya ha sido resuelta, de lo contrario por favor diríjanse a <strong>Slack</strong> y pregunten en los canales correspondientes.</p>
+<p>Para comenzar con el proyecto, primero tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/g/wGyx9BSw">aquí</a>. Tienen permitido trabajar en parejas o de forma individual, por lo que al aceptar la asignación les preguntará si desean crear un grupo nuevo o unirse a uno ya existente. Si crean un grupo nuevo, ingresen un nombre que represente al grupo y que no esté ya en los grupos existentes.</p>
+<p><img alt="Create group" src="/assets/img/projs/proj01/classroom1.png" /></p>
+<p>Si desean unirse a un grupo ya creado, tienen que buscar el nombre del grupo y pulsar el botón que dice <strong>join</strong></p>
+<p><img alt="Join group" src="/assets/img/projs/proj01/classroom2.png" /></p>
+<p><strong>Tienen que tener mucho cuidado al unirse a un grupo ya existente, ya que esto no se puede cambiar después, además lo consideraremos como <span style="color: red">PLAGIO</span> si lo realizan de manera incorrecta, ya que al hacer esto pueden tener acceso al repositorio del otro miembro del grupo.</strong></p>
+<p>Ya sea que se unan o creen un nuevo grupo, al finalizar el proceso les creará automáticamente un repositorio con una extensión que termina con su nombre de grupo. Ya habiendo hecho todo eso, pueden ejecutar los siguientes comandos abriendo una terminal (<kbd >CTRL</kbd> <kbd>+</kbd> <kbd>T</kbd>):</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git clone &lt;link del repositorio&gt;
+</code></pre></div>
+</td></tr></table>
+<blockquote>
+<p><strong>NOTA</strong>: Tienen que reemplazar &lt;link del repositorio> con el link del repositorio que se creó.</p>
+</blockquote>
+<h2 id="estructura-del-proyecto">Estructura del Proyecto</h2>
+<p>Cuando hayan clonado el repositorio, se van a encontrar con los siguientes archivos:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Makefile
+part1.c
+part2.c
+README.md
+riscv.c
+riscvcode/
+riscv.h
+autograder.json
+types.h
+utils.c
+utils.h
+</code></pre></div>
+</td></tr></table>
+<p>Los únicos archivos que pueden modificar son:</p>
+<ul>
+<li><code>part1.c</code>: Este es el archivo que van a modificar en la parte 1 del proyecto.</li>
+<li><code>utils.c</code>: Archivo auxiliar que contendrá varias funciones de ayuda para la parte 1 y 2 del proyecto.</li>
+<li><code>part2.c</code>: Este es el archivo que van a modificar en la parte 2 del proyecto.</li>
+</ul>
+<p><strong>Ustedes <span style="color: red">NO</span> pueden crear otros archivos ni crear archivos de cabecera <code>.h</code>. Si necesitan agregar funciones de ayuda, por favor colóquenlas en los archivos C correspondientes (<code>utils.c</code>, <code>part1.c</code>, <code>part2.c</code>). Si ustedes no siguen estas recomendaciones, su código no va a compilar en el autograder y obtendrán 0 como nota</strong>.</p>
+<p>Otros archivos que necesitan consultar detenidamente para entender el proyecto:</p>
+<ul>
+<li><code>type.h</code>: Archivo de cabecera que tiene los tipos de datos que ustedes van a utilizar.</li>
+<li><code>Makefile</code>: Para compilar y probar su código.</li>
+<li><code>riscvcode/*</code>: Archivos para hacer algunas pruebas.</li>
+<li><code>utils.h</code>: Archivo que contiene el formato de las instrucciones a ser utilizadas en la parte 1 del proyecto.</li>
+</ul>
+<p>Archivos que no es necesario que los revisen, pero si son curiosos:</p>
+<ul>
+<li><code>riscv.h</code>: tiene declaraciones de funciones que se utilizan en la parte 1 y 2 del proyecto.</li>
+<li><code>riscv.c</code>: programa encargado de probar la parte 1 y 2 del proyecto, el simulador como tal.</li>
+</ul>
+<h2 id="el-emulador-de-risc-v">El emulador de RISC-V</h2>
+<p>Los archivos proporcionados en el repositorio que crearon con GitHub Classroom son la base para un emulador de RISC-V. Primero, ustedes deberán agregar código en <strong><em>part1.c</em></strong> y <strong><em>utils.c</em></strong> para imprimir las instrucciones en ensamblador correspondientes al código de máquina (binario). Una vez realizaron esto, ustedes completarán el programa agregando código en el archivo <strong><em>parte2.c</em></strong> para ejecutar cada instrucción (incluyendo los accesos a memoria). Su simulador debe de ser capaz de entender cada una de las instrucciones siguientes ya codificadas en código de máquina (binario), nosotros ya les damos una tabla de los tipos de instrucciones que debe de ser capaz de manejar su emulador.</p>
+<p><strong>Es muy <span style="color: red">IMPORTANTE</span> que ustedes lean y entiendan las definiciones encontradas en <em>types.h</em> antes de empezar su proyecto. Si tiene alguna duda, o encuentran algo que no entiendan respecto a las mismas consulten el capítulo 6 de K&amp;R, que habla sobre estructuras, bitfields y uniones</strong>.</p>
+<h3 id="set-de-instrucciones">Set de Instrucciones</h3>
+<p>El set de instrucciones que su emulador debe soportar esta listado a continuación. Toda la información acá es copiada desde <a href="http://inst.eecs.berkeley.edu/~cs61c/fa17/img/riscvcard.pdf">RISC-V green card</a>, como ayuda adicional pueden utilizar la hoja proporcionada anteriormente.</p>
+<h4 id="tipo-r">Tipo R</h4>
+<table>
+  <tr>
+    <th colspan="7">FORMATO DE UNA INSTRUCCIÓN DE TIPO R </th>
+  </tr>
+  <tr>
+    <td>R-TYPE</td>
+    <td><font color="#ff0000">funct7</font></td>
+    <td><font color="#0000ff">rs2</font></td>
+    <td><font color="#0000ff">rs1</font></td>
+    <td><font color="#ff0000">funct3</font></td>
+    <td><font color="#0000ff">rd</font></td>
+    <td><font color="#ff0000">opcode</font></td>
+  </tr>
+  <tr>
+    <td>Bits</td>
+    <td>7</td>
+    <td>5</td>
+    <td>5</td>
+    <td>3</td>
+    <td>5</td>
+    <td>7</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th colspan="4"> INTRUCCIONES TIPO R (OPCODE 0x33) </th>
+  </tr>
+  <tr>
+    <td>INSTRUCCIÓN</td>
+    <td>FUNCT3</td>
+    <td>FUNCT7/IMM</td>
+    <td>OPERACIÓN</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> add</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x0</td>
+    <td>0x00</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] + <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> mul</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x0</td>
+    <td>0x01</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-(<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] * <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]) [31:0]</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> sub</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x0</td>
+    <td>0x20</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] - <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> sll</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x1</td>
+    <td>0x00</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] << <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> mulh</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x1</td>
+    <td>0x01</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-(<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] * <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]) [63:32]</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> slt</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x2</td>
+    <td>0x00</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-(<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] < <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]) ? 1 : 0</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> xor</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x4</td>
+    <td>0x00</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] ^ <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> div</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x4</td>
+    <td>0x01</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] / <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> srl</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x5</td>
+    <td>0x00</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] >> <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> sra</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x5</td>
+    <td>0x20</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] >> <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> or</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x6</td>
+    <td>0x00</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] | <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> rem</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x6</td>
+    <td>0x01</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] % <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]</td>
+  </tr>
+  <tr>
+    <td> <font color="#ff0000"> and</font><font color="#0000ff"> rd</font>, <font color="#0000ff"> rs1</font>, <font color="#0000ff"> rs2</font></td>
+    <td>0x7</td>
+    <td>0x00</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<-<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] & <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]</td>
+  </tr>
+</table>
+
+<h4 id="tipo-i">Tipo I</h4>
+<table>
+  <tr>
+    <th colspan="6">FORMATO DE UNA INSTRUCCIÓN DE TIPO I </th>
+  </tr>
+  <tr>
+    <td>I-TYPE</td>
+    <td><font color="#ff00ff">imm[11:0]</font></td>
+    <td><font color="#0000ff">rs1</font></td>
+    <td><font color="#ff0000">funct3</font></td>
+    <td><font color="#0000ff">rd</font></td>
+    <td><font color="#ff0000">opcode</font></td>
+  </tr>
+  <tr>
+    <td>Bits</td>
+    <td>12</td>
+    <td>5</td>
+    <td>3</td>
+    <td>5</td>
+    <td>7</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th colspan="4"> INTRUCCIONES TIPO I (OPCODE 0x03) </th>
+  </tr>
+  <tr>
+    <td>INSTRUCCIÓN</td>
+    <td>FUNCT3</td>
+    <td>FUNCT7/IMM</td>
+    <td>OPERACIÓN</td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000"> lb</font><font color="#0000ff"> rd,</font><font color="#ff00ff"> offset</font>(<font color="#0000ff">rs1</font>)</td>
+    <td>0x0</td>
+    <td></td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- SignExt(Mem(<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] + <font color="#ff00ff"> offset</font>, <font color="#00a680">byte</font>)) </td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000"> lh</font><font color="#0000ff"> rd,</font><font color="#ff00ff"> offset</font>(<font color="#0000ff">rs1</font>)</td>
+    <td>0x1</td>
+    <td></td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- SignExt(Mem(<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] + <font color="#ff00ff"> offset</font>, <font color="#00a680">half</font>)) </td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000"> lw</font><font color="#0000ff"> rd,</font><font color="#ff00ff"> offset</font>(<font color="#0000ff">rs1</font>)</td>
+    <td>0x2</td>
+    <td></td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- Mem(<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] + <font color="#ff00ff"> offset</font>, <font color="#00a680">word</font>) </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th colspan="4"> INTRUCCIONES TIPO I (OPCODE 0x13) </th>
+  </tr>
+  <tr>
+    <td>INSTRUCCIÓN</td>
+    <td>FUNCT3</td>
+    <td>FUNCT7/IMM</td>
+    <td>OPERACIÓN</td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000"> addi</font><font color="#0000ff"> rd,</font><font color="#0000ff"> rs1,</font><font color="#ff00ff"> imm</font></td>
+    <td>0x0</td>
+    <td></td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- <font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] + <font color="#ff00ff"> imm</font> </td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000"> slli</font><font color="#0000ff"> rd,</font><font color="#0000ff"> rs1,</font><font color="#ff00ff"> imm</font></td>
+    <td>0x1</td>
+    <td>0x00</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- <font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] << <font color="#ff00ff"> imm</font> </td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000"> slti</font><font color="#0000ff"> rd,</font><font color="#0000ff"> rs1,</font><font color="#ff00ff"> imm</font></td>
+    <td>0x2</td>
+    <td></td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- (<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] < <font color="#ff00ff"> imm</font>) ? 1 : 0</td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000"> xori</font><font color="#0000ff"> rd,</font><font color="#0000ff"> rs1,</font><font color="#ff00ff"> imm</font></td>
+    <td>0x4</td>
+    <td></td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- <font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] ^ <font color="#ff00ff"> imm</font> </td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000"> srli</font><font color="#0000ff"> rd,</font><font color="#0000ff"> rs1,</font><font color="#ff00ff"> imm</font></td>
+    <td>0x5</td>
+    <td>0x00</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- <font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] >> <font color="#ff00ff"> imm</font> </td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000"> srai</font><font color="#0000ff"> rd,</font><font color="#0000ff"> rs1,</font><font color="#ff00ff"> imm</font></td>
+    <td>0x5</td>
+    <td>0x20</td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- <font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] >> <font color="#ff00ff"> imm</font> </td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000"> ori</font><font color="#0000ff"> rd,</font><font color="#0000ff"> rs1,</font><font color="#ff00ff"> imm</font></td>
+    <td>0x6</td>
+    <td></td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- <font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] | <font color="#ff00ff"> imm</font> </td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000"> andi</font><font color="#0000ff"> rd,</font><font color="#0000ff"> rs1,</font><font color="#ff00ff"> imm</font></td>
+    <td>0x7</td>
+    <td></td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- <font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] & <font color="#ff00ff"> imm</font> </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th colspan="4"> INTRUCCIONES TIPO I (OPCODE 0x67) </th>
+  </tr>
+  <tr>
+    <td>INSTRUCCIÓN</td>
+    <td>FUNCT3</td>
+    <td>FUNCT7/IMM</td>
+    <td>OPERACIÓN</td>
+  </tr>
+  <tr>
+  <td><font color="#ff0000"> jalr</font></td>
+    <td>0x0</td>
+    <td></td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- <font color="#ff0000">PC</font> + <font color="#00ff00">4</font> <br><font color="#ff0000">PC</font><- <font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] + <font color="#ff00ff">imm</font></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th colspan="4"> INTRUCCIONES TIPO I (OPCODE 0x73) </th>
+  </tr>
+  <tr>
+    <td>INSTRUCCIÓN</td>
+    <td>FUNCT3</td>
+    <td>FUNCT7/IMM</td>
+    <td>OPERACIÓN</td>
+  </tr>
+  <tr>
+  <td><font color="#ff0000"> ecall</font></td>
+    <td>0x0</td>
+    <td>0x000</td>
+    <td rowspan="3">(Transfiere el control al Sistema Operativo) <br><font color="#0000ff">a0</font> = <font color="#ff00ff">1</font> imprime el valor contenido en <font color="#0000ff">a1</font> como entero. <br><font color="#0000ff">a0</font> = <font color="#ff00ff"> 10</font>  es exit o un indicador de final de código.<br>
+  </td>
+     </tr>
+</table>
+
+<h4 id="tipo-s">Tipo S</h4>
+<table>
+  <tr>
+    <th colspan="7">FORMATO DE UNA INSTRUCCIÓN DE TIPO S </th>
+  </tr>
+  <tr>
+    <td>S-TYPE</td>
+    <td><font color="#ff00ff">imm[11:5]</font></td>
+    <td><font color="#0000ff">rs2</font></td>
+    <td><font color="#0000ff">rs1</font></td>
+    <td><font color="#ff0000">funct3</font></td>
+    <td><font color="#ff00ff">imm[4:0]</font></td>
+    <td><font color="#ff0000">opcode</font></td>
+  </tr>
+  <tr>
+    <td>Bits</td>
+    <td>7</td>
+    <td>5</td>
+    <td>5</td>
+    <td>3</td>
+    <td>5</td>
+    <td>7</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th colspan="4"> INTRUCCIONES TIPO S (OPCODE 0x23) </th>
+  </tr>
+  <tr>
+    <td>INSTRUCCIÓN</td>
+    <td>FUNCT3</td>
+    <td>FUNCT7/IMM</td>
+    <td>OPERACIÓN</td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000">sb</font> <font color="#0000ff">rs2</font>, <font color="#ff00ff">offset</font>(<font color="#0000ff">rs1</font>)</td>
+    <td>0x0</td>
+    <td></td>
+    <td>Mem(<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] + <font color="#ff00ff">offset</font>)<- <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>][7:0]</td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000">sh</font> <font color="#0000ff">rs2</font>, <font color="#ff00ff">offset</font>(<font color="#0000ff">rs1</font>)</td>
+    <td>0x1</td>
+    <td></td>
+    <td>Mem(<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] + <font color="#ff00ff">offset</font>)<- <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>][15:0]</td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000">sw</font> <font color="#0000ff">rs2</font>, <font color="#ff00ff">offset</font>(<font color="#0000ff">rs1</font>)</td>
+    <td>0x2</td>
+    <td></td>
+    <td>Mem(<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] + <font color="#ff00ff">offset</font>)<- <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]</td>
+  </tr>
+</table>
+
+<h4 id="tipo-sb">Tipo SB</h4>
+<table>
+  <tr>
+    <th colspan="9">FORMATO DE UNA INSTRUCCIÓN DE TIPO SB </th>
+  </tr>
+  <tr>
+    <td>SB-TYPE</td>
+    <td><font color="#ff00ff">imm[12]</font></td>
+    <td><font color="#ff00ff">imm[10:5]</font></td>
+    <td><font color="#0000ff">rs2</font></td>
+    <td><font color="#0000ff">rs1</font></td>
+    <td><font color="#ff0000">funct3</font></td>
+    <td><font color="#ff00ff">imm[4:1]</font></td>
+    <td><font color="#ff00ff">imm[11]</font></td>
+    <td><font color="#ff0000">opcode</font></td>
+  </tr>
+  <tr>
+    <td>Bits</td>
+    <td>1</td>
+    <td>6</td>
+    <td>5</td>
+    <td>5</td>
+    <td>3</td>
+    <td>4</td>
+    <td>1</td>
+    <td>7</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th colspan="4"> INTRUCCIONES TIPO SB (OPCODE 0x63) </th>
+  </tr>
+  <tr>
+    <td>INSTRUCCIÓN</td>
+    <td>FUNCT3</td>
+    <td>FUNCT7/IMM</td>
+    <td>OPERACIÓN</td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000">beq</font> <font color="#0000ff">rs1</font>, <font color="#0000ff">rs2</font>, <font color="#ff00ff">offset</font></td>
+    <td>0x0</td>
+    <td></td>
+    <td>if(<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] == <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]) <br> <font color="#ff0000">PC</font><- <font color="#ff0000">PC</font> + {<font color="#ff00ff">offset</font>, 1b'0}</td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000">bne</font>  <font color="#0000ff">rs1</font>, <font color="#0000ff">rs2</font>, <font color="#ff00ff">offset</font></td>
+    <td>0x1</td>
+    <td></td>
+    <td>if(<font color="#ff0000">R</font>[<font color="#0000ff">rs1</font>] != <font color="#ff0000">R</font>[<font color="#0000ff">rs2</font>]) <br> <font color="#ff0000">PC</font><- <font color="#ff0000">PC</font> + {<font color="#ff00ff">offset</font>, 1b'0}</td>
+  </tr>
+</table>
+
+<h4 id="tipo-u">Tipo U</h4>
+<table>
+  <tr>
+    <th colspan="4">FORMATO DE UNA INSTRUCCIÓN DE TIPO U </th>
+  </tr>
+  <tr>
+    <td>U-TYPE</td>
+    <td><font color="#ff00ff">imm[31:12]</font></td>
+    <td><font color="#0000ff">rd</font></td>
+    <td><font color="#ff0000">opcode</font></td>
+  </tr>
+  <tr>
+    <td>Bits</td>
+    <td>20</td>
+    <td>5</td>
+    <td>7</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th colspan="4"> INTRUCCIONES TIPO U (OPCODE 0x17) </th>
+  </tr>
+  <tr>
+    <td>INSTRUCCIÓN</td>
+    <td>FUNCT3</td>
+    <td>FUNCT7/IMM</td>
+    <td>OPERACIÓN</td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000">auipc</font> <font color="#0000ff">rd</font>, <font color="#ff00ff">offset</font></td>
+    <td></td>
+    <td></td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- <font color="#ff0000">PC</font> + {<font color="#ff00ff">offset</font>, 12b'0}
+  </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th colspan="4"> INTRUCCIONES TIPO U (OPCODE 0x37) </th>
+  </tr>
+  <tr>
+    <td>INSTRUCCIÓN</td>
+    <td>FUNCT3</td>
+    <td>FUNCT7/IMM</td>
+    <td>OPERACIÓN</td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000">lui</font> <font color="#0000ff">rd</font>, <font color="#ff00ff">offset</font></td>
+    <td></td>
+    <td></td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- {<font color="#ff00ff">offset</font>, 12b'0}
+  </td>
+  </tr>
+</table>
+
+<h4 id="tipo-uj">Tipo UJ</h4>
+<table>
+  <tr>
+    <th colspan="7">FORMATO DE UNA INSTRUCCIÓN DE TIPO UJ </th>
+  </tr>
+  <tr>
+    <td>UJ-TYPE</td>
+    <td><font color="#ff00ff">imm[20]</font></td>
+    <td><font color="#ff00ff">imm[10:1]</font></td>
+    <td><font color="#ff00ff">imm[11]</font></td>
+    <td><font color="#ff00ff">imm[19:12]</font></td>
+    <td><font color="#0000ff">rd</font></td>
+    <td><font color="#ff0000">opcode</font></td>
+  </tr>
+  <tr>
+    <td>Bits</td>
+    <td>1</td>
+    <td>10</td>
+    <td>1</td>
+    <td>8</td>
+    <td>5</td>
+    <td>7</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th colspan="4"> INTRUCCIONES TIPO UJ (OPCODE 0x6F) </th>
+  </tr>
+  <tr>
+    <td>INSTRUCCIÓN</td>
+    <td>FUNCT3</td>
+    <td>FUNCT7/IMM</td>
+    <td>OPERACIÓN</td>
+  </tr>
+  <tr>
+    <td><font color="#ff0000">jal</font> <font color="#0000ff">rd</font>, <font color="#ff00ff">imm</font></td>
+    <td></td>
+    <td></td>
+    <td><font color="#ff0000">R</font>[<font color="#0000ff">rd</font>]<- <font color="#ff0000">PC</font> + <font color="#00ff00">4</font> <br><font color="#ff0000">PC</font><- <font color="#ff0000">PC</font> + {<font color="#ff00ff">imm</font>, 1b'0}</td>
+  </tr>
+</table>
+
+<p>Al igual que la arquitectura RISC-V normal, el sistema RISC-V que están implementando es little-endian. Esto significa que cuando se le da un valor compuesto de múltiples bytes, el byte menos significativo se almacena en la dirección más baja. Consulten la página <strong>B-43</strong> de <strong>P&amp;H</strong> (4ª edición) para obtener información sobre endianness.</p>
+<h3 id="estructura-del-codigo">Estructura del Código</h3>
+<p>El código base que les fue proporcionado funciona de la siguiente manera:</p>
+<ol>
+<li>Lee los programas en código de máquina que se encuentran en la memoria (Empezando en la dirección <code>0x01000</code>). Para "ejecutar" el programa este es pasado como un parámetro en la línea de comandos. Cada programa tiene 1 MiB de memoria y la unidad mínima de direccionamiento son los bytes.</li>
+<li>Todos los registros de RISC-V son inicializados en 0 y el program counter (<code>pc</code>) hacia la dirección <code>0x01000</code>. Las únicas excepciones a las inicializaciones antes mencionadas son el stack pointer (<code>sp</code>) que tiene un valor inicial de <code>0xEFFFF</code> y el global pointer (<code>gp</code>) que tiene un valor inicial de <code>0x03000</code>. En el contexto de su emulador, el global pointer hace referencia a la sección estática de su memoria. Los registros y el program counter están definidos en el <strong><em>Processor struct</em></strong> definido en <strong><em>types.h</em></strong>.</li>
+<li>Se definieron banderas con las cuales puede manejar la interacción con el usuario. Dependiendo de la opción especificada en la línea de comandos, el simulador mostrará un <em>dissassembly dump</em> (<code>-d</code>) o se ejecutará el programa. Habrá más información sobre las opciones de línea de comandos más adelante.</li>
+</ol>
+<p>Lo que prosigue es qué entra al flujo de simulación principal, el cual ejecuta una única instrucción repetitivamente hasta que la simulación se completa. La ejecución de una instrucción realiza las siguientes tareas:</p>
+<ol>
+<li>Trae una instrucción desde la memoria, usando el <code>pc</code> como dirección (<em>fetch</em>).</li>
+<li>Examina el opcode/funct3 para determinar que instrucción es (<em>decode</em>).</li>
+<li>Ejecuta la instrucción y actualiza el <code>pc</code> (<em>execute</em>).</li>
+</ol>
+<h3 id="opciones-en-la-linea-de-comandos">Opciones en la línea de comandos</h3>
+<ul>
+<li><code>-i</code>: Corre el simulador en modo interactivo (<em>interactive</em>), es decir que se ejecutará una instrucción a la vez al presionar <kbd>enter</kbd>. Cada instrucción es mostrada en su forma desensamblada.</li>
+<li><code>-t</code>: Corre el simulador en modo rastreo (<em>trace</em>), en donde cada instrucción es ejecutada y es mostrada al usuario.</li>
+<li><code>-r</code>: Indica al simulador que imprima el contenido de los 32 registros después de que es ejecutada cada instrucción. Esta opción es más útil cuando se combina con la opción <code>-i</code>.</li>
+<li><code>-d</code>: Indica al simulador que desensamble el programa completo y que termine sin ejecutarlo.</li>
+</ul>
+<p>En la parte 2, ustedes deberán implementar los siguientes métodos:</p>
+<ul>
+<li>El <strong><em>execute_instruction()</em></strong>.</li>
+<li>Los diferentes <strong><em>executes</em></strong>.</li>
+<li>El <strong><em>store()</em></strong>.</li>
+<li>El <strong><em>load()</em></strong>.</li>
+</ul>
+<p>Para cuando ustedes hayan terminado la implementación de todos los métodos, el simulador será capaz de manejar todas las instrucciones de la tabla anterior.</p>
+<h2 id="parte-1">Parte 1</h2>
+<p>Su primera tarea es implementar un desensamblador al completar el método <strong><em>decode_instruction()</em></strong> en el archivo <strong><em>part1.c</em></strong> junto a otras funciones.</p>
+<p>El objetivo de esta parte, es que, dada una instrucción en código de máquina, ustedes deberán traducirla a su instrucción en lenguaje ensamblador RISC-V (e.g. <code>add x1, x2, x3</code> ). Para esta parte, ustedes no harán referencia a los registros por nombre sino por su número (como está definido en <strong>RISC-V Green Card</strong>). Cuando impriman las instrucciones revisen las constantes definidas en <strong><em>utils.h</em></strong>, ya que estas le pueden ser de ayuda. Más detalles sobre los requisitos a continuación.</p>
+<h3 id="requisitos-parte-1">Requisitos Parte 1</h3>
+<ol>
+<li>Imprimir el nombre de la instrucción. Si la instrucción tiene argumentos, impriman un tab (<code>\t</code>).</li>
+<li>Imprimir todos los argumentos, siguiendo el orden y formato dado en la columna de <strong>INSTRUCCIÓN</strong> de las tablas mostradas anteriormente.</li>
+<li>Los argumentos son generalmente separados por coma (<code>lw</code>/<code>sw</code>, usan también paréntesis), pero no están separados por espacios.</li>
+<li>Ustedes encontrarán de ayuda revisar el archivo <strong><em>utils.h</em></strong>.</li>
+<li>Los registros que son argumentos de la instrucción son impresos con una <code>x</code> seguido del número de registro, en decimal. (e.g. <code>x0</code> o <code>x31</code>)</li>
+<li>Todos los inmediatos deben mostrarse como un número decimal con signo.</li>
+<li>Los corrimientos (e.g. para <code>slli</code>) se imprimen como números decimales sin signo (e.g. 0 a 31).</li>
+<li>Imprimir un salto de línea (<code>\n</code>) al final de cada instrucción.</li>
+<li>Se estará utilizando un autograder para calificar esta tarea. Si su output difiere del nuestro debido a errores de formato, no obtendrán nota.</li>
+<li>Nosotros les proveemos ciertas pruebas. Sin embargo, dado que estas pruebas sólo cubren un subconjunto de todos los escenarios posibles, pasar estas pruebas no significa que su código esté libre de errores. Ustedes deberán identificar todos los casos y probarlos.</li>
+</ol>
+<p>Para completar la funcionalidad de la parte 1, deben de completar lo siguiente:</p>
+<ul>
+<li>La función <strong><em>decode_instrucction()</em></strong> en <strong><em>part1.c</em></strong>.</li>
+<li>Los diferentes <strong><em>writes</em></strong> en <strong><em>part1.c</em></strong>.</li>
+<li>Los diferentes <strong><em>prints</em></strong> en <strong><em>part1.c</em></strong>.</li>
+<li>Los diferentes <strong><em>gets</em></strong> en <strong><em>utils.c</em></strong>.</li>
+<li>La función <strong><em>bitSigner</em></strong> en <strong><em>utils.c</em></strong>.</li>
+</ul>
+<p>Ustedes deben de correr el test brindado para su proyecto escribiendo el siguiente comando. Si ustedes pasan el test, verán en su consola el siguiente output.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make part1
+gcc -g -Wall -Werror -Wfatal-errors -O2 -o riscv utils.c part1.c part2.c riscv.c
+simple_disasm TEST PASSED!
+multiply_disasm TEST PASSED!
+random_disasm TEST PASSED!
+---------Disassembly Tests Complete---------
+</code></pre></div>
+</td></tr></table>
+<h3 id="probando-la-parte-1">Probando la Parte 1</h3>
+<p>Los tests que se les dieron no evalúan todas las posibilidades, por eso mismo ustedes pueden (<strong>deben</strong>) crear sus propios archivos de prueba para comprobar su funcionamiento. Si ustedes desean correr un test en específico, pueden usar el siguiente comando para ello:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make [test_name]_disasm
+</code></pre></div>
+</td></tr></table>
+<p>Para crear sus propios archivos de prueba, primero necesitarán crear código de máquina. Para ello pueden ayudarse de V-Sim o hacerlo a mano. Si utilizan V-Sim tienen que crear un archivo <code>.s</code> y hacer un <code>dump</code> del código de máquina utilizando la bandera <code>-code</code> en la terminal:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>jupiter &lt;archivo&gt;.s --dump-code &lt;test_name&gt;.input
+</code></pre></div>
+</td></tr></table>
+<p>Recuerde que Jupiter requiere el .global <strong>start y la etiqueta </strong>start: para poder ensamblar. Luego que hizo el --dump-code entre al archivo generado y elimine las primeras dos líneas, estas corresponden al __start y su proyecto no necesita preocuparse de esto.</p>
+<p>Ustedes deben de poner las instrucciones en código de máquina en un archivo llamado <code>[test_name].input</code>
+y colocar el archivo dentro de la carpeta <code>riscvcode/code</code>. Después, deben crear el archivo <code>[test_name].solution</code> el cual contendrá las instrucciones que se espera obtener; y colocar el archivo en la carpeta <code>riscvcode/ref</code>. Vean las pruebas proporcionadas como ejemplos de este tipo de archivos. Para integrar sus pruebas en el comando <code>make</code>, ustedes deben de modificar el archivo <code>Makefile</code>. En la línea 4 del archivo <code>Makefile</code>, donde dice <code>ASM_TESTS</code>, agregar <code>[test_name]</code> a la lista con espacios entre cada nombre de archivo:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>SOURCES := utils.c part1.c part2.c riscv.c
+HEADERS := types.h utils.h riscv.h
+
+ASM_TESTS := simple multiply random test_name
+</code></pre></div>
+</td></tr></table>
+<p>Si su instrucción desensamblada no es igual a la esperada, ustedes obtendrán la diferencia entre el output esperado y el output que devolvieron. <strong>Asegúrense de al menos pasar esta prueba antes de enviar la parte 1 al autograder</strong>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Output Esperado</span>
+&lt; <span class="m">00001014</span>: lui x8, <span class="m">1048575</span>
+---
+<span class="c1"># Output Devuelto</span>
+&gt; <span class="m">00001014</span>: Invalid Instruction: 0xfffff437
+</code></pre></div>
+</td></tr></table>
+<h3 id="calificacion-parte-1">Calificación Parte 1</h3>
+<p><strong>Recuerden que para la primera parte, sólo deben modificar los archivos <em>part1.c</em> y <em>utils.c</em></strong>, esto representa el 50% de su nota así que pueden enviar sus archivos al autograder para verificar su nota de esta parte haciendo:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
+autograder --upload
+</code></pre></div>
+</td></tr></table>
+<p><strong>Si están trabajando en pareja, <span style="color: red">AMBOS</span> miembros del grupo tienen que clonar el repositorio y hacer upload haciendo login con su correo de galileo</strong>.</p>
+<h2 id="parte-2">Parte 2</h2>
+<p>Su segunda tarea es completar el emulador implementando los métodos <strong><em>execute_instruction()</em></strong>. <strong><em>execute()</em></strong>'s, <strong><em>store()</em></strong> y <strong><em>load()</em></strong> del archivo <strong><em>part2.c</em></strong>.</p>
+<h3 id="requisitos">Requisitos</h3>
+<p>Esta parte consistirá en implementar la funcionalidad de cada instrucción. Por favor implementen las funciones descritas a continuación (todas en <strong><em>part2.c</em></strong>):</p>
+<ul>
+<li>
+<p><strong><em>execute_instruction()</em></strong>: Ejecuta la instrucción proporcionada como parámetro. Esta debería modificar los registros apropiados, realizar las llamadas a memoria necesarias y actualizar el program counter para apuntar a la siguiente instrucción a ejecutar.</p>
+</li>
+<li>
+<p><strong><em>execute()</em></strong>'s: Varias funciones de ayuda para ser llamadas en ciertas condiciones para ciertas instrucciones. Es su decisión usar estas funciones, pero estas les ayudarán de gran manera a organizar el código.</p>
+</li>
+<li>
+<p><strong><em>store()</em></strong>: Toma una dirección, un tamaño, un valor y almacena los primeros (tamaño) bytes del valor dado en la dirección dada. Cuando el parámetro <code>check_align</code> sea <code>1</code> se validarán las restricciones de alineación. Se incluyó este parámetro para obligar a las instrucciones a estar alineadas por palabras de memoria (word-aligned). Cuando implementen el <code>store</code> y <code>load</code>, este parámetro debe ser <code>0</code> dado que RISC-V no hace cumplir las restricciones de alineación.</p>
+</li>
+<li>
+<p><strong><em>load()</em></strong>: Toma una dirección y un tamaño, y retorna los siguientes (tamaño) bytes empezando en la dirección dada. El <code>check_align</code> funciona de la misma forma que en <code>store()</code>.</p>
+</li>
+</ul>
+<h3 id="probando-la-parte-2">Probando la Parte 2</h3>
+<p>Les hemos adjuntado un self-checking assembly test que prueba varias de las instruciones, sin embargo este test no es exhaustivo y no prueba todas las instrucciones. A continuación, se ejemplifica cómo ejecutar los test (el output es de una solución correcta).</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make part2
+gcc -Wall -Werror -Wfatal-errors -O2 -o riscv utils.c part1.c part2.c riscv.c
+simple_execute TEST PASSED!
+multiply_execute TEST PASSED!
+random_execute TEST PASSED!
+-----------Execute Tests Complete-----------
+</code></pre></div>
+</td></tr></table>
+<p>Lo más probable es que ustedes tenga errores al empezar a realizar la parte 2, entonces prueben el modo de rastreo (<em>trace</em>) descrito en <a href="#opciones-en-la-linea-de-comandos">Opciones en la línea de Comandos</a>.</p>
+<p>Les hemos dado unos cuantos tests más, además de la posibilidad de escribir test propios. Como en la parte 1, ustedes tendrán que crear archivos <code>.input</code>. Sin embargo, para la parte 2, ustedes deberán nombrar su archivo solución con una extensión <code>.trace</code>.</p>
+<p>Creen el nuevo archivo de ensamblador en el directorio <code>riscvcode</code> (utilicen <code>riscvcode/simple.input</code> como plantilla). Agreguen el nombre base del test a la lista de <code>ASM_TESTS</code> en el <code>Makefile</code>. Para realizar esto sólo agreguen <code>[test_name]</code> al final de la línea 4.
+Ahora compilen su test de ensamblador y ejecútenlo escribiendo el siguiente comando:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make <span class="o">[</span>test_name<span class="o">]</span>_execute
+</code></pre></div>
+</td></tr></table>
+<p>Ustedes pueden, y en efecto deben, escribir sus propios test para probar instrucciones específicas y todos los posibles casos. Además, ustedes deben compilar y probar su código después de cada grupo de instrucciones implementadas. De lo contrario será muy difícil probar su proyecto si esperan hasta el final.</p>
+<h3 id="calificacion-parte-2">Calificación Parte 2</h3>
+<p>Al completar esta parte ustedes sólo deberían haber modificado los archivos <code>part1.c</code>, <code>part2.c</code> y <code>utils.c</code>, deben realizar commit de todos los cambios realizados y enviar el link de su repositorio por medio del GES. Para obtener su nota completa tienen que hacer:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
+autograder --upload
+</code></pre></div>
+</td></tr></table>
+<p><strong>Si están trabajando en pareja, <span style="color: red">AMBOS</span> miembros del grupo tienen que clonar el repositorio y hacer upload haciendo login con su correo de galileo</strong>.</p>
+<h2 id="preguntas-frecuentes">Preguntas Frecuentes</h2>
+<h3 id="1-como-puedo-empezar">1. ¿Cómo puedo empezar?</h3>
+<p>Lo mejor es revisar <code>types.h</code> y analizar la estructura <code>Instruction</code> para empezar a trabajar en la <code>parte1.c</code>, por ejemplo como acceder a cada campo de cada diferente tipo de instrucción y al opcode también. Por ejemplo, para acceder al <code>opcode</code> pueden utilizar:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">instruction</span><span class="p">.</span><span class="n">opcode</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>siendo <code>instruction</code> una variable que representa una "instancia" de la estructura <code>Instruction</code>. Luego de esto, pueden ver cómo accediendo a estos campos pueden decodificar la instrucción y así lograr imprimirla.</p>
+<h3 id="2-en-mi-maquina-local-saco-100-y-en-el-autograder-0-por-que">2. En mi máquina local saco 100% y en el autograder 0, ¿por qué?</h3>
+<p>Al trabajar con uniones y estructuras de C y al utilizar la bandera <code>-O2</code> pueden pasar cosas muy raras, una de ellas es el <a href="https://cellperformance.beyond3d.com/articles/2006/06/understanding-strict-aliasing.html">strict aliasing</a>, por eso les recomendamos probar su código en la máquina virtual que les proporcionamos, así están totalmente seguros de que código funciona correctamente.</p>
+<h3 id="3-me-da-floating-point-exception-core-dumped-al-hacer-algunas-operaciones-aritmeticas-por-que">3. Me da Floating-point Exception (core dumped) al hacer algunas operaciones aritméticas, ¿por qué?</h3>
+<p>Generalmente esto se da porque se divide por <code>0</code> o hay <code>overflow</code> utilizando variables enteras con signo. Por ejemplo:</p>
+<p><strong>Division por 0</strong></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>int x = 10;
+int y = 0;
+int z = x / y;
+</code></pre></div>
+</td></tr></table>
+<p><strong>Overflow</strong></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int32_t</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x80000000</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int32_t</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xffffffff</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int32_t</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>La solución para la división por <code>0</code> es simplemente tienen que devolver <code>-1</code> como dice la especificación de RISC-V y para el residuo devolver el primer argumento de la operación, en el caso de <code>overflow</code> la solución es castear las variables a un tipo con más bytes:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int32_t</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int32_t</span><span class="p">)((</span><span class="kt">int64_t</span><span class="p">)</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="kt">int64_t</span><span class="p">)</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="4-en-la-parte-1-el-formato-nunca-es-el-esperado-por-las-pruebas-por-que">4. En la parte 1 el formato nunca es el esperado por las pruebas, ¿por qué?</h3>
+<p>Seguramente no están utilizando el formato correcto, les recomendamos que utilicen las siguientes <code>macros</code> para imprimir las instrucciones que se encuentran en el archivo <code>utils.h</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#define RTYPE_FORMAT &quot;%s\tx%d, x%d, x%d\n&quot;</span>
+<span class="cp">#define ITYPE_FORMAT &quot;%s\tx%d, x%d, %d\n&quot;</span>
+<span class="cp">#define JALR_FORMAT &quot;jalr\tx%d, x%d, %d\n&quot;</span>
+<span class="cp">#define MEM_FORMAT &quot;%s\tx%d, %d(x%d)\n&quot;</span>
+<span class="cp">#define AUIPC_FORMAT &quot;auipc\tx%d, %d\n&quot;</span>
+<span class="cp">#define LUI_FORMAT &quot;lui\tx%d, %d\n&quot;</span>
+<span class="cp">#define JAL_FORMAT &quot;jal\tx%d, %d\n&quot;</span>
+<span class="cp">#define BRANCH_FORMAT &quot;%s\tx%d, x%d, %d\n&quot;</span>
+<span class="cp">#define ECALL_FORMAT &quot;ecall\n&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="5-puedo-crear-mis-propias-funciones">5. ¿Puedo crear mis propias funciones?</h3>
+<p>Sí, siempre y cuando estas estén declaradas, ya sea en <code>part1.c</code>, <code>part2.c</code> o <code>utils.c</code>, ya que son los únicos archivos que se envían al autograder. Sin embargo, <strong><span style="color: red">NO</span> está permitido renombrar o eliminar las siguientes funciones</strong>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/* archivo part1.c */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">decode_instruction</span><span class="p">(</span><span class="n">Instruction</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* archivo part2.c */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">execute_instruction</span><span class="p">(</span><span class="n">Instruction</span><span class="w"> </span><span class="n">instruction</span><span class="p">,</span><span class="w"> </span><span class="n">Processor</span><span class="o">*</span><span class="w"> </span><span class="n">processor</span><span class="p">,</span><span class="w"> </span><span class="n">Byte</span><span class="w"> </span><span class="o">*</span><span class="n">memory</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">store</span><span class="p">(</span><span class="n">Byte</span><span class="w"> </span><span class="o">*</span><span class="n">memory</span><span class="p">,</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">Alignment</span><span class="w"> </span><span class="n">alignment</span><span class="p">,</span><span class="w"> </span><span class="n">Word</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="n">Word</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">Byte</span><span class="w"> </span><span class="o">*</span><span class="n">memory</span><span class="p">,</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">Alignment</span><span class="w"> </span><span class="n">alignment</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Ya que el simulador <code>riscv.c</code> espera que estas estén definidas.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 CC3 AN
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://github.com/cc3-an" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+        <script src="../../assets/js/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

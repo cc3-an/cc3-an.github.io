@@ -1,0 +1,1206 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grandes Ideas en Arquitectura de Computadoras">
+      
+      
+        <meta name="author" content="CC-3">
+      
+      
+        <link rel="canonical" href="https://cc3-an.github.io/projects/pj02/">
+      
+      <link rel="icon" href="../../assets/img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Proyecto 2: CPU - Estructura de Máquinas</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#757575">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="grey" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#proyecto-2-cpu" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Estructura de Máquinas" class="md-header__button md-logo" aria-label="Estructura de Máquinas" data-md-component="logo">
+      
+  <img src="../../assets/img/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Estructura de Máquinas
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Proyecto 2: CPU
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cc3-an/docs/" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cc3-an/docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Inicio
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../labs/lab00/" class="md-tabs__link">
+        Laboratorios
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Estructura de Máquinas" class="md-nav__button md-logo" aria-label="Estructura de Máquinas" data-md-component="logo">
+      
+  <img src="../../assets/img/logo.jpg" alt="logo">
+
+    </a>
+    Estructura de Máquinas
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cc3-an/docs/" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cc3-an/docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Laboratorios
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Laboratorios" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Laboratorios
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab00/" class="md-nav__link">
+        00: Git
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-1-register-file" class="md-nav__link">
+    Parte 1: Register File
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-2-alu" class="md-nav__link">
+    Parte 2: ALU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-3-cpu" class="md-nav__link">
+    Parte 3: CPU
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 3: CPU">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memoria" class="md-nav__link">
+    Memoria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control" class="md-nav__link">
+    Control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isa" class="md-nav__link">
+    ISA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notas-sobre-logisim" class="md-nav__link">
+    Notas sobre Logisim
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calificacion" class="md-nav__link">
+    Calificación
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/cc3-an/docs/edit/main/docs/projects/pj02.md" title="Editar esta página" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="proyecto-2-cpu">Proyecto 2: CPU</h1>
+<h2 id="introduccion">Introducción</h2>
+<p>En este proyecto utilizaremos Logisim para implementar un procesador de 32-bits, cuyo ISA es un subset de las instrucciones de RISC-V. Algunos componentes del proyecto serán más sencillos que los componentes de hardware verdaderos para evitar realizar trabajo repetitivo. Nuestro ISA utiliza 32 registros de 32 bits cada uno y una memoria, cuyas direcciones son de 32 bits.</p>
+<p><img alt="RISC-V Datapath" src="/assets/img/projs/proj02/datapath.png" /></p>
+<p>A continuación, algunos detalles importantes que debemos leer antes de iniciar.</p>
+<ul>
+<li>Pueden utilizar cualquier bloque ya existente en Logisim para el proyecto.</li>
+<li>Guarden constantemente. Realicen commits y hagan push al menos una vez por cada día que trabajen.</li>
+<li>Logisim es un excelente simulador pero ocasionalmente tiene errores, entonces hagamos caso a la indicación anterior. Guarden constantemente...</li>
+<li>Trabajemos de la misma forma que en un proyecto de software: Construyamos el proyecto pieza por pieza y realicemos pruebas antes de unir un bloque con otros. Podemos construir todos los subcircuitos adicionales que necesitemos, siempre y cuando sigamos las reglas específicas que cada parte impone (más de esto a continuación).</li>
+<li>Se incluyen algunos tests. Sólo se debe correr el script ./check (esto seguramente tendrán que hacerlo en Linux, se requiere Python 3.X instalado).</li>
+<li>¡Necesitaremos más tests! Cada equipo debería hacer sus propios tests adicionales. En la sección de <em>Testing</em> hay algunas indicaciones de cómo hacer pruebas adicionales.</li>
+</ul>
+<p>Finalmente, las dos indicaciones más importantes:</p>
+<ul>
+<li>Se les darán algunos armazones (harnesses) a los cuales sus circuitos se conectarán. ASEGURENSE QUE SÍ SE ADAPTAN DE FORMA CORRECTA, TODOS LOS TESTS FALLARÁN SI NO LO HACEN.</li>
+<li>En el camino nos hemos encontrado con algunos problemas de git merge si ambos miembros del equipo estaban trabajando en el mismo archivo; a veces git los resolvía automáticamente y a veces no. En Logisim es garantizado que git NO RESOLVERÁ ESTO DE FORMA CORRECTA, entonces si trabajamos en equipo NO DEBEMOS MODIFICAR EL MISMO ARCHIVO AL MISMO TIEMPO</li>
+</ul>
+<h2 id="preparacion">Preparación</h2>
+<p><strong>Antes de comenzar, asegúrense de que hayan <span style="color: red">leído y comprendido</span> todas las instrucciones del proyecto de principio a fin</strong>. Si tienen alguna pregunta, por favor diríjanse a <strong>Telergam</strong> y pregunten.</p>
+<p>Para comenzar con el proyecto, primero tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/g/rBB4_tYP">aquí</a>. Tienen permitido trabajar en parejas o de forma individual, por lo que al aceptar la asignación les preguntará si desean crear un grupo nuevo o unirse a uno ya existente. Si crean un grupo nuevo, ingresen un nombre que represente lo represente y que no haya sido tomado por otro.</p>
+<p><img alt="Create group" src="/assets/img/projs/proj01/classroom1.png" /></p>
+<p>Si desean unirse a un grupo ya creado, tienen que buscar el nombre del grupo y pulsar el botón que dice <strong>join</strong></p>
+<p><img alt="Join group" src="/assets/img/projs/proj01/classroom2.png" /></p>
+<p><strong>Tienen que tener mucho cuidado al unirse a un grupo ya existente, ya que esto no se puede cambiar después, además, lo consideraremos como <span style="color: red">PLAGIO</span> si lo realizan de manera incorrecta, ya que, al hacer esto, pueden tener acceso al repositorio del otro miembro del grupo.</strong></p>
+<p>Ya sea que se unan o creen un nuevo grupo, al finalizar el proceso les creará automáticamente un repositorio con una extensión que termina con su nombre de grupo. Ya habiendo hecho todo eso, pueden ejecutar los siguientes comandos abriendo una terminal (<kbd >CTRL</kbd> <kbd>+</kbd> <kbd>T</kbd>):</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git clone &lt;link del repositorio&gt;
+</code></pre></div>
+</td></tr></table>
+<h2 id="parte-1-register-file">Parte 1: Register File</h2>
+<p>Como aprendimos en clase, RISC-V tiene 32 registros. En el proyecto sólo implementaremos 9 (abajo se indica cuales) para evitar realizar trabajo repetitivo. Todas nuestras señales (rs1, rs2, rd) siguen siendo de 5-bits, pero sólo se estarán usando los registros indicados.</p>
+<p>El register file debe poder leer y escribir a los registros que se especifiquen según la instrucción, sin afectar o modificar a cualquier otro registro. Existe una excepción: El registro cero está alambrado a tierra y su valor no puede ser cambiado por ningún motivo.</p>
+<p>Los registros que utilizaremos son los siguientes:</p>
+<table>
+<thead>
+<tr>
+<th>Registro por número</th>
+<th>Registro por nombre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x0</td>
+<td>zero</td>
+</tr>
+<tr>
+<td>x1</td>
+<td>ra</td>
+</tr>
+<tr>
+<td>x2</td>
+<td>sp</td>
+</tr>
+<tr>
+<td>x5</td>
+<td>t0</td>
+</tr>
+<tr>
+<td>x6</td>
+<td>t1</td>
+</tr>
+<tr>
+<td>x8</td>
+<td>s0</td>
+</tr>
+<tr>
+<td>x9</td>
+<td>s1</td>
+</tr>
+<tr>
+<td>x10</td>
+<td>a0</td>
+</tr>
+<tr>
+<td>x11</td>
+<td>a1</td>
+</tr>
+</tbody>
+</table>
+<p>En el archivo <strong>regfile.circ</strong> se encuentra el esqueleto de un register file.</p>
+<p><img alt="Register File" src="/assets/img/projs/proj02/regfile.png" /></p>
+<p>Este tiene seis entradas:</p>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Ancho en bits</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clock</td>
+<td>1</td>
+<td>Señal de reloj. Aquí se recibirá una señal de reloj "non gated", es decir, se recibe la señal directa sin ser afectada por ANDs, NOTs o cualquier compuerta.</td>
+</tr>
+<tr>
+<td>Write Enable</td>
+<td>1</td>
+<td>Indica si se debería escribir a un registro en el siguiente flanco de subida del reloj.</td>
+</tr>
+<tr>
+<td>Read Register 1</td>
+<td>5</td>
+<td>Registro a leer y cuyo valor será enviado a Read Data 1.</td>
+</tr>
+<tr>
+<td>Read Register 2</td>
+<td>5</td>
+<td>Registro a leer y cuyo valor será enviado a Read Data 2.</td>
+</tr>
+<tr>
+<td>Write Register</td>
+<td>5</td>
+<td>Determina cuál registro será modificado en el siguiente flanco de subida (asumiendo que Write Enable = 1).</td>
+</tr>
+<tr>
+<td>Write Data</td>
+<td>32</td>
+<td>Los 32 bits de datos a guardarse en el registro, en el siguiente flanco de subida (asumiendo que Write Enable = 1).</td>
+</tr>
+</tbody>
+</table>
+<p>El register file tiene las siguientes salidas:</p>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Ancho en bits</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read Data 1</td>
+<td>32</td>
+<td>Datos que se están leyendo, según el registro que Read Register 1 pidió.</td>
+</tr>
+<tr>
+<td>Read Data 2</td>
+<td>32</td>
+<td>Datos que se están leyendo, según el registro que Read Register 2 pidió.</td>
+</tr>
+<tr>
+<td>s0 Value</td>
+<td>32</td>
+<td>Valor de s0 (salida para DEBUG/TEST).</td>
+</tr>
+<tr>
+<td>s1 Value</td>
+<td>32</td>
+<td>Valor de s1 (salida para DEBUG/TEST).</td>
+</tr>
+<tr>
+<td>t0 Value</td>
+<td>32</td>
+<td>Valor de t0 (salida para DEBUG/TEST).</td>
+</tr>
+<tr>
+<td>t1 Value</td>
+<td>32</td>
+<td>Valor de t1 (salida para DEBUG/TEST).</td>
+</tr>
+<tr>
+<td>a0 Value</td>
+<td>32</td>
+<td>Valor de a0 (salida para DEBUG/TEST).</td>
+</tr>
+<tr>
+<td>ra Value</td>
+<td>32</td>
+<td>Valor de ra (salida para DEBUG/TEST).</td>
+</tr>
+<tr>
+<td>sp Value</td>
+<td>32</td>
+<td>Valor de sp (salida para DEBUG/TEST).</td>
+</tr>
+</tbody>
+</table>
+<p>Las salidas para DEBUG/TEST están presentes porque son registros de uso frecuente (por ejemplo, tienen un trabajo importante en las llamadas a funciones). Se utilizarán sólo para pruebas del autograder. En un register file de verdad estas salidas no existirían. Para el proyecto deben estar presentes y funcionar bien para facilitar la calificación.</p>
+<p>Pueden modificar regfile.circ como deseen, pero las salidas deben cumplir con el comportamiento que se indica. Deben ser cuidadosos de no modificar (mover, reemplazar, cortar, pegar, eliminar, etc) los pines de entrada o salida. Si necesitan más espacio, pueden moverlos mientras sean cuidadosos de mantener el posicionamiento relativo que estos tienen. Para verificar que nuestros cambios no "rompan" nada, podemos abrir regfile-harness.circ y revisar que no existan errores allí y que todo funcione bien.</p>
+<p>HINTS: (1) Cuidado con los muxes. Si estos tienen un enable ese debería estar activo (o mejor aún, buscamos en la ayuda de Logisim cómo quitar esa funcionalidad). (2) ¿Tri-estado? Three-state? En CC3 no debemos pensar en estados de alta impedancia (qu'est-ce que c'est?) entonces lo mejor es deshabilitar el uso de three-state.</p>
+<h2 id="parte-2-alu">Parte 2: ALU</h2>
+<p>Su segunda tarea es crear un ALU que soporte todas las operaciones que necesitan las instrucciones de nuestro ISA (se detallan más adelante). Van a estar trabajando en el archivo <strong>alu.circ</strong>.</p>
+<p><img alt="ALU" src="/assets/img/projs/proj02/alu.png" /></p>
+<p>Este tiene tres entradas:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Nombre de Entrada</th>
+<th align="center">Ancho en Bits</th>
+<th align="center">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">A</td>
+<td align="center">32</td>
+<td align="center">Datos para usar por A en la operación del ALU</td>
+</tr>
+<tr>
+<td align="center">B</td>
+<td align="center">32</td>
+<td align="center">Datos para usar por B en la operación del ALU</td>
+</tr>
+<tr>
+<td align="center">ALU Op</td>
+<td align="center">4</td>
+<td align="center">Selecciona la operación que el ALU debe de efectuar</td>
+</tr>
+</tbody>
+</table>
+<p>...y cuatro salidas:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Nombre de Entrada</th>
+<th align="center">Ancho en Bits</th>
+<th align="center">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Out</td>
+<td align="center">32</td>
+<td align="center">Resultado de la operación efectuada por el ALU</td>
+</tr>
+<tr>
+<td align="center">Equal</td>
+<td align="center">1</td>
+<td align="center">1 si A y B son iguales; 0 de lo contrario</td>
+</tr>
+<tr>
+<td align="center">LT</td>
+<td align="center">1</td>
+<td align="center">1 si A es menor que B (signed); 0 de lo contrario</td>
+</tr>
+<tr>
+<td align="center">LTU</td>
+<td align="center">1</td>
+<td align="center">1 si A es menor que B (unsigned); 0 de lo contrario</td>
+</tr>
+</tbody>
+</table>
+<p>Esta es la lista de operaciones que necesitan implementar. Ustedes tienen que utilizar los componentes de logisim que ya efectúan estas operaciones, por favor no las implementen desde cero, sería muy tardado y no es el objetivo del proyecto.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Valor de ALU Op</th>
+<th>Instrucción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td>sll: Out = A &lt;&lt; B[4:0]</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td>srl: Out = (unsigned) A &gt;&gt; B[4:0]</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>add: Out = A + B</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>and: Out = A &amp; B</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>or: Out = A | B</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>xor: Out = A ^ B</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>slt: Out = (A &lt; B) ? 1 : 0 Signed</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td>mul: Out = (X * Y)[31:0]</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td>mulh: Out = (A * B)[63:32]</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td>div: Out =(unsigned) A / B</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td>rem: Out = A % B</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td>sub: Out = A - B</td>
+</tr>
+</tbody>
+</table>
+<p>Algunas cosas adicionales que tienen que tener en mente:</p>
+<p>La salidas <code>Equal</code>, <code>LT</code>, <code>LTU</code> siempre tienen que sacar el valor correcto de comparación sin importar el valor de <code>ALU Op</code>. Nuevamente, tienen que tener cuidado con los inputs y output pins, no los modifiquen por ningún motivo.</p>
+<p>Su ALU debería de encajar con el harness <strong>alu_harness.circ</strong>. Sigan las mismas instrucciones que en el register file. En particular, ustedes deberían de asegurar que su ALU es cargado correctamente por el harness antes de que hagan submit.</p>
+<h2 id="parte-3-cpu">Parte 3: CPU</h2>
+<p>Se les provee un esqueleto del procesador en <strong>cpu.circ</strong>. Su procesador tendrá una instancia de su ALU y Register File, así como una unidad de memoria que ya se les provee. Ustedes son los responsables de construir el datapath y control completos, desde cero. Su procesador debe implementar el ISA que se detalla más abajo.</p>
+<p><img alt="CPU" src="/assets/img/projs/proj02/cpu.png" /></p>
+<p>Su procesador obtendrá su programa del armazón (harness) <strong>riscv.circ</strong>. Su procesador tendrá un output llamado FETCH_ADDRESS que indica cuál instrucción queremos, esta dirección será entregada al harness y este nos dará una instrucción. La instrucción será recibida por el procesador y será ejecutada. Revisen riscv.circ para ver exactamente qué sucede.</p>
+<p>El procesador tiene dos inputs que vienen del harness:</p>
+<table>
+<thead>
+<tr>
+<th>Input Name</th>
+<th>Bit Width</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INSTRUCTION</td>
+<td>32</td>
+<td>Aquí se recibe la instrucción que se obtuvo en la dirección identificada por FETCH_ADDRESS.</td>
+</tr>
+<tr>
+<td>CLOCK</td>
+<td>1</td>
+<td>Input del reloj. Puede ser necesario estar enviando esta señal a varios subcircuitos. Esta señal no debe pasar por ninguna compuerta (NOT, AND, etc).</td>
+</tr>
+</tbody>
+</table>
+<p>El procesador debe tener los siguientes outputs, que entregará al harness:</p>
+<table>
+<thead>
+<tr>
+<th>Output Name</th>
+<th>Bit Width</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s0</td>
+<td>32</td>
+<td>Contenido de s0, sólo para pruebas.</td>
+</tr>
+<tr>
+<td>s1</td>
+<td>32</td>
+<td>Contenido de s1, sólo para pruebas.</td>
+</tr>
+<tr>
+<td>t0</td>
+<td>32</td>
+<td>Contenido de t0, sólo para pruebas.</td>
+</tr>
+<tr>
+<td>t1</td>
+<td>32</td>
+<td>Contenido de t1, sólo para pruebas.</td>
+</tr>
+<tr>
+<td>a0</td>
+<td>32</td>
+<td>Contenido de a0, sólo para pruebas.</td>
+</tr>
+<tr>
+<td>ra</td>
+<td>32</td>
+<td>Contenido de ra, sólo para pruebas.</td>
+</tr>
+<tr>
+<td>sp</td>
+<td>32</td>
+<td>Contenido de sp, sólo para pruebas.</td>
+</tr>
+<tr>
+<td>FETCH_ADDRESS</td>
+<td>32</td>
+<td>Dirección que indica qué instrucción queremos obtener del harness. En respuesta a esto, el harness enviará alguna instrucción a través de INSTRUCTION.</td>
+</tr>
+</tbody>
+</table>
+<p>Como en la parte 1, tengan cuidado al mover componentes y asegúrense que los pines de input y output coincidan con el harness.</p>
+<h3 id="memoria">Memoria</h3>
+<p>Se les provee una memoria ya implementada. :D</p>
+<p>Un resumen de sus inputs y outputs.</p>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Tipo</th>
+<th>Bit Width</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADDRESS</td>
+<td>input</td>
+<td>32</td>
+<td>Dirección a leer o escribir en la memoria.</td>
+</tr>
+<tr>
+<td>WRITE DATA</td>
+<td>input</td>
+<td>32</td>
+<td>Valor a escribirse en la memoria.</td>
+</tr>
+<tr>
+<td>WRITE ENABLE</td>
+<td>input</td>
+<td>1</td>
+<td>En = 1 en las instrucciones que escriben; En = 0 en las demás.</td>
+</tr>
+<tr>
+<td>Clk</td>
+<td>input</td>
+<td>1</td>
+<td>Señal de reloj que viene desde cpu.circ.</td>
+</tr>
+<tr>
+<td>READ DATA</td>
+<td>output</td>
+<td>32</td>
+<td>Datos leídos en la dirección especificada.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="control">Control</h3>
+<p>Las señales de control tienen un papel muy importante en el proyecto. Se sugiere volver a leer el capítulo 4 del libro para darse cuenta dónde podemos necesitar un MUX y, por lo tanto, alguna señal de control.</p>
+<p>Existen varias formas de implementar las señales de control. Por ejemplo, pueden construir una palabra de control y guardarla en una memoria ROM (micro-codigo) o pueden construir un circuito que elija qué acción tomar basándose en algunos bits del opcode, func3 y func7.</p>
+<p><strong>Es obligatorio que sus componentes estén unidos y las señales de control necesarias estén implementadas.</strong> Si en la calificación del proyecto sólo tiene componentes sueltos (como el ALU y Reg File de la primera fase) y estos no se comunican entre sí, su nota será cero.</p>
+<p>Consejo final: ¡Modularicen! Creen los subcircuitos que sean necesarios y diséñenlos bien antes de empezar a construirlos.</p>
+<h3 id="isa">ISA</h3>
+<p><img alt="Formato de instrucciones" src="/assets/img/projs/proj02/instruction_format.png" /></p>
+<p>Las instrucciones a implementar son las siguientes:</p>
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Type</th>
+<th>Opcode</th>
+<th>Funct3</th>
+<th>Funct7/IMM</th>
+<th>Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add rd, rs1, rs2</td>
+<td>R</td>
+<td>0x33</td>
+<td>0x0</td>
+<td>0x00</td>
+<td>R[rd] ← R[rs1] + R[rs2]</td>
+</tr>
+<tr>
+<td>mul rd, rs1, rs2</td>
+<td>R</td>
+<td>0x33</td>
+<td>0x0</td>
+<td>0x01</td>
+<td>R[rd] ← (R[rs1] * R[rs2])[31:0]</td>
+</tr>
+<tr>
+<td>sub rd, rs1, rs2</td>
+<td>R</td>
+<td>0x33</td>
+<td>0x0</td>
+<td>0x20</td>
+<td>R[rd] ← R[rs1] - R[rs2]</td>
+</tr>
+<tr>
+<td>sll rd, rs1, rs2</td>
+<td>R</td>
+<td>0x33</td>
+<td>0x1</td>
+<td>0x00</td>
+<td>R[rd] ← R[rs1] &lt;&lt; R[rs2</td>
+</tr>
+<tr>
+<td>mulh rd, rs1, rs2</td>
+<td>R</td>
+<td>0x33</td>
+<td>0x1</td>
+<td>0x01</td>
+<td>R[rd] ← (R[rs1] * R[rs2])[63:32]</td>
+</tr>
+<tr>
+<td>slt rd, rs1, rs2</td>
+<td>R</td>
+<td>0x33</td>
+<td>0x2</td>
+<td>0x00</td>
+<td>R[rd] ← (R[rs1] &lt; R[rs2]) ? 1 : 0 (signed)</td>
+</tr>
+<tr>
+<td>xor rd, rs1, rs2</td>
+<td>R</td>
+<td>0x33</td>
+<td>0x4</td>
+<td>0x00</td>
+<td>R[rd] ← R[rs1] ^ R[rs2]</td>
+</tr>
+<tr>
+<td>div rd, rs1, rs2</td>
+<td>R</td>
+<td>0x33</td>
+<td>0x4</td>
+<td>0x01</td>
+<td>R[rd] ← R[rs1] / R[rs2]</td>
+</tr>
+<tr>
+<td>srl rd, rs1, rs2</td>
+<td>R</td>
+<td>0x33</td>
+<td>0x5</td>
+<td>0x00</td>
+<td>R[rd] ← R[rs1] &gt;&gt; R[rs2]</td>
+</tr>
+<tr>
+<td>or rd, rs1, rs2</td>
+<td>R</td>
+<td>0x33</td>
+<td>0x6</td>
+<td>0x00</td>
+<td>R[rd] ← R[rs1] | R[rs2]</td>
+</tr>
+<tr>
+<td>rem rd, rs1, rs2</td>
+<td>R</td>
+<td>0x33</td>
+<td>0x6</td>
+<td>0x01</td>
+<td>R[rd] ← (R[rs1] % R[rs2]</td>
+</tr>
+<tr>
+<td>and rd, rs1, rs2</td>
+<td>R</td>
+<td>0x33</td>
+<td>0x7</td>
+<td>0x00</td>
+<td>R[rd] ← R[rs1] &amp; R[rs2]</td>
+</tr>
+<tr>
+<td>lb rd, offset(rs1)</td>
+<td>I</td>
+<td>0x03</td>
+<td>0x0</td>
+<td></td>
+<td>R[rd] ← SignExt(Mem(R[rs1] + offset, byte))</td>
+</tr>
+<tr>
+<td>lh rd, offset(rs1)</td>
+<td>I</td>
+<td>0x03</td>
+<td>0x1</td>
+<td></td>
+<td>R[rd] ← SignExt(Mem(R[rs1] + offset, half))</td>
+</tr>
+<tr>
+<td>lw rd, offset(rs1)</td>
+<td>I</td>
+<td>0x03</td>
+<td>0x2</td>
+<td></td>
+<td>R[rd] ← Mem(R[rs1] + offset, word)</td>
+</tr>
+<tr>
+<td>addi rd, rs1, imm</td>
+<td>I</td>
+<td>0x13</td>
+<td>0x0</td>
+<td></td>
+<td>R[rd] ← R[rs1] + imm</td>
+</tr>
+<tr>
+<td>slli rd, rs1, imm</td>
+<td>I</td>
+<td>0x13</td>
+<td>0x1</td>
+<td>0x00</td>
+<td>R[rd] ← R[rs1] &lt;&lt; imm</td>
+</tr>
+<tr>
+<td>slti rd, rs1, imm</td>
+<td>I</td>
+<td>0x13</td>
+<td>0x2</td>
+<td></td>
+<td>R[rd] ← (R[rs1] &lt; imm) ? 1 : 0</td>
+</tr>
+<tr>
+<td>xori rd, rs1, imm</td>
+<td>I</td>
+<td>0x13</td>
+<td>0x4</td>
+<td></td>
+<td>R[rd] ← R[rs1] ^ imm</td>
+</tr>
+<tr>
+<td>srli rd, rs1, imm</td>
+<td>I</td>
+<td>0x13</td>
+<td>0x5</td>
+<td>0x00</td>
+<td>R[rd] ← R[rs1] &gt;&gt; imm</td>
+</tr>
+<tr>
+<td>ori rd, rs1, imm</td>
+<td>I</td>
+<td>0x13</td>
+<td>0x6</td>
+<td></td>
+<td>R[rd] ← R[rs1] | imm</td>
+</tr>
+<tr>
+<td>andi rd, rs1, imm</td>
+<td>I</td>
+<td>0x13</td>
+<td>0x7</td>
+<td></td>
+<td>R[rd] ← R[rs1] &amp; imm</td>
+</tr>
+<tr>
+<td>sw rs2, offset(rs1)</td>
+<td>S</td>
+<td>0x23</td>
+<td>0x2</td>
+<td></td>
+<td>Mem(R[rs1] + offset) ← R[rs2]</td>
+</tr>
+<tr>
+<td>beq rs1, rs2, offset</td>
+<td>SB</td>
+<td>0x63</td>
+<td>0x0</td>
+<td></td>
+<td>if(R[rs1] == R[rs2]) then {PC ← PC + {offset, 1b'0}}</td>
+</tr>
+<tr>
+<td>blt rs1, rs2, offset</td>
+<td>SB</td>
+<td>0x63</td>
+<td>0x4</td>
+<td></td>
+<td>if(R[rs1] less than R[rs2] (signed)) then {PC ← PC + {offset, 1b'0}}</td>
+</tr>
+<tr>
+<td>bltu rs1, rs2, offset</td>
+<td>SB</td>
+<td>0x63</td>
+<td>0x6</td>
+<td></td>
+<td>if(R[rs1] less than R[rs2] (unsigned)) then {PC ← PC + {offset, 1b'0}}</td>
+</tr>
+<tr>
+<td>lui rd, offset</td>
+<td>U</td>
+<td>0x37</td>
+<td></td>
+<td></td>
+<td 12b_0="12b'0" offset_="offset,">R[rd] ←</td>
+</tr>
+<tr>
+<td>jal rd, imm</td>
+<td>UJ</td>
+<td>0x6f</td>
+<td></td>
+<td></td>
+<td 1b_0="1b'0" imm_="imm,">R[rd] ← PC + 4, PC ← PC +</td>
+</tr>
+<tr>
+<td>jalr rd,rs, imm</td>
+<td>I</td>
+<td>0x67</td>
+<td>0x0</td>
+<td></td>
+<td imm="imm">R[rd] ← PC + 4, PC ← R[rs] +</td>
+</tr>
+</tbody>
+</table>
+<h2 id="testing">Testing</h2>
+<p>Para la parte 1 y 2, con el check local es suficiente y si lo pasan significa que esas partes ya las tienen funcionando al 100%. Para la parte 2, el check local también es bastante completo, pero ustedes pueden hacer más pruebas si lo desean. Como no podemos probar cada componente que ustedes vayan implementando, la mejor opción es escribir programas de RISC-V pequeños e ir revisando su datapath de diferentes maneras.</p>
+<p>Una vez que hayan escrito su programa de RISC-V, lo van a tener que cargar en la ROM que está en <strong>riscv.circ</strong> y empezar la ejecución. Para eso, primero, abran riscv.circ y localicen la memoria ROM.</p>
+<p><img alt="ROM" src="/assets/img/projs/proj02/rom.png" /></p>
+<p>Hagan click a la memoria y, después, en la barra de herramientas de la izquierda, hagan click en "(click here to edit)", esto va a abrir un diálogo en donde ustedes pueden cargar su archivo con el código de RISC-V y este ensamblará y generará código de máquina por ustedes que va a ser la salida de la memoria ROM.</p>
+<p><img alt="Testing" src="/assets/img/projs/proj02/test.png" /></p>
+<h2 id="notas-sobre-logisim">Notas sobre Logisim</h2>
+<p>Si Logisim les da algún problema extraño, REINICIEN LOGISIM Y VUELVAN A CARGAR SU CIRCUITO. No pierdan tiempo buscando errores si no han hecho esto. Si reiniciar no ha resuelto el problema, allí sí ya les corresponde revisar su circuito.</p>
+<p>Logisim tiene un "Reference", en la pestaña "Help", y les dice las especificaciones de cada componente.</p>
+<p>Do NOT gate the clock! (esto no tiene una traducción directa). Los clocks tienen que llegar directo a los circuitos, ni en CC3 ni en un curso donde usen hardware deberían colocar compuertas antes que la señal de reloj entre al componente.</p>
+<p>Si están usando varias ventanas de Logisim tengan mucho cuidado cuando hagan copy-paste de una ventana a otra. Asegúrense que sí se copió el circuito completo que querían y que funcione bien después de pegarlo.</p>
+<p>Cuando importen otro archivo (Project -&gt; Load Library -&gt; Logisim Library...), este aparecerá como un folder en el panel de la izquierda. Los archivos esqueleto deberían de tener importado todo lo necesario.</p>
+<p>Cambiar los atributos antes de colocar un componente cambia el default. Si quieren colocar varios pines de 32 bits (por ejemplo), habría que cambiarlo antes de colocar el primero. Si sólo quieren cambiar algún valor para un componente, primero lo colocan y, luego, lo cambian.</p>
+<p>Cuando cambian los inputs y outputs de un subcircuito que ya colocaron en main, Logisim automáticamente añade o remueve puertos según los cambios que hagan. Esto, muchas veces, afecta el tamaño o posición del subcircuito. Si ya habían cables conectados, Logisim intentará moverlos, pero no siempre lo hace bien. Se recomienda que si van a cambiar los inputs y outputs de un circuito, primero desconecten todos los cables que este pueda tener en main o lo eliminen del main y lo vuelvan a colocar después de cambiarlo. <strong>Recuerden que sólo pueden hacer esto para los subcircuitos que USTEDES agregan</strong>.</p>
+<p>Los cables rojos significan que algo está mal conectado. Algunos casos pueden no ser tan obvios, revisen bien todas las conexiones cercanas.</p>
+<p><img alt="Red Wires" src="/assets/img/projs/proj02/error_wire.png" /></p>
+<p>Logisim tiene algunas herramientas de análisis combinacional (nos puede construir mapas de Karnaugh o circuitos completos con sólo darle una tabla :D). Esta herramienta les puede ser útil en algún momento de sus vidas, pero la recomendación es no usarla en CC3. Recuerden que durante los exámenes tendrán que hacer mapas o circuitos a mano, sin acceso a su computadora.</p>
+<h2 id="calificacion">Calificación</h2>
+<p>Por favor actualizar siempre la versión del CLI de autograders:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
+</code></pre></div>
+</td></tr></table>
+<p>Entregaremos este lab de la misma manera que el pasado.</p>
+<p>Navegue hacia la carpeta donde tiene sus archivos, haga un ls y asegurese que le aparece el archivo autograders.json; si aparecio, esta en el lugar correcto. Ahora puede entregar su laboratorio con...</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --upload
+</code></pre></div>
+</td></tr></table>
+<p>Espera un minuto aprox. y luego puede ver sus resultados con...</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --stats
+</code></pre></div>
+</td></tr></table>
+<p>Si le aparece Queued: True, espere un par de minutos y luego repita el <code>autograder --stats</code> únicamente. Al terminar todo, suba el link de su repositorio al GES.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 CC3 AN
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://github.com/cc3-an" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+        <script src="../../assets/js/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
