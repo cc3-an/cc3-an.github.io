@@ -208,8 +208,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../tutorials/install/" class="md-tabs__link">
-        Material
+      <a href="../../tutorials/autograders/" class="md-tabs__link">
+        Tutoriales
       </a>
     </li>
   
@@ -419,6 +419,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab01/" class="md-nav__link">
+        01: C y GDB
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -442,16 +456,30 @@
       
       
         <label class="md-nav__link" for="__nav_3">
-          Material
+          Tutoriales
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Material" data-md-level="1">
+      <nav class="md-nav" aria-label="Tutoriales" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Material
+          Tutoriales
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/autograders/" class="md-nav__link">
+        Autograders
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -605,19 +633,16 @@
 <h3 id="preparacion">Preparación</h3>
 <p>Visiten este <a href="https://classroom.github.com/a/1Ix7PBBh">link</a>. Aquí encontrarán todos los archivos necesarios para completar este laboratorio. En esta página, encontrarán un botón que dice "Accept this assignment". Al presionar este botón, se creará automáticamente un repositorio en Github llamado <code>https://www.github.com/cc3-an/2022-lab00-git-&lt;USUARIO&gt;</code>. Noten que el "dueño" de este repositorio es un usuario llamado <code>cc3-an</code>, y el usuario de ustedes es únicamente el sufijo del nombre del repo. De esta forma, nos encargamos de tener acceso siempre a su código, en caso existan copias o cualquier otro tipo de trampa. Sepan de una vez que, si encontramos plagio en sus laboratorios, su nota será AUTOMÁTICAMENTE 0, sin posibilidad de cambiarla. De repetirse nuevamente este acontecimiento, el staff del curso organizará una reunión con ustedes y sus directores de carrera para contarles lo ocurrido y sancionarlos conforme al reglamento de la universidad.</p>
 <p>Después de realizar esto, en la máquina virtual (o sus propias computadoras) abran una terminal en el directorio que prefieran, y ejecuten el siguiente comando:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git clone https://github.com/cc3-an/2022-lab00-git-&lt;SU USUARIO DE GITHUB&gt;
+<div class="highlight"><pre><span></span><code>git clone https://github.com/cc3-an/2022-lab00-git-&lt;SU USUARIO DE GITHUB&gt;
 </code></pre></div>
-</td></tr></table>
 <p>esto descargará en el directorio que escogieron todos los archivos base para este laboratorio.</p>
 <h3 id="configurando-git">Configurando git</h3>
 <p>Ahora que ya hemos creado nuestro repositorio, vamos a configurar git para que sepa quiénes son. Abran una terminal
 <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span> y ejecuten los siguientes comandos listados abajo, reemplazando <strong>NOMBRE</strong> con su nombre y apellido (entre comillas) y <strong>CORREO</strong> con la dirección de correo que utilizarón para registrarse en GitHub.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git config --global user.name <span class="s2">&quot;NOMBRE&quot;</span>
+<div class="highlight"><pre><span></span><code>git config --global user.name <span class="s2">&quot;NOMBRE&quot;</span>
 </code></pre></div>
-</td></tr></table>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git config --global user.email <span class="s2">&quot;CORREO&quot;</span>
+<div class="highlight"><pre><span></span><code>git config --global user.email <span class="s2">&quot;CORREO&quot;</span>
 </code></pre></div>
-</td></tr></table>
 <h2 id="ejercicio-2-git-y-remotes">Ejercicio 2: git y Remotes</h2>
 <p>Primero, algunas definiciones rápidas:</p>
 <ul>
@@ -636,24 +661,13 @@
 </ol>
 <h3 id="haciendo-push-hacia-github">Haciendo push hacia GitHub</h3>
 <p>Vamos a crear un archivo llamado <code>hello.sh</code> en la carpeta del laboratorio ejecutando el siguiente commando en la terminal:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s1">&#39;echo &quot;Hola Mundo&quot;&#39;</span> &gt; hello.sh
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s1">&#39;echo &quot;Hola Mundo&quot;&#39;</span> &gt; hello.sh
 </code></pre></div>
-</td></tr></table>
 <p>Luego pueden correr el archivo en la terminal con <code>bash hello.sh</code>. En la terminal se imprimirá <code>Hola Mundo</code>. Ahora utilicemos git para ver los archivos que todavía no han sido rastreados utilizando <code>status</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git status
+<div class="highlight"><pre><span></span><code>git status
 </code></pre></div>
-</td></tr></table>
 <p>Lo que producirá lo siguiente:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>On branch main
+<div class="highlight"><pre><span></span><code>On branch main
 
 No commits yet
 
@@ -664,17 +678,12 @@ Untracked files:
 
 nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> to track<span class="o">)</span>
 </code></pre></div>
-</td></tr></table>
 <p>Esto es porque hemos creado un archivo nuevo llamado <code>hello.sh</code> y no lo hemos agregado. Podemos agregarlo y hacer commit:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git add hello.sh <span class="c1"># agrega el archivo hello.sh para hacer commit</span>
+<div class="highlight"><pre><span></span><code>git add hello.sh <span class="c1"># agrega el archivo hello.sh para hacer commit</span>
 git commit -m <span class="s2">&quot;Mensaje del Commit&quot;</span> <span class="c1"># ingresa cualquier mensaje que quieras</span>
 git branch <span class="c1"># deberias de ver que solo existe el branch main y que estas en ella (*)</span>
 git push -u origin main <span class="c1"># Esto hace push de tu codigo hacia GitHub (lo puedes ver en GitHub ahora)</span>
 </code></pre></div>
-</td></tr></table>
 <p>El control de versiones git esta construido alrededor de <em>commits</em>, o <em>checkpoints</em> en el desarrollo de diferentes versiones/etapas de su código. Para explicar los pasos de arriba un poco más:</p>
 <ul>
 <li><strong>git add [archivo]</strong> le dirá a git que han hecho cambios a ese archivo y que quieren que esos cambios se guarden en el siguiente commit (staging).</li>
@@ -712,13 +721,13 @@ git push -u origin main <span class="c1"># Esto hace push de tu codigo hacia Git
       
       
         
-        <a href="../../tutorials/install/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Máquina Virtual" rel="next">
+        <a href="../lab01/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 01: C y GDB" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Siguiente
               </span>
-              Máquina Virtual
+              01: C y GDB
             </div>
           </div>
           <div class="md-footer__button md-icon">

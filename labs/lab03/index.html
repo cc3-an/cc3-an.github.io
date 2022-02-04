@@ -206,8 +206,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../tutorials/install/" class="md-tabs__link">
-        Material
+      <a href="../../tutorials/autograders/" class="md-tabs__link">
+        Tutoriales
       </a>
     </li>
   
@@ -313,6 +313,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab01/" class="md-nav__link">
+        01: C y GDB
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -336,16 +350,30 @@
       
       
         <label class="md-nav__link" for="__nav_3">
-          Material
+          Tutoriales
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Material" data-md-level="1">
+      <nav class="md-nav" aria-label="Tutoriales" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Material
+          Tutoriales
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/autograders/" class="md-nav__link">
+        Autograders
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -528,9 +556,8 @@
 <p>Para comenzar con el laboratorio primero tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/a/qp-a1-7z">aquí</a>. Recuerden que deben
 aceptar la asignación de <strong>GitHub Classroom</strong> y se les creará automáticamente un repositorio con una extensión que termina con su usuario de GitHub.<br />
 Cuando ya se haya creado el repositorio, pueden ejecutar los siguientes comandos abriendo una terminal (<kbd>CTRL</kbd> <kbd>+</kbd> <kbd>T</kbd> ):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git clone &lt;link del repositorio&gt;
+<div class="highlight"><pre><span></span><code>git clone &lt;link del repositorio&gt;
 </code></pre></div>
-</td></tr></table>
 <blockquote>
 <p><strong>NOTA</strong>: Tienen que reemplazar &lt;link del repositorio> con el link del repositorio que se creó.</p>
 </blockquote>
@@ -543,30 +570,22 @@ Cuando ya se haya creado el repositorio, pueden ejecutar los siguientes comandos
 <p>Para instalarlo en su computadora deben seguir estas instrucciones.</p>
 <p><strong>Máquina virtual del curso</strong></p>
 <p>Felicidades! No necesita instalar nada, puede ejecutar Jupiter usando el siguiente comando</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>jupiter
+<div class="highlight"><pre><span></span><code>jupiter
 </code></pre></div>
-</td></tr></table>
 <p><strong>Ubuntu 18</strong></p>
 <p>Debe instalar Jupiter usando estos comandos</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo add-apt-repository ppa:andrescv/jupiter
+<div class="highlight"><pre><span></span><code>sudo add-apt-repository ppa:andrescv/jupiter
 sudo apt-get update
 sudo apt-get install jupiter
 </code></pre></div>
-</td></tr></table>
 <p>Luego podrá ejecutarlo usando el comando <code>jupiter</code></p>
 <p><strong>Ubuntu 20</strong></p>
 <p>Descargar <a href="https://github.com/andrescv/Jupiter/releases/download/v3.1/Jupiter-3.1-linux.zip">este archivo</a>. Ir a la carpeta donde lo descargó y ejecutar los siguientes comandos</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>unzip Jupiter-3.1-linux.zip
+<div class="highlight"><pre><span></span><code>unzip Jupiter-3.1-linux.zip
 sudo mv image /opt/jupiter
 echo export\ PATH=/opt/jupiter/bin:\$PATH &gt;&gt; ~/.bashrc
 source ~/.bashrc
 </code></pre></div>
-</td></tr></table>
 <p>Después de esto, ya debería poder usar el comando <code>jupiter</code>. Si no, la vieja y confiable, reinicie su computadora.</p>
 <h3 id="cosas-basicas-en-v-sim">Cosas básicas en V-Sim:</h3>
 <p>A continuación, les vamos a dar una pequeña guía de Jupiter, para más información visiten la página de documentación en <a href="https://jupitersim.gitbook.io/jupiter/">https://jupitersim.gitbook.io/jupiter/</a>.</p>
@@ -574,15 +593,11 @@ source ~/.bashrc
 <li>Pueden crear archivos, editarlos y borrarlos desde la pestaña "Editor".</li>
 <li>Los programas empiezan en la etiqueta global <code>__start</code>, es decir que tienen que definir una etiqueta llamada <code>__start</code> y declararla como global.</li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="na">.globl</span><span class="w"> </span><span class="no">__start</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="na">.globl</span><span class="w"> </span><span class="no">__start</span><span class="w"></span>
 <span class="nl">__start:</span><span class="w"></span>
 <span class="w">  </span><span class="nf">li</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
 <span class="w">  </span><span class="nf">ecall</span><span class="w"> </span><span class="c1"># exit</span>
 </code></pre></div>
-</td></tr></table>
 <ul>
 <li>Las etiquetas terminan con dos puntos como ven en el ejemplo anterior.</li>
 <li>Los comentarios comienzan con el simbolo "#" o ";".</li>
@@ -643,50 +658,36 @@ source ~/.bashrc
 <p>En este ejercicio, tienen que implementar la función de factorial en RISC-V que toma un sólo parámetro entero <strong>n</strong> y retorna <strong>n!</strong>. Pueden encontrar un esqueleto de esta función en el archivo <strong>factorial.s</strong>, que se encuentra en la carpeta <strong>ex3</strong> del repositorio que clonaron. Ustedes sólo necesitan agregar las instrucciones bajo la etiqueta <code>factorial</code>, y el argumento que se pasa a la función va en el registro <code>a0</code>. Pueden resolver este problema ya sea de forma recursiva o iterativa. Asegúrense de que su función retorne de forma apropidada lo siguiente <strong>3!</strong> = <strong>6</strong>, <strong>7!</strong> = <strong>5040</strong> y <strong>8!</strong> = <strong>40320</strong>.</p>
 <h2 id="ejercicio-4-list-map">Ejercicio 4: List Map</h2>
 <p>Para este ejercicio van a utilizar el archivo <strong>list_map.s</strong> que se encuentra en la carpeta <strong>ex4</strong>. En este ejercicio, van a completar una función de "map" con listas encadenadas en RISC-V. La función se simplificará en mutar la lista en cuestión, es decir que tomará una lista encadenada como entrada y va a retornar la lista con los valores modificados. Nuestro procedimiento de "map" toma dos parámetros, el primero será la dirección del nodo "head" de una lista encadenada, cuyos valores son enteros de 32 bits. Entonces, en C, la estructura se define como:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 </code></pre></div>
-</td></tr></table>
 <p>El segundo parámetro será la dirección de una función que toma un entero como argumento y devuelve un entero. Usaremos la instrucción "jalr" de RISC-V para llamar a esta función con los valores de cada nodo de la lista.</p>
 <p>Nuestra función "map" irá recorriendo la lista recursivamente, aplicando la función a cada valor de la lista y almacenando el valor devuelto al nodo correspondiente. En C, la función se vería algo como esta:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">int</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">int</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">map</span><span class="p">(</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-</td></tr></table>
 <p>Si no habían visto lo de <code>int (*f)(int)</code> antes, no se preocupen demasiado. Significa básicamente que <code>f</code> es un puntero a una función de C, <code>f</code> entonces puede ser utilizado exactamente como cualquier otra función. Les será útil acudir al green card de RISC-V que pueden encontrar <a href="http://inst.eecs.berkeley.edu/~cs61c/fa17/img/riscvcard.pdf">aquí</a> para completar este ejercicio.</p>
 <p>Hay exactamente 9 espacios (8 en <code>map</code> y 1 en <code>main</code>), en el código que se provee, donde dice <code>YOUR_INSTRUCTION_HERE</code>. Reemplacen esos espacios con las instrucciones de su implementación de map, y escriban una simple llamada a <code>map</code> con <code>square</code> como argumento de la función. Hay comentarios en el código que explican qué debería hacer, o cumplir, cada instrucción. Cuando hayan rellenado los espacios con las instrucciones correctas, pueden correr el código pulsando en <kbd>F3</kbd> y luego el botón <strong>Go</strong>, al hacer esto, debería de darles como output lo siguiente:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="m">9</span> <span class="m">8</span> <span class="m">7</span> <span class="m">6</span> <span class="m">5</span> <span class="m">4</span> <span class="m">3</span> <span class="m">2</span> <span class="m">1</span> <span class="m">0</span>
+<div class="highlight"><pre><span></span><code><span class="m">9</span> <span class="m">8</span> <span class="m">7</span> <span class="m">6</span> <span class="m">5</span> <span class="m">4</span> <span class="m">3</span> <span class="m">2</span> <span class="m">1</span> <span class="m">0</span>
 <span class="m">81</span> <span class="m">64</span> <span class="m">49</span> <span class="m">36</span> <span class="m">25</span> <span class="m">16</span> <span class="m">9</span> <span class="m">4</span> <span class="m">1</span> <span class="m">0</span>
 </code></pre></div>
-</td></tr></table>
 <p>La primera línea es la lista original, y la segunda es la lista modificada después de que se aplicó la función "map".</p>
 <h2 id="calificacion">Calificación</h2>
 <p>Por favor actualizar siempre la versión del CLI de autograders:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
+<div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
 </code></pre></div>
-</td></tr></table>
 <p>Como en todos los demás laboratorios, hay un autograder y este no es la excepción. El <strong>staff</strong> trabajo bastante para que su experiencia en este curso sea de las mejores. Entregaremos este lab de la misma manera que el pasado.</p>
 <p>Navegue hacia la carpeta donde tiene sus archivos, haga un ls y asegurese que le aparece el archivo autograders.json; si aparecio, esta en el lugar correcto. Ahora puede entregar su laboratorio con...</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --upload
+<div class="highlight"><pre><span></span><code>autograder --upload
 </code></pre></div>
-</td></tr></table>
 <p>Espera un minuto aprox. y luego puede ver sus resultados con...</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --stats
+<div class="highlight"><pre><span></span><code>autograder --stats
 </code></pre></div>
-</td></tr></table>
 <p>Si le aparece Queued: True, espere un par de minutos y luego repita el <code>autograder --stats</code> únicamente. Al terminar todo, suba el link de su repositorio al GES.</p>
 
               

@@ -206,8 +206,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../tutorials/install/" class="md-tabs__link">
-        Material
+      <a href="../../tutorials/autograders/" class="md-tabs__link">
+        Tutoriales
       </a>
     </li>
   
@@ -313,6 +313,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab01/" class="md-nav__link">
+        01: C y GDB
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -336,16 +350,30 @@
       
       
         <label class="md-nav__link" for="__nav_3">
-          Material
+          Tutoriales
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Material" data-md-level="1">
+      <nav class="md-nav" aria-label="Tutoriales" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Material
+          Tutoriales
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/autograders/" class="md-nav__link">
+        Autograders
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -519,9 +547,8 @@
 <p><img alt="Join group" src="/assets/img/projs/proj01/classroom2.png" /></p>
 <p><strong>Tienen que tener mucho cuidado al unirse a un grupo ya existente, ya que esto no se puede cambiar después, además, lo consideraremos como <span style="color: red">PLAGIO</span> si lo realizan de manera incorrecta, ya que, al hacer esto, pueden tener acceso al repositorio del otro miembro del grupo.</strong></p>
 <p>Ya sea que se unan o creen un nuevo grupo, al finalizar el proceso les creará automáticamente un repositorio con una extensión que termina con su nombre de grupo. Ya habiendo hecho todo eso, pueden ejecutar los siguientes comandos abriendo una terminal (<kbd >CTRL</kbd> <kbd>+</kbd> <kbd>T</kbd>):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git clone &lt;link del repositorio&gt;
+<div class="highlight"><pre><span></span><code>git clone &lt;link del repositorio&gt;
 </code></pre></div>
-</td></tr></table>
 <h2 id="parte-1-register-file">Parte 1: Register File</h2>
 <p>Como aprendimos en clase, RISC-V tiene 32 registros. En el proyecto sólo implementaremos 9 (abajo se indica cuales) para evitar realizar trabajo repetitivo. Todas nuestras señales (rs1, rs2, rd) siguen siendo de 5-bits, pero sólo se estarán usando los registros indicados.</p>
 <p>El register file debe poder leer y escribir a los registros que se especifiquen según la instrucción, sin afectar o modificar a cualquier otro registro. Existe una excepción: El registro cero está alambrado a tierra y su valor no puede ser cambiado por ningún motivo.</p>
@@ -1197,18 +1224,15 @@
 <p>Logisim tiene algunas herramientas de análisis combinacional (nos puede construir mapas de Karnaugh o circuitos completos con sólo darle una tabla :D). Esta herramienta les puede ser útil en algún momento de sus vidas, pero la recomendación es no usarla en CC3. Recuerden que durante los exámenes tendrán que hacer mapas o circuitos a mano, sin acceso a su computadora.</p>
 <h2 id="calificacion">Calificación</h2>
 <p>Por favor actualizar siempre la versión del CLI de autograders:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
+<div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
 </code></pre></div>
-</td></tr></table>
 <p>Entregaremos este lab de la misma manera que el pasado.</p>
 <p>Navegue hacia la carpeta donde tiene sus archivos, haga un ls y asegurese que le aparece el archivo autograders.json; si aparecio, esta en el lugar correcto. Ahora puede entregar su laboratorio con...</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --upload
+<div class="highlight"><pre><span></span><code>autograder --upload
 </code></pre></div>
-</td></tr></table>
 <p>Espera un minuto aprox. y luego puede ver sus resultados con...</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --stats
+<div class="highlight"><pre><span></span><code>autograder --stats
 </code></pre></div>
-</td></tr></table>
 <p>Si le aparece Queued: True, espere un par de minutos y luego repita el <code>autograder --stats</code> únicamente. Al terminar todo, suba el link de su repositorio al GES.</p>
 
               

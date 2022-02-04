@@ -206,8 +206,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../tutorials/install/" class="md-tabs__link">
-        Material
+      <a href="../../tutorials/autograders/" class="md-tabs__link">
+        Tutoriales
       </a>
     </li>
   
@@ -313,6 +313,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab01/" class="md-nav__link">
+        01: C y GDB
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -336,16 +350,30 @@
       
       
         <label class="md-nav__link" for="__nav_3">
-          Material
+          Tutoriales
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Material" data-md-level="1">
+      <nav class="md-nav" aria-label="Tutoriales" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Material
+          Tutoriales
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/autograders/" class="md-nav__link">
+        Autograders
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -469,9 +497,8 @@
 <p>Para comenzar con el laboratorio primero tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/a/K8HV0OQl">aquí</a>. Recuerden que deben
 aceptar la asignación de <strong>GitHub Classroom</strong> y se les creará automáticamente un repositorio con una extensión que termina con su usuario de GitHub.
 Cuando ya se haya creado el repositorio, pueden ejecutar los siguientes comandos abriendo una terminal (<kbd>CTRL</kbd><kbd>+</kbd><kbd>T</kbd>):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git clone &lt;link del repositorio&gt;
+<div class="highlight"><pre><span></span><code>git clone &lt;link del repositorio&gt;
 </code></pre></div>
-</td></tr></table>
 <blockquote>
 <p><strong>NOTA</strong>: Tienen que reemplazar &lt;link del repositorio> con el link del repositorio que se creó.</p>
 </blockquote>
@@ -480,25 +507,14 @@ Cuando ya se haya creado el repositorio, pueden ejecutar los siguientes comandos
 <p>El objetivo principal de este ejercicio es que encuentren los errores en la función <strong>map</strong> en <strong>megalistmanips.s</strong>.
 Antes de hacer eso, familiarícense con lo que la función trata de hacer.</p>
 <p>En el lab anterior, teníamos una lista encadenada de enteros, ahora nuestra estructura de datos es una lista encadena cuyo valor en cada nodo es un <strong>arreglo</strong> de enteros. Recuerden que cuando se trabaja con arreglos en structs, necesitamos almacenar explícitamente el tamaño del array. En código de C, el <code>struct</code> se vería así:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">arr</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 </code></pre></div>
-</td></tr></table>
 <p>Aquí también está lo que la nueva función <strong>map</strong> hace: atraviesa la lista encadenada y para cada elemento del arreglo de cada nodo, aplica la función y vuelve a guardarlo en el array. En C, esto se miraría de la siguiente manera:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">int</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">int</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
@@ -506,7 +522,6 @@ Antes de hacer eso, familiarícense con lo que la función trata de hacer.</p>
 <span class="w">  </span><span class="n">map</span><span class="p">(</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-</td></tr></table>
 <p>Lean todos los comentarios en la función <strong>map</strong> en <strong>megalistmanips.s</strong> (antes de que retorne con <code>jr ra</code>), y asegúrense de que las líneas hagan lo que el comentario dice.</p>
 <p>Algunas pistas:</p>
 <ul>
@@ -529,18 +544,15 @@ Antes de hacer eso, familiarícense con lo que la función trata de hacer.</p>
 <p>No les vamos a mentir, es una función muy tonta. Sin embargo, su tarea es implementarla en RISC-V, con la condición de que <strong><span style="color: red;">NO</span></strong> pueden utilizar las instrucciones de branch por ningún motivo. Por suerte alguna persona ha dejado por accidente un array de enteros en la sección <code>.data</code> de <strong><em>discrete_fn.s</em></strong>. ¿Cómo pueden utilizarlo para tener ventaja sobre eso y completar esta tarea que aparenta ser imposible?</p>
 <h2 id="calificacion">Calificación</h2>
 <p>Por favor actualizar siempre la versión del CLI de autograders:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
+<div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
 </code></pre></div>
-</td></tr></table>
 <p>Entregaremos este lab de la misma manera que el pasado.</p>
 <p>Navegue hacia la carpeta donde tiene sus archivos, haga un ls y asegurese que le aparece el archivo autograders.json; si aparecio, esta en el lugar correcto. Ahora puede entregar su laboratorio con...</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --upload
+<div class="highlight"><pre><span></span><code>autograder --upload
 </code></pre></div>
-</td></tr></table>
 <p>Espera un minuto aprox. y luego puede ver sus resultados con...</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --stats
+<div class="highlight"><pre><span></span><code>autograder --stats
 </code></pre></div>
-</td></tr></table>
 <p>Si le aparece Queued: True, espere un par de minutos y luego repita el <code>autograder --stats</code> únicamente. Al terminar todo, suba el link de su repositorio al GES.</p>
 
               

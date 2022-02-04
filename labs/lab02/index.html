@@ -206,8 +206,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../tutorials/install/" class="md-tabs__link">
-        Material
+      <a href="../../tutorials/autograders/" class="md-tabs__link">
+        Tutoriales
       </a>
     </li>
   
@@ -313,6 +313,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab01/" class="md-nav__link">
+        01: C y GDB
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -336,16 +350,30 @@
       
       
         <label class="md-nav__link" for="__nav_3">
-          Material
+          Tutoriales
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Material" data-md-level="1">
+      <nav class="md-nav" aria-label="Tutoriales" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Material
+          Tutoriales
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/autograders/" class="md-nav__link">
+        Autograders
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -506,9 +534,8 @@
 <p>De primero, deben de descargar todos los archivos que necesitarán para completar este laboratorio, estos se encuentran <a href="https://classroom.github.com/a/QP_J2KA_">aquí</a>. Recuerden que deben aceptar la asignación y se les creará automáticamente un repositorio con una extensión que termina con su usuario.
 Recuerden que este será revisado en búsqueda de copia o plagio, así que no lo hagan. De lo contrario, será sancionado acorde al reglamento de la universidad.</p>
 <p>Ahora, ya pueden ejecutar en la terminal el comando que les descargará los archivos base en el directorio a su elección:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git clone link_al_lab
+<div class="highlight"><pre><span></span><code>git clone link_al_lab
 </code></pre></div>
-</td></tr></table>
 <h2 id="ejercicio-1-operando-bits">Ejercicio 1: Operando Bits</h2>
 <p>Para este inciso, su trabajo es completar los archivos <strong>ex1/get_bit.c</strong>, <strong>ex1/set_bit.c</strong> y <strong>ex1/flip_bit.c</strong> de manera que las funciones cumplan con su tarea (así como el nombre de las funciones sugiere). Para ello deberán utilizar las operaciones de bits básicas: and (&amp;), or (|), xor (^), not (~) y los corrimientos a la derecha (>>) y a la izquierda (&lt;&lt;). Deben evitar el uso de ciclos o condicionales.</p>
 <p>¡¡¡¡No usen ciclos ni condicionales!!!! Eso significa que mientras realicen el ejercicio no pueden y no deben de <strong>escribir</strong> las palabras: if, else, do, while, for, switch o algo de índole similar. Por favor no traten de engañarnos, todo el personal involucrado (esperamos) sabe cómo se miran todas estas palabras, entonces si encontramos una de ellas...</p>
@@ -519,21 +546,7 @@ Recuerden que este será revisado en búsqueda de copia o plagio, así que no lo
 </p>
 
 <p><strong>NOTA IMPORTANTE:</strong> Considerar que <em>n</em> es un valor que inicia en la posición cero, contando desde la derecha, por lo que el bit que se encuentra hasta la derecha es el bit cero.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// Return the nth bit of x.</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Return the nth bit of x.</span>
 <span class="c1">// Assume 0 &lt;= n &lt;= 31</span>
 <span class="kt">unsigned</span><span class="w"> </span><span class="nf">get_bit</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
 <span class="w">                 </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
@@ -549,14 +562,11 @@ Recuerden que este será revisado en búsqueda de copia o plagio, así que no lo
 <span class="kt">void</span><span class="w"> </span><span class="nf">flip_bit</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
 <span class="w">              </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-</td></tr></table>
 <p><strong>Ayuda</strong> para <em>set_bit</em>: La parte complicada es no saber el valor del bit antes de cambiarlo. Pero, sabemos que <em>0 | x = x</em>, pero ¿podemos aprovecharnos de esto? ¿Es posible volverlo cero?</p>
 <p>Una vez terminen de editar las funciones, pueden compilar y correr el código con:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make bit_ops
+<div class="highlight"><pre><span></span><code>make bit_ops
 ./bit_ops
 </code></pre></div>
-</td></tr></table>
 <p>Lo cual imprimirá el resultado de algunas pruebas. Si tienen curiosidad pueden revisar con libertad la carpeta tests/ que contiene las pruebas que se van a realizar en cada ejercicio de este laboratorio y que reflejan bastante lo que evaluará el autograder, por ejemplo el archivo que se utiliza para este ejercicio es <strong>tests/bit_ops_test.c</strong>. De ahora en adelante hasta que esten 100% seguros de que tienen completo el laboratorio o ya esté cerca la hora de entregar su laboratorio, pueden mandar sus archivos como en los laboratorios pasados utilizando <code>./submit &lt;TOKEN&gt;</code>.</p>
 <p>Acuérdense de realizar el proceso de "hacerle push" al archivo para subirlo al repositorio de GitHub.</p>
 <h2 id="ejercicio-2-registro-de-corrimiento-con-retroalimentacion-lineal">Ejercicio 2: Registro de Corrimiento con Retroalimentación Lineal</h2>
@@ -575,34 +585,7 @@ En el archivo <strong>ex2/lfsr_calculate.c</strong> deben de completar la funci�
 <li>A diferencia del ejercicio 1, las posiciones de los bits <strong>inician con 1</strong>.</li>
 </ul>
 <p>Después que hayan implementado de manera correcta <em>lfsr_calculate()</em>, compilen y córranlo. Su respuesta debe ser similar a lo siguiente:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make lfsr
+<div class="highlight"><pre><span></span><code>make lfsr
 ./lfsr
 My number is: <span class="m">1</span>
 My number is: <span class="m">5185</span>
@@ -631,7 +614,6 @@ My number is: <span class="m">16285</span>
 Got <span class="m">65535</span> numbers before cycling!
 Congratulations! It works!
 </code></pre></div>
-</td></tr></table>
 <p>De nuevo, recuérdense de hacer el push.</p>
 <h2 id="ejercicio-3-manejo-de-memoria">Ejercicio 3: Manejo de Memoria</h2>
 <p>Este ejercicio requiere de los archivos: <strong>tests/include/vector.h</strong>, <strong>tests/vector_test.c</strong> y <strong>ex3/vector.c</strong>, en donde les proveemos con la base para la implementación de un arreglo de longitud variable. Este inciso busca que se familiaricen con el uso de los "structs" de C, así como el manejo de memoria en este lenguaje. En otras palabras, no se preocupen por los detalles prácticos de esta estructura de datos un tanto extraña. Sólo no lo hagan.</p>
@@ -653,18 +635,15 @@ Congratulations! It works!
 <p>Saber cómo reorganizar y liberar memoria es importante para la programación en C. Piensen que el manejo de memoria es como un parqueo, si hay carros parqueados y los dueños nunca se van, entonces no tienen espacio para nuevos carros. <strong>Y recuerden que deberían tener un 'heap' vacío al terminar su programa. Utilicen free y todo estará bien.</strong></p>
 <h2 id="calificacion">Calificación</h2>
 <p>Por favor actualizar siempre la versión del CLI de autograders:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
+<div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
 </code></pre></div>
-</td></tr></table>
 <p>Como en todos los demás laboratorios, hay un autograder y este no es la excepción. El <strong>staff</strong> trabajo bastante para que su experiencia en este curso sea de las mejores. Entregaremos este lab de la misma manera que el pasado.</p>
 <p>Navegue hacia la carpeta donde tiene sus archivos, haga un ls y asegurese que le aparece el archivo autograders.json; si aparecio, esta en el lugar correcto. Ahora puede entregar su laboratorio con...</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --upload
+<div class="highlight"><pre><span></span><code>autograder --upload
 </code></pre></div>
-</td></tr></table>
 <p>Espera un minuto aprox. y luego puede ver sus resultados con...</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --stats
+<div class="highlight"><pre><span></span><code>autograder --stats
 </code></pre></div>
-</td></tr></table>
 <p>Si le aparece Queued: True, espere un par de minutos y luego repita el <code>autograder --stats</code> únicamente. Al terminar todo, suba el link de su repositorio al GES.</p>
 
               

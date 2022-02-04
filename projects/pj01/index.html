@@ -206,8 +206,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../tutorials/install/" class="md-tabs__link">
-        Material
+      <a href="../../tutorials/autograders/" class="md-tabs__link">
+        Tutoriales
       </a>
     </li>
   
@@ -313,6 +313,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab01/" class="md-nav__link">
+        01: C y GDB
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -336,16 +350,30 @@
       
       
         <label class="md-nav__link" for="__nav_3">
-          Material
+          Tutoriales
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Material" data-md-level="1">
+      <nav class="md-nav" aria-label="Tutoriales" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Material
+          Tutoriales
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/autograders/" class="md-nav__link">
+        Autograders
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -705,25 +733,14 @@
 <p><img alt="Join group" src="/assets/img/projs/proj01/classroom2.png" /></p>
 <p><strong>Tienen que tener mucho cuidado al unirse a un grupo ya existente, ya que esto no se puede cambiar después, además lo consideraremos como <span style="color: red">PLAGIO</span> si lo realizan de manera incorrecta, ya que al hacer esto pueden tener acceso al repositorio del otro miembro del grupo.</strong></p>
 <p>Ya sea que se unan o creen un nuevo grupo, al finalizar el proceso les creará automáticamente un repositorio con una extensión que termina con su nombre de grupo. Ya habiendo hecho todo eso, pueden ejecutar los siguientes comandos abriendo una terminal (<kbd >CTRL</kbd> <kbd>+</kbd> <kbd>T</kbd>):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git clone &lt;link del repositorio&gt;
+<div class="highlight"><pre><span></span><code>git clone &lt;link del repositorio&gt;
 </code></pre></div>
-</td></tr></table>
 <blockquote>
 <p><strong>NOTA</strong>: Tienen que reemplazar &lt;link del repositorio> con el link del repositorio que se creó.</p>
 </blockquote>
 <h2 id="estructura-del-proyecto">Estructura del Proyecto</h2>
 <p>Cuando hayan clonado el repositorio, se van a encontrar con los siguientes archivos:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Makefile
+<div class="highlight"><pre><span></span><code>Makefile
 part1.c
 part2.c
 README.md
@@ -735,7 +752,6 @@ types.h
 utils.c
 utils.h
 </code></pre></div>
-</td></tr></table>
 <p>Los únicos archivos que pueden modificar son:</p>
 <ul>
 <li><code>part1.c</code>: Este es el archivo que van a modificar en la parte 1 del proyecto.</li>
@@ -1277,59 +1293,40 @@ utils.h
 <li>La función <strong><em>bitSigner</em></strong> en <strong><em>utils.c</em></strong>.</li>
 </ul>
 <p>Ustedes deben de correr el test brindado para su proyecto escribiendo el siguiente comando. Si ustedes pasan el test, verán en su consola el siguiente output.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make part1
+<div class="highlight"><pre><span></span><code>make part1
 gcc -g -Wall -Werror -Wfatal-errors -O2 -o riscv utils.c part1.c part2.c riscv.c
 simple_disasm TEST PASSED!
 multiply_disasm TEST PASSED!
 random_disasm TEST PASSED!
 ---------Disassembly Tests Complete---------
 </code></pre></div>
-</td></tr></table>
 <h3 id="probando-la-parte-1">Probando la Parte 1</h3>
 <p>Los tests que se les dieron no evalúan todas las posibilidades, por eso mismo ustedes pueden (<strong>deben</strong>) crear sus propios archivos de prueba para comprobar su funcionamiento. Si ustedes desean correr un test en específico, pueden usar el siguiente comando para ello:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make [test_name]_disasm
+<div class="highlight"><pre><span></span><code>make [test_name]_disasm
 </code></pre></div>
-</td></tr></table>
 <p>Para crear sus propios archivos de prueba, primero necesitarán crear código de máquina. Para ello pueden ayudarse de V-Sim o hacerlo a mano. Si utilizan V-Sim tienen que crear un archivo <code>.s</code> y hacer un <code>dump</code> del código de máquina utilizando la bandera <code>-code</code> en la terminal:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>jupiter &lt;archivo&gt;.s --dump-code &lt;test_name&gt;.input
+<div class="highlight"><pre><span></span><code>jupiter &lt;archivo&gt;.s --dump-code &lt;test_name&gt;.input
 </code></pre></div>
-</td></tr></table>
 <p>Recuerde que Jupiter requiere el .global <strong>start y la etiqueta </strong>start: para poder ensamblar. Luego que hizo el --dump-code entre al archivo generado y elimine las primeras dos líneas, estas corresponden al __start y su proyecto no necesita preocuparse de esto.</p>
 <p>Ustedes deben de poner las instrucciones en código de máquina en un archivo llamado <code>[test_name].input</code>
 y colocar el archivo dentro de la carpeta <code>riscvcode/code</code>. Después, deben crear el archivo <code>[test_name].solution</code> el cual contendrá las instrucciones que se espera obtener; y colocar el archivo en la carpeta <code>riscvcode/ref</code>. Vean las pruebas proporcionadas como ejemplos de este tipo de archivos. Para integrar sus pruebas en el comando <code>make</code>, ustedes deben de modificar el archivo <code>Makefile</code>. En la línea 4 del archivo <code>Makefile</code>, donde dice <code>ASM_TESTS</code>, agregar <code>[test_name]</code> a la lista con espacios entre cada nombre de archivo:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>SOURCES := utils.c part1.c part2.c riscv.c
+<div class="highlight"><pre><span></span><code>SOURCES := utils.c part1.c part2.c riscv.c
 HEADERS := types.h utils.h riscv.h
 
 ASM_TESTS := simple multiply random test_name
 </code></pre></div>
-</td></tr></table>
 <p>Si su instrucción desensamblada no es igual a la esperada, ustedes obtendrán la diferencia entre el output esperado y el output que devolvieron. <strong>Asegúrense de al menos pasar esta prueba antes de enviar la parte 1 al autograder</strong>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Output Esperado</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Output Esperado</span>
 &lt; <span class="m">00001014</span>: lui x8, <span class="m">1048575</span>
 ---
 <span class="c1"># Output Devuelto</span>
 &gt; <span class="m">00001014</span>: Invalid Instruction: 0xfffff437
 </code></pre></div>
-</td></tr></table>
 <h3 id="calificacion-parte-1">Calificación Parte 1</h3>
 <p><strong>Recuerden que para la primera parte, sólo deben modificar los archivos <em>part1.c</em> y <em>utils.c</em></strong>, esto representa el 50% de su nota así que pueden enviar sus archivos al autograder para verificar su nota de esta parte haciendo:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
+<div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
 autograder --upload
 </code></pre></div>
-</td></tr></table>
 <p><strong>Si están trabajando en pareja, <span style="color: red">AMBOS</span> miembros del grupo tienen que clonar el repositorio y hacer upload haciendo login con su correo de galileo</strong>.</p>
 <h2 id="parte-2">Parte 2</h2>
 <p>Su segunda tarea es completar el emulador implementando los métodos <strong><em>execute_instruction()</em></strong>. <strong><em>execute()</em></strong>'s, <strong><em>store()</em></strong> y <strong><em>load()</em></strong> del archivo <strong><em>part2.c</em></strong>.</p>
@@ -1351,77 +1348,52 @@ autograder --upload
 </ul>
 <h3 id="probando-la-parte-2">Probando la Parte 2</h3>
 <p>Les hemos adjuntado un self-checking assembly test que prueba varias de las instruciones, sin embargo este test no es exhaustivo y no prueba todas las instrucciones. A continuación, se ejemplifica cómo ejecutar los test (el output es de una solución correcta).</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make part2
+<div class="highlight"><pre><span></span><code>make part2
 gcc -Wall -Werror -Wfatal-errors -O2 -o riscv utils.c part1.c part2.c riscv.c
 simple_execute TEST PASSED!
 multiply_execute TEST PASSED!
 random_execute TEST PASSED!
 -----------Execute Tests Complete-----------
 </code></pre></div>
-</td></tr></table>
 <p>Lo más probable es que ustedes tenga errores al empezar a realizar la parte 2, entonces prueben el modo de rastreo (<em>trace</em>) descrito en <a href="#opciones-en-la-linea-de-comandos">Opciones en la línea de Comandos</a>.</p>
 <p>Les hemos dado unos cuantos tests más, además de la posibilidad de escribir test propios. Como en la parte 1, ustedes tendrán que crear archivos <code>.input</code>. Sin embargo, para la parte 2, ustedes deberán nombrar su archivo solución con una extensión <code>.trace</code>.</p>
 <p>Creen el nuevo archivo de ensamblador en el directorio <code>riscvcode</code> (utilicen <code>riscvcode/simple.input</code> como plantilla). Agreguen el nombre base del test a la lista de <code>ASM_TESTS</code> en el <code>Makefile</code>. Para realizar esto sólo agreguen <code>[test_name]</code> al final de la línea 4.
 Ahora compilen su test de ensamblador y ejecútenlo escribiendo el siguiente comando:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make <span class="o">[</span>test_name<span class="o">]</span>_execute
+<div class="highlight"><pre><span></span><code>make <span class="o">[</span>test_name<span class="o">]</span>_execute
 </code></pre></div>
-</td></tr></table>
 <p>Ustedes pueden, y en efecto deben, escribir sus propios test para probar instrucciones específicas y todos los posibles casos. Además, ustedes deben compilar y probar su código después de cada grupo de instrucciones implementadas. De lo contrario será muy difícil probar su proyecto si esperan hasta el final.</p>
 <h3 id="calificacion-parte-2">Calificación Parte 2</h3>
 <p>Al completar esta parte ustedes sólo deberían haber modificado los archivos <code>part1.c</code>, <code>part2.c</code> y <code>utils.c</code>, deben realizar commit de todos los cambios realizados y enviar el link de su repositorio por medio del GES. Para obtener su nota completa tienen que hacer:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
+<div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
 autograder --upload
 </code></pre></div>
-</td></tr></table>
 <p><strong>Si están trabajando en pareja, <span style="color: red">AMBOS</span> miembros del grupo tienen que clonar el repositorio y hacer upload haciendo login con su correo de galileo</strong>.</p>
 <h2 id="preguntas-frecuentes">Preguntas Frecuentes</h2>
 <h3 id="1-como-puedo-empezar">1. ¿Cómo puedo empezar?</h3>
 <p>Lo mejor es revisar <code>types.h</code> y analizar la estructura <code>Instruction</code> para empezar a trabajar en la <code>parte1.c</code>, por ejemplo como acceder a cada campo de cada diferente tipo de instrucción y al opcode también. Por ejemplo, para acceder al <code>opcode</code> pueden utilizar:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">instruction</span><span class="p">.</span><span class="n">opcode</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">instruction</span><span class="p">.</span><span class="n">opcode</span><span class="w"></span>
 </code></pre></div>
-</td></tr></table>
 <p>siendo <code>instruction</code> una variable que representa una "instancia" de la estructura <code>Instruction</code>. Luego de esto, pueden ver cómo accediendo a estos campos pueden decodificar la instrucción y así lograr imprimirla.</p>
 <h3 id="2-en-mi-maquina-local-saco-100-y-en-el-autograder-0-por-que">2. En mi máquina local saco 100% y en el autograder 0, ¿por qué?</h3>
 <p>Al trabajar con uniones y estructuras de C y al utilizar la bandera <code>-O2</code> pueden pasar cosas muy raras, una de ellas es el <a href="https://cellperformance.beyond3d.com/articles/2006/06/understanding-strict-aliasing.html">strict aliasing</a>, por eso les recomendamos probar su código en la máquina virtual que les proporcionamos, así están totalmente seguros de que código funciona correctamente.</p>
 <h3 id="3-me-da-floating-point-exception-core-dumped-al-hacer-algunas-operaciones-aritmeticas-por-que">3. Me da Floating-point Exception (core dumped) al hacer algunas operaciones aritméticas, ¿por qué?</h3>
 <p>Generalmente esto se da porque se divide por <code>0</code> o hay <code>overflow</code> utilizando variables enteras con signo. Por ejemplo:</p>
 <p><strong>Division por 0</strong></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>int x = 10;
+<div class="highlight"><pre><span></span><code>int x = 10;
 int y = 0;
 int z = x / y;
 </code></pre></div>
-</td></tr></table>
 <p><strong>Overflow</strong></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int32_t</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x80000000</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">int32_t</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x80000000</span><span class="p">;</span><span class="w"></span>
 <span class="kt">int32_t</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xffffffff</span><span class="p">;</span><span class="w"></span>
 <span class="kt">int32_t</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
-</td></tr></table>
 <p>La solución para la división por <code>0</code> es simplemente tienen que devolver <code>-1</code> como dice la especificación de RISC-V y para el residuo devolver el primer argumento de la operación, en el caso de <code>overflow</code> la solución es castear las variables a un tipo con más bytes:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int32_t</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int32_t</span><span class="p">)((</span><span class="kt">int64_t</span><span class="p">)</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="kt">int64_t</span><span class="p">)</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">int32_t</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int32_t</span><span class="p">)((</span><span class="kt">int64_t</span><span class="p">)</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="kt">int64_t</span><span class="p">)</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-</td></tr></table>
 <h3 id="4-en-la-parte-1-el-formato-nunca-es-el-esperado-por-las-pruebas-por-que">4. En la parte 1 el formato nunca es el esperado por las pruebas, ¿por qué?</h3>
 <p>Seguramente no están utilizando el formato correcto, les recomendamos que utilicen las siguientes <code>macros</code> para imprimir las instrucciones que se encuentran en el archivo <code>utils.h</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#define RTYPE_FORMAT &quot;%s\tx%d, x%d, x%d\n&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#define RTYPE_FORMAT &quot;%s\tx%d, x%d, x%d\n&quot;</span>
 <span class="cp">#define ITYPE_FORMAT &quot;%s\tx%d, x%d, %d\n&quot;</span>
 <span class="cp">#define JALR_FORMAT &quot;jalr\tx%d, x%d, %d\n&quot;</span>
 <span class="cp">#define MEM_FORMAT &quot;%s\tx%d, %d(x%d)\n&quot;</span>
@@ -1431,16 +1403,9 @@ int z = x / y;
 <span class="cp">#define BRANCH_FORMAT &quot;%s\tx%d, x%d, %d\n&quot;</span>
 <span class="cp">#define ECALL_FORMAT &quot;ecall\n&quot;</span>
 </code></pre></div>
-</td></tr></table>
 <h3 id="5-puedo-crear-mis-propias-funciones">5. ¿Puedo crear mis propias funciones?</h3>
 <p>Sí, siempre y cuando estas estén declaradas, ya sea en <code>part1.c</code>, <code>part2.c</code> o <code>utils.c</code>, ya que son los únicos archivos que se envían al autograder. Sin embargo, <strong><span style="color: red">NO</span> está permitido renombrar o eliminar las siguientes funciones</strong>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/* archivo part1.c */</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="cm">/* archivo part1.c */</span><span class="w"></span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">decode_instruction</span><span class="p">(</span><span class="n">Instruction</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
 
 <span class="cm">/* archivo part2.c */</span><span class="w"></span>
@@ -1448,7 +1413,6 @@ int z = x / y;
 <span class="kt">void</span><span class="w"> </span><span class="nf">store</span><span class="p">(</span><span class="n">Byte</span><span class="w"> </span><span class="o">*</span><span class="n">memory</span><span class="p">,</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">Alignment</span><span class="w"> </span><span class="n">alignment</span><span class="p">,</span><span class="w"> </span><span class="n">Word</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
 <span class="n">Word</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">Byte</span><span class="w"> </span><span class="o">*</span><span class="n">memory</span><span class="p">,</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">Alignment</span><span class="w"> </span><span class="n">alignment</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-</td></tr></table>
 <p>Ya que el simulador <code>riscv.c</code> espera que estas estén definidas.</p>
 
               

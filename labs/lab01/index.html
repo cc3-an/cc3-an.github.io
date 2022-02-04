@@ -19,7 +19,7 @@
     
     
       
-        <title>Lab 1 - Punteros en C y GDB - Estructura de Máquinas</title>
+        <title>01: C y GDB - Estructura de Máquinas</title>
       
     
     
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab 1 - Punteros en C y GDB
+              01: C y GDB
             
           </span>
         </div>
@@ -184,13 +184,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../lab00/" class="md-tabs__link">
+      <a href="../lab00/" class="md-tabs__link md-tabs__link--active">
         Laboratorios
       </a>
     </li>
@@ -206,8 +208,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../tutorials/install/" class="md-tabs__link">
-        Material
+      <a href="../../tutorials/autograders/" class="md-tabs__link">
+        Tutoriales
       </a>
     </li>
   
@@ -277,12 +279,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -313,6 +317,130 @@
 
             
           
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          01: C y GDB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        01: C y GDB
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compilando-y-ejecutando-un-programa-de-c" class="md-nav__link">
+    Compilando y ejecutando un programa de C
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-programa-simple-de-c" class="md-nav__link">
+    Ejercicio 1: Programa simple de C
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-debugger-depurador" class="md-nav__link">
+    Ejercicio 2: Debugger (depurador)
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 2: Debugger (depurador)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-un-debugger" class="md-nav__link">
+    ¿Qué es un debugger?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-depurando-un-problema-con-fallas-usando-gdb" class="md-nav__link">
+    Ejercicio 3: Depurando un problema con fallas usando GDB
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-4-debuggeando-un-programa-en-c-que-requiere-interaccion-del-usuario" class="md-nav__link">
+    Ejercicio 4: "Debuggeando" un programa en C que requiere interacción del usuario
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-5-punteros-y-estructuras-en-c" class="md-nav__link">
+    Ejercicio 5: Punteros y estructuras en C
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-laboratorio" class="md-nav__link">
+    Entrega de laboratorio
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -336,16 +464,30 @@
       
       
         <label class="md-nav__link" for="__nav_3">
-          Material
+          Tutoriales
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Material" data-md-level="1">
+      <nav class="md-nav" aria-label="Tutoriales" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Material
+          Tutoriales
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/autograders/" class="md-nav__link">
+        Autograders
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -496,45 +638,32 @@
 <li>Ganar más confianza al trabajar con punteros.</li>
 </ul>
 <h2 id="preparacion">Preparación</h2>
-<p>Visiten este <a href="https://classroom.github.com/a/Hp7ReI2W">link</a>. Aquí encontrarán todos los archivos necesarios para completar este lab. En esta página, encontrarán un botón que dice "Accept assignment". Al presionar este botón, se creará automáticamente un repositorio en Github llamado <code>www.github.com/cc3-an/lab01-2021-USUARIO</code>. Noten que el "dueño" de este repositorio es un usuario llamado <code>cc3-an</code>, y el usuario de ustedes es únicamente el sufijo del nombre del repo. De esta forma, nos encargamos de tener acceso siempre a su código, en caso existan copias o cualquier otro tipo de trampa. Sepan de una vez que, si encontramos plagio o cualquier otro tipo de trampa en sus laboratorios, su nota será AUTOMÁTICAMENTE 0, sin posibilidad de cambiarla. De repetirse nuevamente este acontecimiento, el staff del curso organizará una reunión con ustedes y sus directores de carrera para contarles lo ocurrido y sancionarlos conforme al reglamento de la universidad.</p>
+<p>Visiten este <a href="https://classroom.github.com/a/Hp7ReI2W">link</a>. Aquí encontrarán todos los archivos necesarios para completar este lab. En esta página, encontrarán un botón que dice "Accept assignment". Al presionar este botón, se creará automáticamente un repositorio en Github llamado <code>www.github.com/cc3-an/2022-lab-01-c-gdb-USUARIO</code>. Noten que el "dueño" de este repositorio es un usuario llamado <code>cc3-an</code>, y el usuario de ustedes es únicamente el sufijo del nombre del repo. De esta forma, nos encargamos de tener acceso siempre a su código, en caso existan copias o cualquier otro tipo de trampa. Sepan de una vez que, si encontramos plagio o cualquier otro tipo de trampa en sus laboratorios, su nota será AUTOMÁTICAMENTE 0, sin posibilidad de cambiarla. De repetirse nuevamente este acontecimiento, el staff del curso organizará una reunión con ustedes y sus directores de carrera para contarles lo ocurrido y sancionarlos conforme al reglamento de la universidad.</p>
 <p>Después de realizar esto, en la máquina virtual (o sus propias computadoras) abran una terminal en el directorio que prefieran, y ejecuten el siguiente comando:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git clone https://github.com/cc3-an/lab1-2021-&lt;SU USUARIO DE GITHUB&gt;
+<div class="highlight"><pre><span></span><code>git clone https://github.com/cc3-an/2022-lab-01-c-gdb-&lt;USUARIO DE GITHUB AQUI&gt;
 </code></pre></div>
-</td></tr></table>
-<p>Esto descargará en el directorio que escogieron todos los archivos base para este laboratorio. Para futuro, un <code>clone</code> solo lo hacemos la primera vez que vamos a bajar el codigo de un repositorio a nuestra maquina. Nunca bajen el zip que Github les ofrece, por favor, eso solo nos va a causar problemas.</p>
+<p>Esto descargará en el directorio que escogieron todos los archivos base para este laboratorio. Un <code>clone</code> solo lo hacemos la primera vez que vamos a bajar el codigo de un repositorio a nuestra maquina. Nunca bajen el zip que Github les ofrece, por favor, eso solo nos va a causar problemas.</p>
 <h2 id="compilando-y-ejecutando-un-programa-de-c">Compilando y ejecutando un programa de C</h2>
 <p>En este laboratorio, estaremos usando el programa <code>gcc</code> para compilar programas en c. La manera más sencilla de ejecutar <code>gcc</code> es la siguiente:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>gcc program.c
+<div class="highlight"><pre><span></span><code>gcc program.c
 </code></pre></div>
-</td></tr></table>
 <p>Esto compila el archivo <code>program.c</code> y crea un archivo ejecutable llamado <code>a.out</code>. Si tienen experiencia en Java, pueden más o menos considerar a <code>gcc</code> como el equivalente en C de <code>javac</code>. Este archivo se puede ejecutar con el siguiente comando:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>./a.out
+<div class="highlight"><pre><span></span><code>./a.out
 </code></pre></div>
-</td></tr></table>
 <p>El archivo ejecutable es <code>a.out</code>, así que, ¿qué rayos es eso de punto y diagonal? La respuesta: cuando quieren ejecutar un ejecutable, es necesario preponer una ruta de archivo para distinguirlo de un comando como <code>python</code> (no se utiliza <code>./python</code>). El punto se refiere al "directorio actual". De paso, dos puntos (..) se referirían al directorio que está un nivel arriba.</p>
 <p><code>gcc</code> tiene varias opciones (o argumentos) de línea de comandos, los cuales les recomendamos explorar. En este laboratorio, vamos a estar usando solamente -o, que se usa para especificar el nombre del ejecutable que <code>gcc</code> genera. Usando -o, se utilizarían estos comandos para compilar <code>program.c</code> en un archivo llamado <code>program</code>, y ejecutarlo. Eso nos sirve si no queremos que todos nuestros archivos ejecutables se llamen <code>a.out</code>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>gcc -o program program.c
+<div class="highlight"><pre><span></span><code>gcc -o program program.c
 ./program
 </code></pre></div>
-</td></tr></table>
 <h2 id="ejercicio-1-programa-simple-de-c">Ejercicio 1: Programa simple de C</h2>
 <p>En este ejercicio, veremos un ejemplo de definiciones macro de preprocesador. Las macros pueden ser un tema complicado, pero en general, la forma en que funcionan es que, antes de que un archivo en C es compilado, las constantes macro son reemplazadas exactamente por el valor al que se refieren.
 En este ejercicio, estaremos usando macros exclusivamente como constantes globales. Aquí definimos <code>CONSTANT_NAME</code> como un <code>literal_value</code> (una literal entera). Noten que solo hay 1 espacio separando el nombre del valor.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#define CONSTANT_NAME LITERAL_VALUE</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#define CONSTANT_NAME LITERAL_VALUE</span>
 </code></pre></div>
-</td></tr></table>
 <p>Ahora, vean el código en eccentric.c (en el repo). <strong>Noten</strong> los cuatro diferentes ejemplos de control básico de flujo. (¿Cuáles son?)
 Compilen y ejecuten el programa para ver lo que hace. Jueguen con las constantes de las cuatro macros: <code>v0</code> a <code>v3</code>. Vean cómo cambiar <strong>cada uno</strong> de estos cambia el output del programa.
 Su tarea: Modificando sólo estos cuatro valores, hagan que el programa produzca el siguiente mensaje:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ gcc -o eccentric eccentric.c
+<div class="highlight"><pre><span></span><code>$ gcc -o eccentric eccentric.c
 $ ./eccentric
 Berkeley eccentrics:
 <span class="o">====================</span>
@@ -543,16 +672,12 @@ Yoshua
 
 Go BEARS!
 </code></pre></div>
-</td></tr></table>
 <p>Hay múltiples combinaciones de valores en las macros que consiguen este resultado, El reto para ustedes en este ejercicio es: Consideren el <strong>mínimo</strong> número de distintos valores que las constantes <code>v0</code> a <code>v3</code> puedan tener que aún den el mismo resultado correcto. Como ejemplo, el máximo teórico es cuatro (cuando todos son diferentes uno de otro).</p>
 <p>Cuando ya hayan logrado esto, pueden actualizar el archivo en su repositorio en Github, de esta manera:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ git add eccentric.c
+<div class="highlight"><pre><span></span><code>$ git add eccentric.c
 $ git commit -m <span class="s2">&quot;Ejercicio 1 terminado&quot;</span>
 $ git push -u origin main
 </code></pre></div>
-</td></tr></table>
 <h2 id="ejercicio-2-debugger-depurador">Ejercicio 2: <em>Debugger</em> (depurador)</h2>
 <h3 id="que-es-un-debugger">¿Qué es un <em>debugger</em>?</h3>
 <p>Este párrafo es para los estudiantes que no están familiarizados con los <em>debuggers</em>. Un <strong>debugger</strong>, como sugiere el nombre, es un programa específicamente diseñado para ayudarlos a encontrar <em>bugs</em>, o errores lógicos, u otros errores en el código (nota: si quieren saber por qué se les llama <em>bugs</em> a los errores, vean <a href="https://www.quora.com/Why-are-errors-in-software-codes-called-bugs">aquí</a>). Distintos debuggers tienen distintas características, pero es normal que todos los debuggers sean capaces de hacer las siguientes cosas:</p>
@@ -561,13 +686,11 @@ $ git push -u origin main
 <li>Ejecución por <strong>Steps</strong> (línea a línea) por el programa. El código siempre se ejecuta línea a línea, pero pasa muy rápido como para que sepamos qué línea produce algún error. Ser capaces de ejecutar línea a línea el programa les permite observar <strong>exactamente</strong> qué esta causando un bug en el programa.
    Para este ejercicio, necesitarán la <a href="http://inst.eecs.berkeley.edu/~cs61c/resources/gdb5-refcard.pdf">GDB reference card</a>. GDB quiere decir "GNU De-Bugger". Compilen hello.c con la bandera "-g":</li>
 </ol>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>gcc -g -o hello hello.c
+<div class="highlight"><pre><span></span><code>gcc -g -o hello hello.c
 </code></pre></div>
-</td></tr></table>
 <p>Esto hará que gcc guarde información en el archivo ejecutable para que gdb lo interprete. Ahora ejecuten el debugger, (c)gdb:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cgdb hello
+<div class="highlight"><pre><span></span><code>cgdb hello
 </code></pre></div>
-</td></tr></table>
 <p>Vean lo que hace este comando. Están ejecutando el programa <code>cgdb</code> en el <strong>ejecutable</strong> <code>hello</code> generado por <code>gcc</code>. No intenten ejecutar cgdb en el archivo fuente en <code>hello.c</code>! Eso no va a funcionar.
 Si cgdb no funciona, gdb se puede usar para completar los ejercicios (utilicen <code>gdb hello</code>).
 <strong>Su tarea: ejecuten el programa varias veces haciendo esto:</strong></p>
@@ -582,15 +705,7 @@ Si cgdb no funciona, gdb se puede usar para completar los ejercicios (utilicen <
 <p>En este ejercicio, usamos cgdb para depurar nuestros programas. cgdb es idéntico a gdb, excepto que tiene unas características extra que hacen más cómodo el trabajo. Todos los comandos de la hoja de referencia funcionan también en gdb.
 En cgdb, pueden presionar <code>ESC</code>para ir a la ventana del código (arriba), y usar <code>i</code> para regresar a la ventana de comandos (abajo), similar a <code>vim</code>. La ventana de comandos es donde se introducen los comandos de gdb.</p>
 <p>Para este ejercicio, encontrarán un archivo de texto llamado ex2.txt, con el siguiente formato:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="m">1</span>:
+<div class="highlight"><pre><span></span><code><span class="m">1</span>:
 <span class="m">2</span>:
 <span class="m">3</span>:
 <span class="m">4</span>:
@@ -600,17 +715,8 @@ En cgdb, pueden presionar <code>ESC</code>para ir a la ventana del código (arri
 <span class="m">8</span>:
 <span class="m">9</span>:
 </code></pre></div>
-</td></tr></table>
 <p>Aquí tendrán que responder las siguientes preguntas de opción múltiple (no tengan miedo de probar las opciones en CGDB antes de responder, ¡lo recomendamos!) con el siguiente formato (tienen que cambiar la letra en el ejemplo por la letra de la respuesta que ustedes consideren correcta):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="m">1</span>:e
+<div class="highlight"><pre><span></span><code><span class="m">1</span>:e
 <span class="m">2</span>:f
 <span class="m">3</span>:g
 <span class="m">4</span>:h
@@ -620,7 +726,6 @@ En cgdb, pueden presionar <code>ESC</code>para ir a la ventana del código (arri
 <span class="m">8</span>:l
 <span class="m">9</span>:m
 </code></pre></div>
-</td></tr></table>
 <p><strong>Preguntas</strong></p>
 <p><strong>1.</strong> ¿Cómo se le dan <strong>argumentos desde la línea de comandos</strong> a un programa al utilizar gdb?</p>
 <ul>
@@ -686,48 +791,35 @@ En cgdb, pueden presionar <code>ESC</code>para ir a la ventana del código (arri
 <li>d. finish</li>
 </ul>
 <p>Después de responder estas preguntas, no olviden hacer el commit y push de este archivo hacia Github:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ git add ex2.txt
+<div class="highlight"><pre><span></span><code>$ git add ex2.txt
 $ git commit -m <span class="s2">&quot;Ejercicio 2 terminado&quot;</span>
 $ git push -u origin main
 </code></pre></div>
-</td></tr></table>
 <h2 id="ejercicio-3-depurando-un-problema-con-fallas-usando-gdb">Ejercicio 3: Depurando un problema con fallas usando GDB</h2>
 <p>Ahora, usarán su nuevo conocimiento para depurar un pequeño programa. Vean el programa <code>ll_equal.c</code>. Compilen y ejecuten el programa, y analicen un poco lo que hace. Así como está, producirá un resultado como el siguiente:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ gcc -g -o ll_equal ll_equal.c
+<div class="highlight"><pre><span></span><code>$ gcc -g -o ll_equal ll_equal.c
 $ ./ll_equal
 equal <span class="nb">test</span> <span class="m">1</span> <span class="nv">result</span> <span class="o">=</span> <span class="m">1</span>
 Segmentation fault
 </code></pre></div>
-</td></tr></table>
 <p><strong>Averigüen qué produce el segmentation fault (falla de segmentación)</strong>.</p>
 <p>Ejecuten gdb en el programa, siguiendo las instrucciones aprendidas en los ejercicios anteriores. Les recomendamos añadir un breakpoint en la función <code>ll_equal()</code>. Cuando el debugger pare en el breakpoint, ejecuten paso a paso el programa, para que puedan descifrar qué es lo que provoca el error.</p>
 <p>Pista: Analicen el valor de los punteros <code>a</code> y <code>b</code> en la función (¡despliéguenlos!). ¿Están siempre apuntando a la dirección correcta?</p>
 <p>Pista 2: Vean el código fuente en <code>main</code> para ver la estructura de los nodos y ver exactamente qué está pasando como argumento a <code>ll_equal</code>.</p>
 <p>Después de corregir el problema, compilen nuevamente y ejecuten el código. ¿Notan la diferencia?</p>
 <p>Al finalizar, no olviden subir el archivo modificado a su repositorio remoto:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ git add ll_equal.c
+<div class="highlight"><pre><span></span><code>$ git add ll_equal.c
 $ git commit -m <span class="s2">&quot;Ejercicio 2 terminado&quot;</span>
 $ git push -u origin main
 </code></pre></div>
-</td></tr></table>
 <h2 id="ejercicio-4-debuggeando-un-programa-en-c-que-requiere-interaccion-del-usuario">Ejercicio 4: "Debuggeando" un programa en C que requiere interacción del usuario</h2>
 <p>Veamos qué pasa cuando, a un programa que requiere interacción del usuario, lo ejecutamos con gdb. Primero, ejecuten el programa en <code>interactive_hello.c</code> para hablar con un programa muy amigable :).</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ gcc -g -o int_hello interactive_hello.c
+<div class="highlight"><pre><span></span><code>$ gcc -g -o int_hello interactive_hello.c
 $ ./int_hello
 </code></pre></div>
-</td></tr></table>
 <p>Ahora, traten de depurarlo (aunque no haya ningún problema realmente):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ cgdb int_hello
+<div class="highlight"><pre><span></span><code>$ cgdb int_hello
 </code></pre></div>
-</td></tr></table>
 <p>¿Qué pasa cuando intentar ejecutar el programa hasta el final?
 Vamos a aprender acerca de una herramienta que nos ayudará a evitar este problema. El propósito de este ejercicio es que no tengan miedo de usar un debugger incluso cuando el programa requiera de interacción con el usuario.</p>
 <p>Resulta que es posible enviar texto a <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_input_.28stdin.29">stdin</a>, el flujo de datos que es leído por la función <code>fgets</code> en este programa, con unos caracteres especiales desde la línea de comandos. Echen un vistazo a la "redirección" en <a href="https://www.cs.bu.edu/teaching/c/file-io/intro">esta página</a>, y vean si pueden descifrar cómo enviar texto al programa sin escribirlo textualmente mientras el programa está en ejecución (lo cual, como ya saben, no funciona bien en CGDB).</p>
@@ -749,14 +841,7 @@ Vamos a aprender acerca de una herramienta que nos ayudará a evitar este proble
 <p>Aquí hay un <a href="https://en.wikipedia.org/wiki/Cycle_detection#Floyd.27s_Tortoise_and_Hare">Artículo</a> del algoritmo y por qué funciona. No se preocupen de entender completamente todo (no hay examen de esto).</p>
 <p>A propósito, los punteros se llaman <code>tortoise</code> y <code>hare</code> porque el puntero "tortoise (tortuga)" se incrementa lentamente (como una tortuga, que se mueve muy lento) y el puntero "hare (liebre)" se incrementa rápidamente (más rápido que una tortuga, como una liebre, o conejo, que se mueve muy rápido).</p>
 <p>Al finalizar, compilen y ejecuten el archivo, y verifiquen que el resultado de su código, el cual debería ser más o menos igual a este:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ gcc -g -o ll_cycle ll_cycle.c
+<div class="highlight"><pre><span></span><code>$ gcc -g -o ll_cycle ll_cycle.c
 $ ./ll_cycle
 Checking first list <span class="k">for</span> cycles. There should be none, ll_has_cycle says it has no cycle
 Checking second list <span class="k">for</span> cycles. There should be a cycle, ll_has_cycle says it has a cycle
@@ -765,96 +850,49 @@ Checking fourth list <span class="k">for</span> cycles. There should be a cycle,
 Checking fifth list <span class="k">for</span> cycles. There should be none, ll_has_cycle says it has no cycle
 Checking length-zero list <span class="k">for</span> cycles. There should be none, ll_has_cycle says it has no cycle
 </code></pre></div>
-</td></tr></table>
 <p>Si su código presenta errores, entonces ya son capaces de utilizar CGDB para poder encontrarlos y corregirlos. Finalmente, pueden subir el archivo a github:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ git add ll_cycle.c
+<div class="highlight"><pre><span></span><code>$ git add ll_cycle.c
 $ git commit -m <span class="s2">&quot;LAB01 terminado&quot;</span>
 $ git push -u origin main
 </code></pre></div>
-</td></tr></table>
 <p>Para finalizar, la fábula de <a href="http://read.gov/aesop/025.html">la tortuga y la liebre</a> es relevante siempre, especialmente en este curso. Escribir sus programas en C a paso lento pero seguro (ayudándose de programas como CGDB) es lo que les hará ganar la carrera.</p>
 <h2 id="entrega-de-laboratorio">Entrega de laboratorio</h2>
-<p>A partir de este laboratorio contaremos con autograders, por lo que podrá conocer su nota de inmediato.</p>
-<p>Para poder utilizarlo debemos realizar una pequena instalación (todos, incluyendo a quienes bajaron nuestra máquina virtual, los autograders están recién salidos del horno).</p>
-<p>Para instalar necesitamos tener Python 3.6 o superior, nuestra máquina virtual ya lo cumple. Comenzamos con...</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install autograders-cli
+<p>A partir de este laboratorio contaremos con autograders, por lo que podrán conocer su nota de inmediato. Para poder utilizarlo debemos realizar una pequena instalación. <a href="/tutorials/autograders">Guía de Instalación de Autograders</a>.</p>
+<p>Una vez esté instalado ustedes deberán iniciar sesión en la carpeta raiz del repositorio.</p>
+<div class="highlight"><pre><span></span><code>autograders --sign-in
 </code></pre></div>
-</td></tr></table>
-<p>Esto instala el modulo a traves del cual entregará su asignación. Luego tenemos que registrarnos. Por favor sea <strong>MUY CUIDADOSO</strong> al ingresar sus datos. Como es usual en Linux no se vera su contrasena mientras la escribe, de momento <strong>NO EXISTE RECUPERACION DE CONTRASENA</strong> por si se equivoca o se le olvida. <strong>SEA MUY CUIDADOSO</strong>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --register
+<p>Y hacer submit</p>
+<div class="highlight"><pre><span></span><code>autograders --submit
 </code></pre></div>
-</td></tr></table>
-<p>Tras llenar su nombre completo, correo y crear su contraseña se le enviará un correo. Haga click en el link que va en el correo (es posible que al hacer click se quede "trabado" en redirecting/redirigiendo, esto es normal, no se preocupe).</p>
-<p>Luego de hacer click en ese link, esta listo para entregar. Navegue hacia la carpeta donde tiene sus archivos, haga un ls y asegurese que le aparece el archivo <code>autograders.json</code>; si aparecio, está en el lugar correcto. Ahora puede entregar su laboratorio con...</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --upload
+<div class="highlight"><pre><span></span><code>╭ Autograders ╮
+│             │
+│   Submit    │
+│             │
+╰─────────────╯
+
+✔ Files zipped
+✔ Submission created successfully.
+
+Assignment:
+
+╔═══════════╤══════════════════════════╗
+║ id        │ 61fcc9f510a10341e78bc4ac ║
+╟───────────┼──────────────────────────╢
+║ name      │ Lab <span class="m">1</span> - C y GDB          ║
+╟───────────┼──────────────────────────╢
+║ createdAt │ <span class="m">2022</span>-02-04T06:38:45.587Z ║
+╟───────────┼──────────────────────────╢
+║ updatedAt │ <span class="m">2022</span>-02-04T06:38:45.587Z ║
+╚═══════════╧══════════════════════════╝
+
+...
 </code></pre></div>
-</td></tr></table>
-<p>Espera un minuto aproximadamente y luego puede ver sus resultados con...</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>autograder --stats
+<p>Para ver el status de su ultimo submit:</p>
+<div class="highlight"><pre><span></span><code>autograders --get-last-submit
 </code></pre></div>
-</td></tr></table>
-<p>Vera desplegado sus resultados de esta manera (excepto que usted tendra 100 en lugar de 0 :P). Si dice Queued: True significa que el autograder esta un poquito ocupado y no le ha calificado, revise de nuevo en unos cinco minutos.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>   ___       __                        __
-  / _ <span class="p">|</span>__ __/ /____  ___ ________ ____/ /__ _______
- / __ / // / __/ _ <span class="se">\/</span> _ <span class="sb">`</span>/ __/ _ <span class="sb">`</span>/ _  / -_<span class="o">)</span> __<span class="o">(</span>_-
-/_/ <span class="p">|</span>_<span class="se">\_</span>,_/<span class="se">\_</span>_/<span class="se">\_</span>__/<span class="se">\_</span>, /_/  <span class="se">\_</span>,_/<span class="se">\_</span>,_/<span class="se">\_</span>_/_/ /___/
-               /___/
-
-        Command Line Interface
-           Autograders.org
-
-Get Task Stats
-
- - Queued: False
- - Grade: <span class="m">0</span>.00/100
- - Created At: <span class="m">2021</span>-01-29T12:57:05.454Z
- - Updated At: <span class="m">2021</span>-01-29T12:57:12.131Z
-
-Details:
-
-╒══════════════╤═════════╤════════════════════════════════════════╕
-│ Name         │   Grade │ Message                                │
-╞══════════════╪═════════╪════════════════════════════════════════╡
-│ <span class="m">1</span>. Eccentric │       <span class="m">0</span> │ incomplete: some answers are wrong...  │
-├──────────────┼─────────┼────────────────────────────────────────┤
-│ <span class="m">2</span>. CGDB      │       <span class="m">0</span> │ incomplete: q1,q2,q3,q4,q5,q6,q7,q8,q9 │
-├──────────────┼─────────┼────────────────────────────────────────┤
-│ <span class="m">3</span>. ll_equal  │       <span class="m">0</span> │ failed: runtime error                  │
-├──────────────┼─────────┼────────────────────────────────────────┤
-│ <span class="m">4</span>. ll_cycle  │       <span class="m">0</span> │ failed: Failed some tests...           │
-╘══════════════╧═════════╧════════════════════════════════════════╛
+<p>Para obtener el resultado con mejor nota pueden hacer lo siguiente:</p>
+<div class="highlight"><pre><span></span><code>autograders --get-best-submit
 </code></pre></div>
-</td></tr></table>
 <p>Felicidades! Termino su lab 1. Envie el link de su repo en el GES (el GES le permite enviar links, no pegue su link en un TXT u otro documento, es incómodo).</p>
 
               
@@ -865,6 +903,41 @@ Details:
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../lab00/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 00: Git" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              00: Git
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../tutorials/autograders/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Autograders" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Autograders
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
