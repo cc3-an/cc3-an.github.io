@@ -19,7 +19,7 @@
     
     
       
-        <title>Lab 2 - C Avanzado y Manejo de Memoria - Estructura de Máquinas</title>
+        <title>02: C Avanzado - Estructura de Máquinas</title>
       
     
     
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab 2 - C Avanzado y Manejo de Memoria
+              02: C Avanzado
             
           </span>
         </div>
@@ -184,13 +184,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../lab00/" class="md-tabs__link">
+      <a href="../lab00/" class="md-tabs__link md-tabs__link--active">
         Laboratorios
       </a>
     </li>
@@ -277,12 +279,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -322,6 +326,129 @@
       <a href="../lab01/" class="md-nav__link">
         01: C y GDB
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          02: C Avanzado
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        02: C Avanzado
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-operando-bits" class="md-nav__link">
+    Ejercicio 1: Operando Bits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-registro-de-corrimiento-con-retroalimentacion-lineal" class="md-nav__link">
+    Ejercicio 2: Registro de Corrimiento con Retroalimentación Lineal
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 2: Registro de Corrimiento con Retroalimentación Lineal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-del-hardware-explicacion-mas-abajo" class="md-nav__link">
+    Diagrama del Hardware (Explicación Más Abajo)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicacion-del-diagrama-de-arriba" class="md-nav__link">
+    Explicación del Diagrama de Arriba
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-manejo-de-memoria" class="md-nav__link">
+    Ejercicio 3: Manejo de Memoria
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 3: Manejo de Memoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-funciona-un-vector_t" class="md-nav__link">
+    ¿Cómo funciona un vector_t?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-deben-hacer" class="md-nav__link">
+    ¿Qué deben hacer?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -496,13 +623,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#calificacion" class="md-nav__link">
-    Calificación
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -633,18 +753,6 @@ Congratulations! It works!
 <li>Corrijan a <em>vector_set()</em>. Esta es la más complicada. Bienvenidos a las ligas mayores. El problema de manipular una posición/índice arbitrario en un vector <em>v</em> es que es posible que no se haya reservado suficiente espacio con <em>malloc</em> en <em>vector-&gt;data</em> (sí, eso significa que tuvieron que haber guardado memoria con <em>malloc</em>). Piensen cómo administrar la memoria para lograr esto, para ver qué hacer con la data que estaba ahí antes y de qué otras cosas deben de hacer en su nuevo bloque de datos. Ayuda: Recuerden que los índices que no hayan sido alterados deben de ser cero. Hay distintas formas de acabar resolviendo esta función. Consideren el uso de las 3 funciones <em>__alloc</em>, porque pueden resultar útiles...</li>
 </ul>
 <p>Saber cómo reorganizar y liberar memoria es importante para la programación en C. Piensen que el manejo de memoria es como un parqueo, si hay carros parqueados y los dueños nunca se van, entonces no tienen espacio para nuevos carros. <strong>Y recuerden que deberían tener un 'heap' vacío al terminar su programa. Utilicen free y todo estará bien.</strong></p>
-<h2 id="calificacion">Calificación</h2>
-<p>Por favor actualizar siempre la versión del CLI de autograders:</p>
-<div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
-</code></pre></div>
-<p>Como en todos los demás laboratorios, hay un autograder y este no es la excepción. El <strong>staff</strong> trabajo bastante para que su experiencia en este curso sea de las mejores. Entregaremos este lab de la misma manera que el pasado.</p>
-<p>Navegue hacia la carpeta donde tiene sus archivos, haga un ls y asegurese que le aparece el archivo autograders.json; si aparecio, esta en el lugar correcto. Ahora puede entregar su laboratorio con...</p>
-<div class="highlight"><pre><span></span><code>autograder --upload
-</code></pre></div>
-<p>Espera un minuto aprox. y luego puede ver sus resultados con...</p>
-<div class="highlight"><pre><span></span><code>autograder --stats
-</code></pre></div>
-<p>Si le aparece Queued: True, espere un par de minutos y luego repita el <code>autograder --stats</code> únicamente. Al terminar todo, suba el link de su repositorio al GES.</p>
 
               
             </article>
@@ -654,6 +762,41 @@ Congratulations! It works!
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../lab01/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 01: C y GDB" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              01: C y GDB
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../tutorials/autograders/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Autograders" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Autograders
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
