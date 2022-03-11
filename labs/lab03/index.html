@@ -19,7 +19,7 @@
     
     
       
-        <title>Lab 3 - RISC-V - Estructura de Máquinas</title>
+        <title>03: RISC-V - Estructura de Máquinas</title>
       
     
     
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab 3 - RISC-V
+              03: RISC-V
             
           </span>
         </div>
@@ -184,13 +184,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../lab00/" class="md-tabs__link">
+      <a href="../lab00/" class="md-tabs__link md-tabs__link--active">
         Laboratorios
       </a>
     </li>
@@ -277,12 +279,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -336,6 +340,156 @@
       <a href="../lab02/" class="md-nav__link">
         02: C Avanzado
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          03: RISC-V
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        03: RISC-V
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecturas" class="md-nav__link">
+    Lecturas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-a-lenguaje-ensamblador-risc-v" class="md-nav__link">
+    Introducción a Lenguaje Ensamblador RISC-V
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción a Lenguaje Ensamblador RISC-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cosas-basicas-en-jupiter" class="md-nav__link">
+    Cosas básicas en Jupiter:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-familiarizandote-con-jupiter" class="md-nav__link">
+    Ejercicio 1: Familiarizándote con Jupiter
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 1: Familiarizándote con Jupiter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preguntas" class="md-nav__link">
+    Preguntas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-traduciendo-de-c-a-risc-v" class="md-nav__link">
+    Ejercicio 2: Traduciendo de C a RISC-V
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 2: Traduciendo de C a RISC-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preguntas_1" class="md-nav__link">
+    Preguntas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-factorial" class="md-nav__link">
+    Ejercicio 3: Factorial.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-4-list-map-extra" class="md-nav__link">
+    Ejercicio 4: List Map (Extra)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calificacion" class="md-nav__link">
+    Calificación
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -465,8 +619,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cosas-basicas-en-v-sim" class="md-nav__link">
-    Cosas básicas en V-Sim:
+  <a href="#cosas-basicas-en-jupiter" class="md-nav__link">
+    Cosas básicas en Jupiter:
   </a>
   
 </li>
@@ -524,8 +678,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-4-list-map" class="md-nav__link">
-    Ejercicio 4: List Map
+  <a href="#ejercicio-4-list-map-extra" class="md-nav__link">
+    Ejercicio 4: List Map (Extra)
   </a>
   
 </li>
@@ -601,7 +755,7 @@ echo export\ PATH=/opt/jupiter/bin:\$PATH &gt;&gt; ~/.bashrc
 source ~/.bashrc
 </code></pre></div>
 <p>Después de esto, ya debería poder usar el comando <code>jupiter</code>. Si no, la vieja y confiable, reinicie su computadora.</p>
-<h3 id="cosas-basicas-en-v-sim">Cosas básicas en V-Sim:</h3>
+<h3 id="cosas-basicas-en-jupiter">Cosas básicas en Jupiter:</h3>
 <p>A continuación, les vamos a dar una pequeña guía de Jupiter, para más información visiten la página de documentación en <a href="https://jupitersim.gitbook.io/jupiter/">https://jupitersim.gitbook.io/jupiter/</a>.</p>
 <ul>
 <li>Pueden crear archivos, editarlos y borrarlos desde la pestaña "Editor".</li>
@@ -670,7 +824,7 @@ source ~/.bashrc
 </ol>
 <h2 id="ejercicio-3-factorial">Ejercicio 3: Factorial.</h2>
 <p>En este ejercicio, tienen que implementar la función de factorial en RISC-V que toma un sólo parámetro entero <strong>n</strong> y retorna <strong>n!</strong>. Pueden encontrar un esqueleto de esta función en el archivo <strong>factorial.s</strong>, que se encuentra en la carpeta <strong>ex3</strong> del repositorio que clonaron. Ustedes sólo necesitan agregar las instrucciones bajo la etiqueta <code>factorial</code>, y el argumento que se pasa a la función va en el registro <code>a0</code>. Pueden resolver este problema ya sea de forma recursiva o iterativa. Asegúrense de que su función retorne de forma apropidada lo siguiente <strong>3!</strong> = <strong>6</strong>, <strong>7!</strong> = <strong>5040</strong> y <strong>8!</strong> = <strong>40320</strong>.</p>
-<h2 id="ejercicio-4-list-map">Ejercicio 4: List Map</h2>
+<h2 id="ejercicio-4-list-map-extra">Ejercicio 4: List Map (Extra)</h2>
 <p>Para este ejercicio van a utilizar el archivo <strong>list_map.s</strong> que se encuentra en la carpeta <strong>ex4</strong>. En este ejercicio, van a completar una función de "map" con listas encadenadas en RISC-V. La función se simplificará en mutar la lista en cuestión, es decir que tomará una lista encadenada como entrada y va a retornar la lista con los valores modificados. Nuestro procedimiento de "map" toma dos parámetros, el primero será la dirección del nodo "head" de una lista encadenada, cuyos valores son enteros de 32 bits. Entonces, en C, la estructura se define como:</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
@@ -692,17 +846,7 @@ source ~/.bashrc
 </code></pre></div>
 <p>La primera línea es la lista original, y la segunda es la lista modificada después de que se aplicó la función "map".</p>
 <h2 id="calificacion">Calificación</h2>
-<p>Por favor actualizar siempre la versión del CLI de autograders:</p>
-<div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
-</code></pre></div>
-<p>Como en todos los demás laboratorios, hay un autograder y este no es la excepción. El <strong>staff</strong> trabajo bastante para que su experiencia en este curso sea de las mejores. Entregaremos este lab de la misma manera que el pasado.</p>
-<p>Navegue hacia la carpeta donde tiene sus archivos, haga un ls y asegurese que le aparece el archivo autograders.json; si aparecio, esta en el lugar correcto. Ahora puede entregar su laboratorio con...</p>
-<div class="highlight"><pre><span></span><code>autograder --upload
-</code></pre></div>
-<p>Espera un minuto aprox. y luego puede ver sus resultados con...</p>
-<div class="highlight"><pre><span></span><code>autograder --stats
-</code></pre></div>
-<p>Si le aparece Queued: True, espere un par de minutos y luego repita el <code>autograder --stats</code> únicamente. Al terminar todo, suba el link de su repositorio al GES.</p>
+<p>Por favor subir el link de su repositorio al GES ! de lo contrario la calificación será de 0.</p>
 
               
             </article>
@@ -712,6 +856,41 @@ source ~/.bashrc
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../lab02/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 02: C Avanzado" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              02: C Avanzado
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../tutorials/autograders/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Autograders" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Autograders
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
