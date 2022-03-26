@@ -19,7 +19,7 @@
     
     
       
-        <title>Proyecto 1: C y RISC-V - Estructura de Máquinas</title>
+        <title>01: C y RISC-V - Estructura de Máquinas</title>
       
     
     
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Proyecto 1: C y RISC-V
+              01: C y RISC-V
             
           </span>
         </div>
@@ -192,6 +192,24 @@
     <li class="md-tabs__item">
       <a href="../../labs/lab00/" class="md-tabs__link">
         Laboratorios
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Proyectos
       </a>
     </li>
   
@@ -367,23 +385,354 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
       
         <label class="md-nav__link" for="__nav_3">
+          Proyectos
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Proyectos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Proyectos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          01: C y RISC-V
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        01: C y RISC-V
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-de-conocimiento" class="md-nav__link">
+    Requisitos de Conocimiento
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecturas-recomendadas" class="md-nav__link">
+    Lecturas Recomendadas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risc-v-green-card" class="md-nav__link">
+    RISC-V Green Card
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-del-proyecto" class="md-nav__link">
+    Estructura del Proyecto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-emulador-de-risc-v" class="md-nav__link">
+    El emulador de RISC-V
+  </a>
+  
+    <nav class="md-nav" aria-label="El emulador de RISC-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-de-instrucciones" class="md-nav__link">
+    Set de Instrucciones
+  </a>
+  
+    <nav class="md-nav" aria-label="Set de Instrucciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipo-r" class="md-nav__link">
+    Tipo R
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-i" class="md-nav__link">
+    Tipo I
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-s" class="md-nav__link">
+    Tipo S
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-sb" class="md-nav__link">
+    Tipo SB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-u" class="md-nav__link">
+    Tipo U
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-uj" class="md-nav__link">
+    Tipo UJ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructura-del-codigo" class="md-nav__link">
+    Estructura del Código
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones-en-la-linea-de-comandos" class="md-nav__link">
+    Opciones en la línea de comandos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-1" class="md-nav__link">
+    Parte 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requisitos-parte-1" class="md-nav__link">
+    Requisitos Parte 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probando-la-parte-1" class="md-nav__link">
+    Probando la Parte 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calificacion-parte-1" class="md-nav__link">
+    Calificación Parte 1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-2" class="md-nav__link">
+    Parte 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requisitos" class="md-nav__link">
+    Requisitos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probando-la-parte-2" class="md-nav__link">
+    Probando la Parte 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calificacion-parte-2" class="md-nav__link">
+    Calificación Parte 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preguntas-frecuentes" class="md-nav__link">
+    Preguntas Frecuentes
+  </a>
+  
+    <nav class="md-nav" aria-label="Preguntas Frecuentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-como-puedo-empezar" class="md-nav__link">
+    1. ¿Cómo puedo empezar?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-en-mi-maquina-local-saco-100-y-en-el-autograder-0-por-que" class="md-nav__link">
+    2. En mi máquina local saco 100% y en el autograder 0, ¿por qué?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-me-da-floating-point-exception-core-dumped-al-hacer-algunas-operaciones-aritmeticas-por-que" class="md-nav__link">
+    3. Me da Floating-point Exception (core dumped) al hacer algunas operaciones aritméticas, ¿por qué?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-en-la-parte-1-el-formato-nunca-es-el-esperado-por-las-pruebas-por-que" class="md-nav__link">
+    4. En la parte 1 el formato nunca es el esperado por las pruebas, ¿por qué?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-puedo-crear-mis-propias-funciones" class="md-nav__link">
+    5. ¿Puedo crear mis propias funciones?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
           Tutoriales
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Tutoriales" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+        <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Tutoriales
         </label>
@@ -786,7 +1135,7 @@ utils.h
 <li><code>utils.c</code>: Archivo auxiliar que contendrá varias funciones de ayuda para la parte 1 y 2 del proyecto.</li>
 <li><code>part2.c</code>: Este es el archivo que van a modificar en la parte 2 del proyecto.</li>
 </ul>
-<p><strong>Ustedes <span style="color: red">NO</span> pueden crear otros archivos ni crear archivos de cabecera <code>.h</code>. Si necesitan agregar funciones de ayuda, por favor colóquenlas en los archivos C correspondientes (<code>utils.c</code>, <code>part1.c</code>, <code>part2.c</code>). Si ustedes no siguen estas recomendaciones, su código no va a compilar en el autograder y obtendrán 0 como nota</strong>.</p>
+<p><strong>Ustedes <span style="color: red">NO</span> pueden crear otros archivos ni crear archivos de cabecera <code>.h</code>. Si necesitan agregar funciones de ayuda, por favor colóquenlas en los archivos C correspondientes (<code>utils.c</code>, <code>part1.c</code>, <code>part2.c</code>). Si ustedes no siguen estas instrucciones, obtendrán 0 como nota aunque su proyecto corra perfectamente</strong>.</p>
 <p>Otros archivos que necesitan consultar detenidamente para entender el proyecto:</p>
 <ul>
 <li><code>type.h</code>: Archivo de cabecera que tiene los tipos de datos que ustedes van a utilizar.</li>
@@ -1343,7 +1692,7 @@ HEADERS := types.h utils.h riscv.h
 
 ASM_TESTS := simple multiply random test_name
 </code></pre></div>
-<p>Si su instrucción desensamblada no es igual a la esperada, ustedes obtendrán la diferencia entre el output esperado y el output que devolvieron. <strong>Asegúrense de al menos pasar esta prueba antes de enviar la parte 1 al autograder</strong>.</p>
+<p>Si su instrucción desensamblada no es igual a la esperada, ustedes obtendrán la diferencia entre el output esperado y el output que devolvieron. <strong>Asegúrense de al menos pasar esta prueba antes de seguir avanzando</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Output Esperado</span>
 &lt; <span class="m">00001014</span>: lui x8, <span class="m">1048575</span>
 ---
@@ -1351,11 +1700,7 @@ ASM_TESTS := simple multiply random test_name
 &gt; <span class="m">00001014</span>: Invalid Instruction: 0xfffff437
 </code></pre></div>
 <h3 id="calificacion-parte-1">Calificación Parte 1</h3>
-<p><strong>Recuerden que para la primera parte, sólo deben modificar los archivos <em>part1.c</em> y <em>utils.c</em></strong>, esto representa el 50% de su nota así que pueden enviar sus archivos al autograder para verificar su nota de esta parte haciendo:</p>
-<div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
-autograder --upload
-</code></pre></div>
-<p><strong>Si están trabajando en pareja, <span style="color: red">AMBOS</span> miembros del grupo tienen que clonar el repositorio y hacer upload haciendo login con su correo de galileo</strong>.</p>
+<p><strong>Recuerden que para la primera parte, sólo deben modificar los archivos <em>part1.c</em> y <em>utils.c</em></strong>, esto representa el 50% de su nota. Pueden enviar subir sus archivos a GitHub haciendo <code>commit</code> y luego <code>push</code>.</p>
 <h2 id="parte-2">Parte 2</h2>
 <p>Su segunda tarea es completar el emulador implementando los métodos <strong><em>execute_instruction()</em></strong>. <strong><em>execute()</em></strong>'s, <strong><em>store()</em></strong> y <strong><em>load()</em></strong> del archivo <strong><em>part2.c</em></strong>.</p>
 <h3 id="requisitos">Requisitos</h3>
@@ -1391,11 +1736,8 @@ Ahora compilen su test de ensamblador y ejecútenlo escribiendo el siguiente com
 </code></pre></div>
 <p>Ustedes pueden, y en efecto deben, escribir sus propios test para probar instrucciones específicas y todos los posibles casos. Además, ustedes deben compilar y probar su código después de cada grupo de instrucciones implementadas. De lo contrario será muy difícil probar su proyecto si esperan hasta el final.</p>
 <h3 id="calificacion-parte-2">Calificación Parte 2</h3>
-<p>Al completar esta parte ustedes sólo deberían haber modificado los archivos <code>part1.c</code>, <code>part2.c</code> y <code>utils.c</code>, deben realizar commit de todos los cambios realizados y enviar el link de su repositorio por medio del GES. Para obtener su nota completa tienen que hacer:</p>
-<div class="highlight"><pre><span></span><code>pip3 install --upgrade autograders-cli
-autograder --upload
-</code></pre></div>
-<p><strong>Si están trabajando en pareja, <span style="color: red">AMBOS</span> miembros del grupo tienen que clonar el repositorio y hacer upload haciendo login con su correo de galileo</strong>.</p>
+<p>Al completar esta parte ustedes sólo deberían haber modificado los archivos <code>part1.c</code>, <code>part2.c</code> y <code>utils.c</code>, deben realizar <code>commit</code> de todos los cambios realizados, luego <code>push</code> para que quede almacenado en GitHub y enviar el link de su repositorio por medio del GES <strong>para obtener su nota completa</strong></p>
+<p><strong>Si están trabajando en pareja, <span style="color: red">AMBOS</span> miembros del grupo tiene que enviar el link del repositorio al GES</strong>.</p>
 <h2 id="preguntas-frecuentes">Preguntas Frecuentes</h2>
 <h3 id="1-como-puedo-empezar">1. ¿Cómo puedo empezar?</h3>
 <p>Lo mejor es revisar <code>types.h</code> y analizar la estructura <code>Instruction</code> para empezar a trabajar en la <code>parte1.c</code>, por ejemplo como acceder a cada campo de cada diferente tipo de instrucción y al opcode también. Por ejemplo, para acceder al <code>opcode</code> pueden utilizar:</p>
@@ -1451,6 +1793,41 @@ int z = x / y;
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../../labs/lab03/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 03: RISC-V" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              03: RISC-V
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../tutorials/autograders/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Autograders" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Autograders
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
