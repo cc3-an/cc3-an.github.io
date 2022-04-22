@@ -12,14 +12,14 @@
         <meta name="author" content="CC-3">
       
       
-        <link rel="canonical" href="https://cc3-an.github.io/tutorials/install/">
+        <link rel="canonical" href="https://cc3-an.github.io/labs/lab10/">
       
       <link rel="icon" href="../../assets/img/common/logo.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
     
     
       
-        <title>Máquina Virtual - Estructura de Máquinas</title>
+        <title>Lab 7 - SIMD Intrinsics y Loop Unrolling - Estructura de Máquinas</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tutorial-de-instalacion-de-material" class="md-skip">
+        <a href="#lab-7-simd-intrinsics-y-loop-unrolling" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Máquina Virtual
+              Lab 7 - SIMD Intrinsics y Loop Unrolling
             
           </span>
         </div>
@@ -200,7 +200,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../labs/lab00/" class="md-tabs__link">
+      <a href="../lab00/" class="md-tabs__link">
         Laboratorios
       </a>
     </li>
@@ -226,15 +226,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../autograders/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../tutorials/autograders/" class="md-tabs__link">
         Tutoriales
       </a>
     </li>
@@ -321,7 +319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../labs/lab00/" class="md-nav__link">
+      <a href="../lab00/" class="md-nav__link">
         00: Git
       </a>
     </li>
@@ -335,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../labs/lab01/" class="md-nav__link">
+      <a href="../lab01/" class="md-nav__link">
         01: C y GDB
       </a>
     </li>
@@ -349,7 +347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../labs/lab02/" class="md-nav__link">
+      <a href="../lab02/" class="md-nav__link">
         02: C Avanzado
       </a>
     </li>
@@ -363,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../labs/lab03/" class="md-nav__link">
+      <a href="../lab03/" class="md-nav__link">
         03: RISC-V
       </a>
     </li>
@@ -377,7 +375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../labs/lab05/" class="md-nav__link">
+      <a href="../lab05/" class="md-nav__link">
         04: Logisim
       </a>
     </li>
@@ -391,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../labs/lab06/" class="md-nav__link">
+      <a href="../lab06/" class="md-nav__link">
         05: Logisim Avanzado
       </a>
     </li>
@@ -405,7 +403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../labs/lab07/" class="md-nav__link">
+      <a href="../lab07/" class="md-nav__link">
         06: Logisim ALU
       </a>
     </li>
@@ -487,14 +485,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
@@ -517,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../autograders/" class="md-nav__link">
+      <a href="../../tutorials/autograders/" class="md-nav__link">
         Autograders
       </a>
     </li>
@@ -529,134 +525,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Máquina Virtual
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../tutorials/install/" class="md-nav__link">
         Máquina Virtual
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#la-mejor-opcion-maquina-virtual" class="md-nav__link">
-    La mejor opción: Máquina virtual
-  </a>
-  
-    <nav class="md-nav" aria-label="La mejor opción: Máquina virtual">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#credenciales" class="md-nav__link">
-    Credenciales
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#instalacion-nativa" class="md-nav__link">
-    Instalación Nativa
-  </a>
-  
-    <nav class="md-nav" aria-label="Instalación Nativa">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instalar-git" class="md-nav__link">
-    Instalar git
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instalar-java" class="md-nav__link">
-    Instalar Java
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instalar-python-3" class="md-nav__link">
-    Instalar Python 3
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instalar-pip" class="md-nav__link">
-    Instalar pip
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#curl" class="md-nav__link">
-    cURL
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cgdb" class="md-nav__link">
-    CGDB
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mi-computadora-no-es-muy-potente-que-puedo-hacer" class="md-nav__link">
-    Mi computadora no es muy potente, ¿Qué puedo hacer?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#soy-demasiado-fanatico-de-windows-10-hay-alguna-opcion-para-mi" class="md-nav__link">
-    Soy demasiado fanático de Windows 10, ¿hay alguna opción para mí?
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -695,90 +568,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#la-mejor-opcion-maquina-virtual" class="md-nav__link">
-    La mejor opción: Máquina virtual
-  </a>
-  
-    <nav class="md-nav" aria-label="La mejor opción: Máquina virtual">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#credenciales" class="md-nav__link">
-    Credenciales
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#instalacion-nativa" class="md-nav__link">
-    Instalación Nativa
-  </a>
-  
-    <nav class="md-nav" aria-label="Instalación Nativa">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instalar-git" class="md-nav__link">
-    Instalar git
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instalar-java" class="md-nav__link">
-    Instalar Java
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instalar-python-3" class="md-nav__link">
-    Instalar Python 3
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instalar-pip" class="md-nav__link">
-    Instalar pip
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#curl" class="md-nav__link">
-    cURL
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cgdb" class="md-nav__link">
-    CGDB
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mi-computadora-no-es-muy-potente-que-puedo-hacer" class="md-nav__link">
-    Mi computadora no es muy potente, ¿Qué puedo hacer?
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#soy-demasiado-fanatico-de-windows-10-hay-alguna-opcion-para-mi" class="md-nav__link">
-    Soy demasiado fanático de Windows 10, ¿hay alguna opción para mí?
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-familiarizandose-con-las-funciones-simd" class="md-nav__link">
+    Ejercicio 1: Familiarizándose con las funciones SIMD.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-escribiendo-codigo-simd" class="md-nav__link">
+    Ejercicio 2: Escribiendo Código SIMD
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-loop-unrolling" class="md-nav__link">
+    Ejercicio 3: Loop Unrolling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calificacion" class="md-nav__link">
+    Calificación
   </a>
   
 </li>
@@ -796,66 +622,127 @@
               
                 
 
-<h1 id="tutorial-de-instalacion-de-material">Tutorial de Instalación de Material</h1>
-<p>El objetivo de este tutorial es dejar preparado el material que necesitarán para los laboratorios y proyectos.</p>
-<h2 id="la-mejor-opcion-maquina-virtual">La mejor opción: Máquina virtual</h2>
-<p>Descarguen la siguiente máquina virtual y ábranla con VMware. Recuerde que usando <a href="https://www.vmware.com/products/workstation-player.html">VMware Player</a> (gratuito, sin necesidad de licencia) puede abrir y utilizar máquinas virtuales ya hechas.</p>
-<p><a href="https://drive.google.com/file/d/1r9uVabP9MC7fflk8q76j2ThJIw2U7ZhX/view?usp=sharing">Descargar máquina virtual desde Google Drive</a></p>
-<h3 id="credenciales">Credenciales</h3>
+<h1 id="lab-7-simd-intrinsics-y-loop-unrolling">Lab 7 - SIMD Intrinsics y Loop Unrolling</h1>
+<h2 id="objetivos">Objetivos</h2>
 <ul>
-<li><strong>Usuario</strong>: student</li>
-<li><strong>Password</strong>: student</li>
+<li>Aprender acerca de las instrucciones SIMD y hacer data level parallelism.</li>
+<li>Escribir código con funciones SIMD para hacer ciertas optimizaciones.</li>
+<li>Aprender acerca de loop unrolling y por qué este funciona.</li>
 </ul>
-<p>La máquina virtual ya trae todo lo necesario para el semestre.</p>
-<h2 id="instalacion-nativa">Instalación Nativa</h2>
-<p>Para trabajar nativo necesitarán Ubuntu 16 o 18 en inglés, se recomienda 18. En Ubuntu 20 no podrán utilizar Jupiter.</p>
-<p>Si su Ubuntu no se encuentra en inglés, tendra problemas en el lab 2 (cgdb). Puede cambiar su idioma, o buscar la solución al problema en Google.</p>
-<p>Si todavía no tiene Ubuntu instalado aquí hay un <a href="https://www.youtube.com/watch?v=h9cPABYSJSI">tutorial para dual boot</a>. Ponga mucha atención, sea muy cuidadoso y sobre todo haga un backup de su información importante.</p>
-<p>Wow... parece que son bastantes instrucciones, ¡Sería más fácil usar la máquina virtual!</p>
-<h3 id="instalar-git">Instalar git</h3>
-<div class="highlight"><pre><span></span><code>sudo apt update
-sudo apt install git
+<h2 id="preparacion">Preparación</h2>
+<p>Tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/a/X0ZZNHpp">aquí</a>. Recuerden que tienen que aprovechar el uso de Git y subir el link de su repositorio al GES, así como al autograder, de lo contrario su nota será de <strong>0</strong>.</p>
+<h2 id="ejercicio-1-familiarizandose-con-las-funciones-simd">Ejercicio 1: Familiarizándose con las funciones SIMD.</h2>
+<p>Dado el gran número disponible de instrucciones SIMD, queremos que ustedes aprendan cómo encontrar aquellas que necesitarán para determinadas aplicaciones. Intel proporciona una variedad de herramientas relacionadas a intrinsics, las cuales pueden encontrar <a href="https://software.intel.com/en-us/isa-extensions">aquí</a> (estas no son necesarias para este laboratorio). Nosotros estamos, particularmente, interesados en la <a href="https://software.intel.com/sites/landingpage/IntrinsicsGuide/">Guía Intel Intrinsics</a>. Abran esta página y, una vez estén dentro, hagan click en todos los checkboxes que empiecen con <strong><em>SSE</em></strong> (desde SSE hasta SSE4.2). Hagan su mejor esfuerzo para interpretar esta nueva sintaxis y terminología.</p>
+<p>Encuentren la instrucción de 128 bits para las siguientes operaciones SIMD:</p>
+<ol>
+<li>Cuatro divisiones de punto flotante con precisión simple (float):</li>
+<li><strong>a</strong>) <code>__m128 _mm_div_ss(__m128 a, __m128 b)</code></li>
+<li><strong>b</strong>) <code>__m128 _mm_cvtsi64_ss(__m128 a, __int64 b)</code></li>
+<li><strong>c</strong>) <code>float _mm_cvtss_f32(__m128 a)</code></li>
+<li><strong>d</strong>) <code>__m128_mm_div_ps(__mm128 a, __mm128 b)</code></li>
+<li><strong>e</strong>) <code>__m128 _mm_load_ps(float const* mem_addr)</code></li>
+<li><strong>f</strong>) <code>__m128 _mm_loadu_ps(float const* mem_addr)</code></li>
+<li>Dieciséis operaciones de máximo sobre enteros de 8 bits con signo (char):</li>
+<li><strong>a</strong>) <code>__m128i _mm_max_epi16 (__m128i a, __m128i b)</code></li>
+<li><strong>b</strong>) <code>__m128i _mm_max_epi32 (__m128i a, __m128i b)</code></li>
+<li><strong>c</strong>) <code>__m128i _mm_max_epi8 (__m128i a, __m128i b)</code></li>
+<li><strong>d</strong>) <code>__m128i _mm_max_epu16 (__m128i a, __m128i b)</code></li>
+<li><strong>e</strong>) <code>__m128i _mm_max_epu32 (__m128i a, __m128i b)</code></li>
+<li><strong>f</strong>) <code>__m128i _mm_max_epu8 (__m128i a, __m128i b)</code></li>
+<li><strong>g</strong>) <code>__m128d _mm_max_pd (__m128d a, __m128d b)</code></li>
+<li><strong>h</strong>) <code>__m64 _mm_max_pi16 (__m64 a, __m64 b)</code></li>
+<li><strong>i</strong>) <code>__m128 _mm_max_ps (__m128 a, __m128 b)</code></li>
+<li><strong>j</strong>) <code>__m64 _mm_max_pu8 (__m64 a, __m64 b)</code></li>
+<li><strong>k</strong>) <code>__m128d _mm_max_sd (__m128d a, __m128d b)</code></li>
+<li><strong>l</strong>) <code>__m128 _mm_max_ss (__m128 a, __m128 b)</code></li>
+<li>Shift right aritmético sobre ocho enteros de 16 bits con signo (short):</li>
+<li><strong>a</strong>) <code>__m128i _mm_add_epi16(__m128i a, __m128i b)</code></li>
+<li><strong>b</strong>) <code>__m128i _mm_maskz_abs_epi8(__mmask16 k, __m128i a)</code></li>
+<li><strong>c</strong>) <code>__m128i _mm_srai_epi16(__m128i a, __m128i count)</code></li>
+<li><strong>d</strong>) <code>__m128i _mm_slli_epi64(__m128i a, int count)</code></li>
+<li><strong>e</strong>) <code>__m128i _mm_srai_epi32(__m128i a, __m128i count)</code></li>
+<li><strong>f</strong>) <code>__m128i _mm_sra_epi16(__m128i a, __m128i count)</code></li>
+</ol>
+<p>Escriban sus respuestas en el archivo <strong>ex1.txt</strong>. Ustedes tienen que colocar únicamente la letra de la opción que consideren correcta; ejemplo de un archivo correcto:</p>
+<div class="highlight"><pre><span></span><code>1: a
+2: a
+3: a
 </code></pre></div>
-<h3 id="instalar-java">Instalar Java</h3>
-<div class="highlight"><pre><span></span><code>sudo apt update
-sudo apt install default-jdk
+<h2 id="ejercicio-2-escribiendo-codigo-simd">Ejercicio 2: Escribiendo Código SIMD</h2>
+<p>Para el ejercicio 2, ustedes deben vectorizar el siguiente código para lograr obtener, aproximadamente, cuatro veces la velocidad en comparación a la implementación que se muestra a continuación:</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum_naive</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<h3 id="instalar-python-3">Instalar Python 3</h3>
-<div class="highlight"><pre><span></span><code>sudo apt update
-sudo apt install software-properties-common
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt update
-sudo apt install python3.7
+<p>Pueden encontrar útiles las siguientes intrinsics :</p>
+<table>
+<thead>
+<tr>
+<th align="center">SIMD</th>
+<th align="center">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>__m128i _mm_setzero_si128( )</code></td>
+<td align="center">devuelve un vector de 128 bits de ceros</td>
+</tr>
+<tr>
+<td align="center"><code>__m128i _mm_loadu_si128(__m128i *p)</code></td>
+<td align="center">devuelve el vector de 128 bits guardado en el puntero <code>p</code></td>
+</tr>
+<tr>
+<td align="center"><code>__m128i _mm_add_epi32(__m128i a, __m128i b)</code></td>
+<td align="center">devuelve el vector (<span class="arithmatex">\(a_0 + b_0\)</span>, <span class="arithmatex">\(a_1 + b_1\)</span>, <span class="arithmatex">\(a_2 + b_2\)</span>, <span class="arithmatex">\(a3 + b3\)</span>)</td>
+</tr>
+<tr>
+<td align="center"><code>void _mm_storeu_si128(__m128i *p,__m128i a)</code></td>
+<td align="center">guarda el vector de 128 bits representado por el puntero <code>p</code></td>
+</tr>
+</tbody>
+</table>
+<p>El archivo que deben modificar es <strong>sum.c</strong>. Usen las intrinsics SSE para implementar la función <code>sum_vectorized()</code>. Para compilar su código, ejecuten el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>make sum
 </code></pre></div>
-<h3 id="instalar-pip">Instalar pip</h3>
-<div class="highlight"><pre><span></span><code>sudo apt update
-sudo apt install python3-pip
+<p>Para ejecutar su código, corran el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>./sum
 </code></pre></div>
-<p>Las versiones recientes de Python suelen incluir todo lo que necesitamos (en la maquina virtual ya revisamos y esta todo lo que necesita! en serio, use la máquina virtual!), verifiquémoslo abriendo la terminal de Python con el comando <code>python3</code>, luego en la terminal escribiremos los siguientes comandos</p>
-<div class="highlight"><pre><span></span><code>import os
-import sys
-import requests
-import zipfile
+<h2 id="ejercicio-3-loop-unrolling">Ejercicio 3: Loop Unrolling</h2>
+<p>Afortunadamente, aún pueden obtener más mejoras en el rendimiento. Cuidadosamente, tomen el código que crearon en el ejercicio previo y hagan un "unroll" del vector SIMD. Esto debería mejorar el rendimiento en , aproximadamente, un factor de dos. Como un ejemplo de un "loop unroll", consideren la función <code>sum_unrolled()</code> que se les proporciona:</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum_unrolled</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// unrolled loop</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// tail case</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>Si ninguno nos dio problema, Python esta listo; si alguno fallo, lo instalaremos con pip</p>
-<div class="highlight"><pre><span></span><code>pip3 install nombreDelPaqueteQueDioError
+<p>Además, siéntanse libres de darle un vistazo al artículo de Wikipedia: <a href="http://en.wikipedia.org/wiki/Loop_unrolling">Loop Unrolling</a>, para más información. Dentro de <strong>sum.c</strong>, copien su código de <code>sum_vectorized()</code> hacia <code>sum_vectorized_unrolled()</code> y hagan un unroll de cuatro. Para compilar su código, corran el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>make sum
 </code></pre></div>
-<h3 id="curl">cURL</h3>
-<p>Finalmente instalamos curl</p>
-<div class="highlight"><pre><span></span><code>sudo apt update
-sudo apt install curl
+<p>Para ejecutar su código, corran el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>./sum
 </code></pre></div>
-<h3 id="cgdb">CGDB</h3>
-<p>Y terminamos instalando cgdb</p>
-<div class="highlight"><pre><span></span><code>sudo apt update
-sudo apt install cgdb
+<h2 id="calificacion">Calificación</h2>
+<p>Al terminar, deben de subir su laboratorio al autograder con:</p>
+<div class="highlight"><pre><span></span><code>./submit &lt;TOKEN&gt;
 </code></pre></div>
-<p>Casi listo! Cuando lleguemos al lab 3 y al lab 5 alli le aparecerán las instrucciones para instalar el software faltante.</p>
-<h2 id="mi-computadora-no-es-muy-potente-que-puedo-hacer">Mi computadora no es muy potente, ¿Qué puedo hacer?</h2>
-<p>Puede probar con algun IDE en línea como <a href="https://repl.it/">repl.it</a>. Aquí podrá trabajar un poco de C y entregar su lab 0 y lab 1, pero al llegar al lab 2 comienzan los problemas. Estamos tratando de buscar herramientas para trabajar en línea, pero haga todo lo posible por trabajar ya sea en máquina virtual o en Ubuntu nativo.</p>
-<h2 id="soy-demasiado-fanatico-de-windows-10-hay-alguna-opcion-para-mi">Soy demasiado fanático de Windows 10, ¿hay alguna opción para mí?</h2>
-<p>Puede <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#manual-installation-steps">instalar WSL</a> en su máquina. Luego de ese montón de pasos, tendrá que instalar todo el material de arriba. No haga esto, mejor use la máquina virtual.</p>
-<p>Esta es una opción que no aconsejamos para nada. Si esta en Windows, no le podremos ayudar con sus problemas, solo le sugeriremos que... ¡adivinó! use la máquina virtual.</p>
+<p>No olviden subir el link de su repositorio en Github al GES.</p>
 
               
             </article>
@@ -865,26 +752,6 @@ sudo apt install cgdb
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Pie">
-      
-        
-        <a href="../autograders/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Autograders" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Anterior
-              </span>
-              Autograders
-            </div>
-          </div>
-        </a>
-      
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

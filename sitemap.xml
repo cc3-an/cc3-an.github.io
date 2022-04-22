@@ -2,57 +2,92 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://cc3-an.github.io/</loc>
-         <lastmod>2022-03-26</lastmod>
+         <lastmod>2022-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cc3-an.github.io/labs/lab00/</loc>
-         <lastmod>2022-03-26</lastmod>
+         <lastmod>2022-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cc3-an.github.io/labs/lab01/</loc>
-         <lastmod>2022-03-26</lastmod>
+         <lastmod>2022-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cc3-an.github.io/labs/lab02/</loc>
-         <lastmod>2022-03-26</lastmod>
+         <lastmod>2022-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cc3-an.github.io/labs/lab03/</loc>
-         <lastmod>2022-03-26</lastmod>
+         <lastmod>2022-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cc3-an.github.io/labs/lab04/</loc>
-         <lastmod>2022-03-26</lastmod>
+         <lastmod>2022-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cc3-an.github.io/labs/lab05/</loc>
-         <lastmod>2022-03-26</lastmod>
+         <lastmod>2022-04-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cc3-an.github.io/labs/lab06/</loc>
+         <lastmod>2022-04-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cc3-an.github.io/labs/lab07/</loc>
+         <lastmod>2022-04-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cc3-an.github.io/labs/lab08/</loc>
+         <lastmod>2022-04-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cc3-an.github.io/labs/lab09/</loc>
+         <lastmod>2022-04-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cc3-an.github.io/labs/lab10/</loc>
+         <lastmod>2022-04-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cc3-an.github.io/labs/lab11/</loc>
+         <lastmod>2022-04-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cc3-an.github.io/labs/lab12/</loc>
+         <lastmod>2022-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cc3-an.github.io/projects/pj01/</loc>
-         <lastmod>2022-03-26</lastmod>
+         <lastmod>2022-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cc3-an.github.io/projects/pj02/</loc>
-         <lastmod>2022-03-26</lastmod>
+         <lastmod>2022-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cc3-an.github.io/tutorials/autograders/</loc>
-         <lastmod>2022-03-26</lastmod>
+         <lastmod>2022-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cc3-an.github.io/tutorials/install/</loc>
-         <lastmod>2022-03-26</lastmod>
+         <lastmod>2022-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

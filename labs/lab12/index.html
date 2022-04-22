@@ -1,0 +1,873 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grandes Ideas en Arquitectura de Computadoras">
+      
+      
+        <meta name="author" content="CC-3">
+      
+      
+        <link rel="canonical" href="https://cc3-an.github.io/labs/lab12/">
+      
+      <link rel="icon" href="../../assets/img/common/logo.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Lab 12 - MapReduce y Spark - Estructura de Máquinas</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-12-mapreduce-y-spark" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Estructura de Máquinas" class="md-header__button md-logo" aria-label="Estructura de Máquinas" data-md-component="logo">
+      
+  <img src="../../assets/img/common/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Estructura de Máquinas
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 12 - MapReduce y Spark
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Inicio
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab00/" class="md-tabs__link">
+        Laboratorios
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../projects/pj01/" class="md-tabs__link">
+        Proyectos
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../tutorials/autograders/" class="md-tabs__link">
+        Tutoriales
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Estructura de Máquinas" class="md-nav__button md-logo" aria-label="Estructura de Máquinas" data-md-component="logo">
+      
+  <img src="../../assets/img/common/logo.png" alt="logo">
+
+    </a>
+    Estructura de Máquinas
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Laboratorios
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Laboratorios" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Laboratorios
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab00/" class="md-nav__link">
+        00: Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab01/" class="md-nav__link">
+        01: C y GDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab02/" class="md-nav__link">
+        02: C Avanzado
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab03/" class="md-nav__link">
+        03: RISC-V
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab05/" class="md-nav__link">
+        04: Logisim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab06/" class="md-nav__link">
+        05: Logisim Avanzado
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab07/" class="md-nav__link">
+        06: Logisim ALU
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Proyectos
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Proyectos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Proyectos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/pj01/" class="md-nav__link">
+        01: C y RISC-V
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/pj02/" class="md-nav__link">
+        02: CPU
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Tutoriales
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutoriales" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutoriales
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/autograders/" class="md-nav__link">
+        Autograders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/install/" class="md-nav__link">
+        Máquina Virtual
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables-globales" class="md-nav__link">
+    Variables Globales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-correr-spark" class="md-nav__link">
+    Como correr Spark
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-rapidos-de-depuracion" class="md-nav__link">
+    Tips rápidos de Depuración
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-y-otros-recursos" class="md-nav__link">
+    Documentación y Otros Recursos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-grafos-dirigidos-warm-up" class="md-nav__link">
+    Ejercicio 1: Grafos Dirigidos (Warm-Up)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-ejecutando-un-contador-de-palabras" class="md-nav__link">
+    Ejemplo: Ejecutando un contador de palabras
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-document-word-count" class="md-nav__link">
+    Ejercicio 2: Document Word Count
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-full-text-index-creation" class="md-nav__link">
+    Ejercicio 3: Full Text Index Creation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calificacion" class="md-nav__link">
+    Calificación
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="lab-12-mapreduce-y-spark">Lab 12 - MapReduce y Spark</h1>
+<h2 id="objetivos">Objetivos</h2>
+<ul>
+<li>Obtener experiencia ejecutando MapReduce y conseguir un conocimiento más profundo del paradigma MapReduce.</li>
+<li>Familiarizarse con Apache Spark y conseguir experiencia con Spark en una instalación local.</li>
+<li>Aprender a aplicar el paradigma MapReduce a Spark implementando ciertos algoritmos en Spark.</li>
+</ul>
+<h2 id="preparacion">Preparación</h2>
+<p>Tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/a/MVBf0hH7">aquí</a>. Recuerden que tienen que aprovechar el uso de Git y subir el link de su repositorio al GES, así como al autograder, de lo contrario su nota será de <strong>0</strong>.</p>
+<p><strong>Por favor revisen la sección de calificación para conocer el límite de submits que tienen</strong>.</p>
+<p>Cuando ya se haya creado el repositorio, pueden ejecutar los siguientes comandos abriendo una terminal (<kbd>CTRL</kbd><kbd>+</kbd><kbd>T</kbd>):</p>
+<div class="highlight"><pre><span></span><code>git clone &lt;link del repositorio&gt;
+</code></pre></div>
+<p>También, tienen que instalar el entorno de Python para este laboratorio. Para hacer esto, ejecuten lo siguiente:</p>
+<div class="highlight"><pre><span></span><code>conda env create -f environment.yml
+</code></pre></div>
+<p>Respondan al mensaje de instalar paquetes con "y" (sin comillas). Después de la instalación, corran el siguiente comando para activar el entorno virtual:</p>
+<div class="highlight"><pre><span></span><code>conda activate lab12
+</code></pre></div>
+<p>Cuando hayan terminado con el laboratorio pueden desactivar el entorno con:</p>
+<div class="highlight"><pre><span></span><code>conda deactivate
+</code></pre></div>
+<h2 id="introduccion">Introducción</h2>
+<p>En clase los hemos expuesto a cluster computing (en particular, al framework MapReduce), como funciona y se ejecuta, pero ahora es tiempo de que ganen experiencia corriendo programas utilizando estos frameworks. En este laboratorio los vamos a introducir a <strong>Spark</strong> para que practiquen escribiendo rutinas de Map y Reduce. Este framework tiene su propia página en linea, así que son libres de probar instalarlo localmente en sus computadoras personales, de todas formas es más fácil utilizar la máquina virtual que les proporcionamos para completar este laboratorio. Asegúrense de entender bien el framework de Spark, ya que lo vamos a estar utilizando en el último proyecto del curso.</p>
+<h3 id="variables-globales">Variables Globales</h3>
+<p>Cuando estén utilizando Spark o un framework de cluster computing, no utilicen variables globales. Esto mata el propósito de tener múltiples tareas corriendo en paralelo y crea cuellos de botella cuando múltiples tareas tratan de acceder a la misma variable global. Como resultado, muchos algoritmos son implementados sin el uso de variables globales. En Spark pueden hacer uso de variables <strong><em>broadcast</em></strong>, sin embargo, no las vamos a necesitar en este laboratorio.</p>
+<h3 id="como-correr-spark">Como correr Spark</h3>
+<p>Para este laboratorio y en el proyecto les vamos a dar un archivo que les va a ayudar a correr los archivos de Spark, pero cuando ustedes utilicen Spark afuera de la clase (que deberían), van a necesitar saber como correr Spark en la línea de comandos. Para poder correr un archivo de Spark <code>foo.py</code> (similar a como ustedes corren un programa de Python <code>foo.py</code>) solo utilicen el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>spark-submit foo.py <span class="c1"># corre el archivo de spark foo.py</span>
+</code></pre></div>
+<p>Si su archivo de Spark necesita argumentos (así como los archivos del laboratorio), el comando va a ser similar, pero ustedes van a pasar tantos argumentos como necesiten, así:</p>
+<div class="highlight"><pre><span></span><code>spark-submit foo.py arg1 arg2 <span class="c1"># pasa los argumentos arg1 y arg2 a foo.py</span>
+</code></pre></div>
+<p>Spark también incluye un intérprete que corre con la versión de Python que tengan instalada, y los va a dejar probar cualquier comando de Spark en el intérprete. El intérprete también puede recibir archivos (pasen los archivos con la bandera --py-files). Si están buscando solo correr el intérprete, el comando es el siguiente:</p>
+<div class="highlight"><pre><span></span><code>pyspark
+</code></pre></div>
+<p>Si quieren pre-cargar unos archivos (digamos a.py, b.py y c.py) pueden correr el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>pyspark --py-files a.py, b.py, c.py
+</code></pre></div>
+<h3 id="tips-rapidos-de-depuracion">Tips rápidos de Depuración</h3>
+<p>Si alguna vez se encuentran preguntándose porqué su salida es extraña o algo está mal cuando corren sus archivos de Spark, recuerden los siguientes tips:</p>
+<ul>
+<li>Asegúrense de utilizar la función de acción <a href="http://spark.apache.org/docs/latest/api/python/pyspark.html#pyspark.RDD.take">take</a>. La función <strong>take</strong> puede ser utilizada sobre cualquier objeto <em>RDD</em> (así que prácticamente cualquier objeto que ustedes quieran paralelizar). Esta función toma un argumento <code>N</code>, que es un entero y va a retornar los primeros <code>N</code> elementos dentro de su objeto RDD.</li>
+<li>También pueden probar sus funciones (map, reduce, etc) adentro del intérprete de Spark (pyspark, mencionado arriba). Simplemente importen la función que quieren probar en pyspark (explicado arriba) y van a ser capaces de correr la función y verificar que la salida es la que ustedes esperan. Aquí hay un pequeño ejemplo de <code>wordcount.py</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>pyspark --py-files wordcount.py <span class="c1"># corre el interprete de spark con el archivo wordcount.py</span>
+&gt;&gt;&gt; from wordcount import flat_map <span class="c1"># importa la funcion que quieren probar, flat_map, en este caso</span>
+&gt;&gt;&gt; <span class="nv">file</span> <span class="o">=</span> sc.sequenceFile<span class="o">(</span><span class="s2">&quot;data/billOfRights.txt.seq&quot;</span><span class="o">)</span> <span class="c1"># carga el archivo sequencial billOfRights.txt.seq</span>
+&gt;&gt;&gt; file.take<span class="o">(</span><span class="m">5</span><span class="o">)</span> <span class="c1"># retorna los primeros 5 elementos del RDD file</span>
+<span class="o">[(</span>&lt;doc_name_1&gt;, &lt;text <span class="m">1</span>&gt;<span class="o">)</span>, <span class="o">(</span>&lt;doc_name_2&gt;, &lt;text <span class="m">2</span>&gt;<span class="o">)</span>, ..., <span class="o">(</span>&lt;doc_name_5&gt;, &lt;text <span class="m">5</span>&gt;<span class="o">)]</span>
+&gt;&gt;&gt; <span class="nv">flat_map_output</span> <span class="o">=</span> file.flatMap<span class="o">(</span>flat_map<span class="o">)</span> <span class="c1"># corre la funcion importada flat_map sobre file</span>
+&gt;&gt;&gt; flat_map_output.take<span class="o">(</span><span class="m">5</span><span class="o">)</span> <span class="c1"># retorna las primeras 5 palabras en el documento.</span>
+<span class="o">[</span><span class="s1">&#39;Amendment&#39;</span>, <span class="s1">&#39;I&#39;</span>, <span class="s1">&#39;Congress&#39;</span>, <span class="s1">&#39;shall&#39;</span>, <span class="s1">&#39;make&#39;</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="documentacion-y-otros-recursos">Documentación y Otros Recursos</h3>
+<ul>
+<li>Una guía rápida de programación en Spark (hagan click en la pestaña de Python para ver el código de Python) está disponile <a href="http://spark.apache.org/docs/latest/rdd-programming-guide.html">aquí</a>.</li>
+<li>Aquí hay un <a href="#">link</a> a la documentación de la API. Para este laboratorio, no necesitan navegar mucho en ella, pero tomen un tiempo para verla cuando estén haciendo el proyecto.</li>
+</ul>
+<h2 id="python">Python</h2>
+<p>Talvez algunos ya estén familiarizados con Python ya que ha ganado popularidad en los últimos años (es el lenguaje más utilizado en universidades para cursos introductorios de programación), además siempre está en las primeras posiciones de los lenguajes de programación más usados donde reposan los grandes como C y no hay que olvidar que es el scripting language por excelencia que utilizan compañias como Google, Facebook, etc. Se preguntarán ¿por qué aprender Python? además de ser una nueva herramienta en su toolbox de conocimientos, es un lenguaje flexible, rápido a pesar de ser interpretado y con dynamic typing (obvio no se compara con uno compilado y con static typing).</p>
+<p>Antes de empezar este laboratorio, asumimos que ya leyeron el tutorial de Python que se les proporciona en el siguiente <a href="/tutorials/python/">link</a>, es imperativo que lean el tutorial, en otros años han tratado de saltarse este paso y el resultado no es muy bueno, <strong>LEAN EL TUTORIAL</strong>.</p>
+<h2 id="ejercicio-1-grafos-dirigidos-warm-up">Ejercicio 1: Grafos Dirigidos (Warm-Up)</h2>
+<p>Este ejercicio no tiene nada que ver con MapReduce, pero les servirá para practicar sus habilidades de Python. Tienen que implementar el método <code>path</code> de la clase <code>DirectedGraph</code>, el constructor de esta clase recibe de parámetro una matriz de booleans, la cual representará la matriz de adyacencias de un grafo dirigido. Los estados iran del 0, hasta length - 1 de la matriz. El método <code>path(self, start, end)</code> devuelve una lista de Python con el camino más corto desde el estado <code>start</code> al estado <code>end</code>, el resultado (los elementos de la lista) debe contener los estados por los que se deben de pasar incluyendo el estado <code>start</code> (el inicio) y <code>end</code> (el final).</p>
+<p>Si nuestro grafo <code>G</code> fuera el siguiente:</p>
+<p align="center">
+  <img src="/img/labs/lab12/BFS.png" alt="BFS Ejemplo"/>
+</p>
+
+<p>y quisieramos el camino más corto del estado 2 a los demás estados, obtendriamos el siguiente resultado:</p>
+<div class="highlight"><pre><span></span><code>from state: 2
+  to state: 0 = shortest path: 2 -&gt; 0, distance: 1
+  to state: 1 = shortest path: 2 -&gt; 0 -&gt; 1, distance: 2
+  to state: 3 = shortest path: 2 -&gt; 3, distance: 1
+  to state: 4 = shortest path: 2 -&gt; 3 -&gt; 4, distance: 2
+  to state: 5 = shortest path: 2 -&gt; 3 -&gt; 5, distance: 2
+  to state: 6 = shortest path: 2 -&gt; 3 -&gt; 4 -&gt; 6, distance: 3
+  to state: 7 = shortest path: 2 -&gt; 3 -&gt; 5 -&gt; 7, distance: 3
+</code></pre></div>
+<p>Para este ejercicio les recomendamos utilizar <strong><em>Breadth-first search</em></strong> (BFS), para los que no se recuerdan aquí hay una variante que solo toma en cuenta el arreglo de predecesores <span class="arithmatex">\(\pi\)</span> (¿Por qué solo predecesores?):</p>
+<div class="highlight"><pre><span></span><code><span class="n">BFS</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">vertex</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="err">∈</span><span class="w"> </span><span class="n">V</span><span class="p">[</span><span class="n">G</span><span class="p">]</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="p">{</span><span class="n">s</span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="w"></span>
+<span class="w">   </span><span class="n">π</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">null</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">visited</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
+<span class="w">  </span><span class="n">π</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">null</span><span class="w"></span>
+<span class="w">  </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">Q</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="err">∅</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Q</span><span class="p">.</span><span class="n">dequeue</span><span class="p">()</span><span class="w"></span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="err">∈</span><span class="w"> </span><span class="n">Adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
+<span class="w">       </span><span class="n">π</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="w"></span>
+<span class="w">       </span><span class="n">Q</span><span class="p">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">π</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Pueden probar su implementación utilizando el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>make graph
+</code></pre></div>
+<p>Esto probará su implementación con el grafo que se muestra en la figura de arriba, de esta manera pueden saber si el resultado que obtienen es el correcto.</p>
+<h2 id="ejemplo-ejecutando-un-contador-de-palabras">Ejemplo: Ejecutando un contador de palabras</h2>
+<p>En este ejemplo vamos a ejecutar el <strong><em>hola mundo</em></strong> de MapReduce que es un contador de palabras. Pueden probarlo con:</p>
+<div class="highlight"><pre><span></span><code>make sparkwc-small
+</code></pre></div>
+<p>Esto ejecutará <code>wordcount.py</code> con <code>billOfRights.txt.seq</code>. El resultado debería estar en <code>wc-out-wordcount-small/part-00000</code>. Una característica interesante de Spark es que es un motor de cómputo distribuido en memoria, asi que no tiene un almacenamiento de archivos predeterminado. Por ello, utilizamos el <strong><a href="http://hadoop.apache.org/">Hadoop</a> Distributed File System (HDFS)</strong> para poder guardar el resultado. Los exhortamos a leer acerca de Hadoop por su cuenta. en general, Hadoop requiere que el directorio de salida no exista al ejecutar un programa de MapReduce, pero el <code>makefile</code> se encarga de esto, removiendo el directorio de salida anterior. Traten con el archivo más grande, <code>complete-works-mark-twain.txt.seq</code>:</p>
+<div class="highlight"><pre><span></span><code>make sparkwc-medium
+</code></pre></div>
+<p>Su salida para este comando estar en el directorio <code>spark-wc-out-wordcount-medium</code>. Busquen en el archivo alguna palabra como "the" para entender mejor la salida. Tomen un tiempo para ver y analizar <code>wordcount.py</code>, traten de entender lo que está haciendo el código les va a servir para el siguiente ejercicio del laboratorio.</p>
+<h2 id="ejercicio-2-document-word-count">Ejercicio 2: Document Word Count</h2>
+<p>Abran <code>docwordcount.py</code>. Noten que tiene casi el mismo código que <code>wordcount.py</code>, que acaban de probar. Modifíquenlo para contar la cantidad de documentos que contienen cada palabra en lugar de la cantidad de veces que aparece una palabra en la entrada.</p>
+<p>Para ayudarlos a entender el código, hemos agregado varios comentarios, pero siéntanse libres de revisar las <a href="http://spark.apache.org/docs/latest/programming-guide.html#transformations">transformaciones</a> y <a href="http://spark.apache.org/docs/latest/programming-guide.html#actions">acciones</a> en la página de Spark para una explicación más detallada de algunos métodos que pueden usarse en Spark.</p>
+<p>En esta parte, les será útil revisar los links de transformaciones y acciones de arriba, ya que hay métodos que pueden usar para ayudarlos a ordenar una salida o remover items duplicados. Para ayudarlos a distinguir cuándo aparece una palabra en un documento, tal vez quieran hacer uso del <code>document_id</code> también -- esto se menciona en los comentarios de <code>flat_map()</code>.</p>
+<p>Finalmente, asegúrense de ordenar en orden alfabético el resultado final. (pista: ¿Habrá alguna otra transformación que puedan usar?)</p>
+<p>Pueden probar <code>docwordcount.py</code> usando cualquiera de estos dos comandos (para los 2 datasets):</p>
+<div class="highlight"><pre><span></span><code>make sparkdwc-small  <span class="c1"># Output in spark-wc-out-docwordcount-small/</span>
+</code></pre></div>
+<p>O</p>
+<div class="highlight"><pre><span></span><code>make sparkdwc-medium <span class="c1"># Output in spark-wc-out-docwordcount-medium/</span>
+</code></pre></div>
+<h2 id="ejercicio-3-full-text-index-creation">Ejercicio 3: Full Text Index Creation</h2>
+<p>Abran <code>index.py</code>. Noten que el código es similar a <code>docwordcount.py</code>. Modifíquenlo para desplegar cada palabra y una lista de ocurrencias (identificador de documento, seguido del índice de <strong>CADA</strong> vez que la palabra esté en ese documento). Asegúrense de que los índices empiecen con cero. La salida tendría que tener lineas que se vean como lo siguiente:</p>
+<div class="highlight"><pre><span></span><code>(word1  document1-id, word# word# ...)
+(word1  document2-id, word# word# ...)
+. . .
+(word2  document1-id, word# word# ...)
+(word2  document3-id, word# word# ...)
+. . .
+</code></pre></div>
+<p>Noten que hay una linea para CADA documento en el que la palabra aparezca y CADA par de palabra y documento debe tener solo UNA lista de índices. Recuerden que también necesitan desplegar el <code>document ID</code>.</p>
+<p>Para este ejercicio, tal vez no necesiten todas las funciones definidas. Si una función no se utiliza, siéntanse libres de remover el método que la llama. Asegúrense de que su resultado esté ordenado, al igual que los otros ejercicios.</p>
+<p>Pueden probar su <code>index.py</code> usando cualquiera de los dos comandos (para cada dataset):</p>
+<div class="highlight"><pre><span></span><code>$ make index-small <span class="c1"># Output in spark-wc-out-index-small/</span>
+</code></pre></div>
+<p>O</p>
+<div class="highlight"><pre><span></span><code>$ make index-medium <span class="c1"># Output in spark-wc-out-index-medium/</span>
+</code></pre></div>
+<p>La salida de <code>make-index-medium</code> será un archivo muy grande. Para poder ver el contenido de manera más sencilla, pueden usar los comandos <code>cat</code>, <code>head</code>, <code>more</code>, y <code>grep</code>:</p>
+<div class="highlight"><pre><span></span><code>$ head -25 OUTPUTFILE       <span class="c1"># view the first 25 lines of output</span>
+$ cat OUTPUTFILE <span class="p">|</span> more     <span class="c1"># scroll through output one screen at a time (use Space)</span>
+$ cat OUTPUTFILE <span class="p">|</span> grep the <span class="c1"># output only lines containing &#39;the&#39; (case-sensitive)</span>
+</code></pre></div>
+<p>Verifiquen su salida. Abran <code>complete-works-mark-twain.txt</code> y eligan algunas palabras. Cuenten manualmente algunos índices de la palabra y asegúrense de que todos aparezcan en su archivo de salida.</p>
+<h2 id="calificacion">Calificación</h2>
+<p>Al terminar, deben de subir su laboratorio al autograder con:</p>
+<div class="highlight"><pre><span></span><code>./submit &lt;TOKEN&gt;
+</code></pre></div>
+<p>Para este laboratorio su solución será evaluada en un servidor de AWS EC2 por lo que únicamente tienen permitido hacer <strong><em>3 submits</em></strong>. Les aconsejamos probar bien su código antes de enviarlo al autograder. No olviden también subir el link de su repositorio en Github al GES.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 CC3 AN
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -14,7 +14,7 @@
       
         <link rel="canonical" href="https://cc3-an.github.io/labs/lab00/">
       
-      <link rel="icon" href="../../assets/img/favicon.ico">
+      <link rel="icon" href="../../assets/img/common/logo.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
     
     
@@ -27,10 +27,6 @@
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#757575">
         
       
     
@@ -55,12 +51,16 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="grey" data-md-color-accent="indigo">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
   
     
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -84,7 +84,7 @@
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
     <a href="../.." title="Estructura de Máquinas" class="md-header__button md-logo" aria-label="Estructura de Máquinas" data-md-component="logo">
       
-  <img src="../../assets/img/logo.jpg" alt="logo">
+  <img src="../../assets/img/common/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -106,6 +106,28 @@
         </div>
       </div>
     </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
     
     
     
@@ -142,18 +164,6 @@
   </div>
 </div>
     
-    
-      <div class="md-header__source">
-        <a href="https://github.com/cc3-an/docs/" title="Ir al repositorio" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    cc3-an/docs
-  </div>
-</a>
-      </div>
     
   </nav>
   
@@ -254,23 +264,11 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Estructura de Máquinas" class="md-nav__button md-logo" aria-label="Estructura de Máquinas" data-md-component="logo">
       
-  <img src="../../assets/img/logo.jpg" alt="logo">
+  <img src="../../assets/img/common/logo.png" alt="logo">
 
     </a>
     Estructura de Máquinas
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/cc3-an/docs/" title="Ir al repositorio" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    cc3-an/docs
-  </div>
-</a>
-    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -366,13 +364,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lecturas" class="md-nav__link">
-    Lecturas
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#ejercicio-1-cuenta-de-github" class="md-nav__link">
     Ejercicio 1: Cuenta de GitHub
   </a>
@@ -423,6 +414,40 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-alfabeto-binario" class="md-nav__link">
+    Ejercicio 3: Alfabeto Binario
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 3: Alfabeto Binario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preguntas" class="md-nav__link">
+    Preguntas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-4-1000-billetes-de-1" class="md-nav__link">
+    Ejercicio 4: 1,000 billetes de $1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-y-calificacion" class="md-nav__link">
+    Entrega y calificación
+  </a>
   
 </li>
       
@@ -477,6 +502,48 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab05/" class="md-nav__link">
+        04: Logisim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab06/" class="md-nav__link">
+        05: Logisim Avanzado
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab07/" class="md-nav__link">
+        06: Logisim ALU
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -519,6 +586,20 @@
     <li class="md-nav__item">
       <a href="../../projects/pj01/" class="md-nav__link">
         01: C y RISC-V
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/pj02/" class="md-nav__link">
+        02: CPU
       </a>
     </li>
   
@@ -627,13 +708,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lecturas" class="md-nav__link">
-    Lecturas
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#ejercicio-1-cuenta-de-github" class="md-nav__link">
     Ejercicio 1: Cuenta de GitHub
   </a>
@@ -687,6 +761,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-alfabeto-binario" class="md-nav__link">
+    Ejercicio 3: Alfabeto Binario
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 3: Alfabeto Binario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preguntas" class="md-nav__link">
+    Preguntas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-4-1000-billetes-de-1" class="md-nav__link">
+    Ejercicio 4: 1,000 billetes de $1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-y-calificacion" class="md-nav__link">
+    Entrega y calificación
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -699,31 +807,24 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/cc3-an/docs/edit/main/docs/labs/lab00.md" title="Editar esta página" class="md-content__button md-icon">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-</a>
-
 
 <h1 id="lab-0-git-y-representacion-de-numeros">Lab 0 - Git y Representación de Números</h1>
 <h2 id="objetivos">Objetivos</h2>
 <ul>
-<li>Aprender git y crear cuenta de GitHub.</li>
+<li>Aprender git.</li>
+<li>Crear una cuenta de GitHub.</li>
 <li>Ganar más intuición para trabajar con números binarios.</li>
-</ul>
-<h2 id="lecturas">Lecturas</h2>
-<p><img alt="PH" src="/assets/img/PH.jpg" /></p>
-<ul>
-<li>P&amp;H: 2.4</li>
 </ul>
 <h2 id="ejercicio-1-cuenta-de-github">Ejercicio 1: Cuenta de GitHub</h2>
 <p>Por favor lean las siguientes instrucciones cuidadosamente antes de seguir con el laboratorio. La mayor parte de los problemas que tienen los estudiantes durante este laboratorio se pueden prevenir siguiendo atentamente los pasos que se indican.</p>
 <p>Para este curso necesitaremos que utilicen <strong>git</strong>, un <em>sistema de control de versiones distribuido</em>. Los sistemas de control de versiones son las mejores herramientas para compartir y almacenar código a comparación de mandar correos con archivos adjuntos, utilizar memorias flash, o incluso compartir documentos mediante DropBox o Google Docs.</p>
 <p>Vamos a estar usando <strong>GitHub</strong> para tener repositorios privados en donde van a <em>almacenar</em> su código remotamente. Si la oración anterior no les dijo nada, no se preocupen, vamos a guiarlos en el proceso más adelante. Pero primero, necesitan crear una cuenta de <strong>GitHub</strong>.</p>
-<p>¿Por qué GitHub? GitHub ahora le permite a todas las cuentas gratuitas tener repositorios privados ilimitados con algunas limitaciones que no van a ser ningún problema para nosotros.</p>
+<p>¿Por qué GitHub? GitHub ahora permite a todas las cuentas gratuitas tener repositorios privados ilimitados con algunas limitaciones que no van a ser ningún problema para nosotros.</p>
 <h3 id="github-onboarding">GitHub Onboarding</h3>
 <p>Naveguen a la siguiente página: <a href="https://github.com/">github.com</a>. Si no tienen una cuenta de GitHub todavía, creen una en el siguiente <a href="https://github.com/join/">link</a>.</p>
 <h3 id="preparacion">Preparación</h3>
-<p>Visiten este <a href="https://classroom.github.com/a/1Ix7PBBh">link</a>. Aquí encontrarán todos los archivos necesarios para completar este laboratorio. En esta página, encontrarán un botón que dice "Accept this assignment". Al presionar este botón, se creará automáticamente un repositorio en Github llamado <code>https://www.github.com/cc3-an/2022-lab00-git-&lt;USUARIO&gt;</code>. Noten que el "dueño" de este repositorio es un usuario llamado <code>cc3-an</code>, y el usuario de ustedes es únicamente el sufijo del nombre del repo. De esta forma, nos encargamos de tener acceso siempre a su código, en caso existan copias o cualquier otro tipo de trampa. Sepan de una vez que, si encontramos plagio en sus laboratorios, su nota será AUTOMÁTICAMENTE 0, sin posibilidad de cambiarla. De repetirse nuevamente este acontecimiento, el staff del curso organizará una reunión con ustedes y sus directores de carrera para contarles lo ocurrido y sancionarlos conforme al reglamento de la universidad.</p>
+<p>Visiten este <a href="https://classroom.github.com/a/1Ix7PBBh">link</a>. Aquí encontrarán todos los archivos necesarios para completar este laboratorio. En esta página, encontrarán un botón que dice "Accept this assignment". Al presionar este botón, se creará automáticamente un repositorio en Github llamado <code>https://www.github.com/cc3-an/2022-lab00-git-&lt;USUARIO&gt;</code>. Noten que el "dueño" de este repositorio es un usuario llamado <code>cc3-an</code>, y el usuario de ustedes es únicamente el sufijo. De esta forma, nos encargamos de tener acceso siempre a su código.</p>
+<p><strong>Nota</strong>: Sepan de una vez que, si encontramos plagio en sus laboratorios, su nota será AUTOMÁTICAMENTE 0, sin posibilidad de cambiarla. De repetirse nuevamente este acontecimiento, el staff del curso organizará una reunión con ustedes y sus directores de carrera para contarles lo ocurrido y sancionarlos conforme al reglamento de la universidad.</p>
 <p>Después de realizar esto, en la máquina virtual (o sus propias computadoras) abran una terminal en el directorio que prefieran, y ejecuten el siguiente comando:</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/cc3-an/2022-lab00-git-&lt;SU USUARIO DE GITHUB&gt;
 </code></pre></div>
@@ -771,19 +872,65 @@ Untracked files:
 nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> to track<span class="o">)</span>
 </code></pre></div>
 <p>Esto es porque hemos creado un archivo nuevo llamado <code>hello.sh</code> y no lo hemos agregado. Podemos agregarlo y hacer commit:</p>
-<div class="highlight"><pre><span></span><code>git add hello.sh <span class="c1"># agrega el archivo hello.sh para hacer commit</span>
-git commit -m <span class="s2">&quot;Mensaje del Commit&quot;</span> <span class="c1"># ingresa cualquier mensaje que quieras</span>
-git branch <span class="c1"># deberias de ver que solo existe el branch main y que estas en ella (*)</span>
-git push -u origin main <span class="c1"># Esto hace push de tu codigo hacia GitHub (lo puedes ver en GitHub ahora)</span>
+<div class="highlight"><pre><span></span><code>git add hello.sh
+git commit -m <span class="s2">&quot;Mensaje del Commit&quot;</span>
+git branch
+git push -u origin main
 </code></pre></div>
 <p>El control de versiones git esta construido alrededor de <em>commits</em>, o <em>checkpoints</em> en el desarrollo de diferentes versiones/etapas de su código. Para explicar los pasos de arriba un poco más:</p>
 <ul>
 <li><strong>git add [archivo]</strong> le dirá a git que han hecho cambios a ese archivo y que quieren que esos cambios se guarden en el siguiente commit (staging).</li>
 <li><strong>git commit -m "mensaje"</strong> oficialmente guarda esos cambios que acaban de agregar, y crea un <em>snapshot</em> del contenido actual de todos los archivos en el repositorio. Ahora siempre van a tener la opción de revertir su código hacia este commit.</li>
-<li><strong>git push -u origin main</strong> manda todo el contenido del repositorio que está en el branch "main" al repositorio remoto "origin" (recuerden que agregamos el repositorio de GitHub "lab0_git" como remote y lo llamamos "origin").</li>
+<li><strong>git push -u origin main</strong> manda todo el contenido del repositorio que está en el branch "main" al repositorio remoto "origin".</li>
 </ul>
-<p>Cuando estamos trabajando con git, si alguna vez no están seguros de algo, pero quieren asegurarse de que tienen una copia guardada del contenido actual de su código, solo tienen que correr <code>git add .</code> y después <code>git commit</code> en la terminal.</p>
-<p>Un último comando de git que pueden encontrar bastante util es <code>git log</code>. Pueden ejectuar este comando en la terminal y van a ver un historial o log de todos los commits que se han hecho (en el branch actual), incluyendo el tiempo y quien hizo el commit.</p>
+<p>Cuando estén trabajando con git, y quieran asegurarse de que tienen una copia guardada del contenido actual de su código, solo tienen que correr <code>git add .</code> y después <code>git commit</code> en la terminal. En dado caso que no tengan cambios nuevos, esto no creará ningún commit. Por último pueden hacer <code>git push</code> para que también su código esté en la nube.</p>
+<h2 id="ejercicio-3-alfabeto-binario">Ejercicio 3: Alfabeto Binario</h2>
+<p>Vamos a utilizar números de 4 bits. Si apilamos cinco números de 4 bits uno encima de otro en binario, podemos crear patrones e imágenes. Para ayudarlos a visualizar esto, pueden pensar que un bit en cero es blanco y un bit en uno es negro. Por ejemplo miren el siguiente patrón de bits.</p>
+<p align="center"><img src="/assets/img/labs/lab00/ex3.png" alt="Patron de Bits"/></p>
+
+<h3 id="preguntas">Preguntas</h3>
+<ol>
+<li>¿Cuáles son los cinco números en decimal (separados por una coma) que producen el patrón de arriba?</li>
+<li>¿Cuáles son los cinco digitos en hexadecimal (separados por una coma) que producen el patrón de arriba?</li>
+<li>¿Qué letra se dibuja con los siguientes números en decimal: 1,1,9,9,6?</li>
+<li>¿Qué letra se dibuja con el siguiente numero en hexadecimal: 0xF8F88?</li>
+<li>¿Cuál es el numero en hexadecimal para dibujar la letra b (minúscula)?</li>
+<li>¿Utilizarías cinco dígitos hexadecimales para dibujar la letra N? Contesten Si o No</li>
+</ol>
+<p>En los archivos del laboratorio van a encontrar un archivo de texto <code>ex3.txt</code> con lo siguiente:</p>
+<div class="highlight"><pre><span></span><code>1:
+2:
+3:
+4:
+5:
+6:
+</code></pre></div>
+<p>En este archivo tienen que colocar todas sus respuestas de las preguntas de arriba siguiendo ese formato por ejemplo un archivo valido sería:</p>
+<div class="highlight"><pre><span></span><code>1:1,2,3,4,5
+2:0x1,0x2,0x3,0x4,0x5
+3:A
+4:A
+5:0xcafee
+6:Si/No
+</code></pre></div>
+<p>Si ya contestaron todo y creen que está correcto pueden agregar los cambios, hacer commit y subirlo al repositorio remoto ejecutando los siguientes comandos en la terminal:</p>
+<div class="highlight"><pre><span></span><code>git add ex3.txt
+git commit -m <span class="s2">&quot;ex3 complete&quot;</span>
+git push -u origin master
+</code></pre></div>
+<h2 id="ejercicio-4-1000-billetes-de-1">Ejercicio 4: 1,000 billetes de $1</h2>
+<p>Imaginen que tienen mil billetes de $1 y 10 sobres. Para este ejercicio tienen que encontrar una manera de poner una cantidad determinada de billetes de $1 en cada uno de los sobres de tal forma que, sin importar la cantidad de dinero que se les pida (entre $1 y $1000), simplemente entreguen una combinación de los sobres y que siempre estén seguros de que están dando la cantidad correcta.
+En los archivos del laboratorio hay un archivo de texto llamado <code>ex4.txt</code> en donde encontrarán lo siguiente:</p>
+<div class="highlight"><pre><span></span><code>a,b,c,d,e,f,g,h,i,j
+</code></pre></div>
+<p>Cada una de las letras representa un sobre, tienen que reemplazar cada letra por la cantidad de billetes de $1 que crean correcta, esa cantidad tiene que ser <code>&gt;= 0</code> (en decimal) y recuerda que la suma de la cantidad de cada uno de los sobres tiene que ser igual a <code>1000</code>.</p>
+<p>Si ya contestaron todo y creen que está correcto pueden agregar los cambios, hacer commit y subirlo al repositorio remoto ejecutando los siguientes comandos en la terminal:</p>
+<div class="highlight"><pre><span></span><code>git add ex4.txt
+git commit -m <span class="s2">&quot;ex4 complete&quot;</span>
+git push -u origin master
+</code></pre></div>
+<h2 id="entrega-y-calificacion">Entrega y calificación</h2>
+<p>Por favor subir el link de su repositorio al <strong>GES</strong>.</p>
 
               
             </article>
@@ -845,16 +992,6 @@ git push -u origin main <span class="c1"># Esto hace push de tu codigo hacia Git
   
 </div>
       
-        <div class="md-social">
-  
-    
-    
-    <a href="https://github.com/cc3-an" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-    </a>
-  
-</div>
-      
     </div>
   </div>
 </footer>
@@ -867,12 +1004,6 @@ git push -u origin main <span class="c1"># Esto hace push de tu codigo hacia Git
     
     
       <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
-      
-        <script src="../../assets/js/mathjax.js"></script>
-      
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

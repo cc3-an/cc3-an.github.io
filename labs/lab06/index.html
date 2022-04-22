@@ -12,14 +12,14 @@
         <meta name="author" content="CC-3">
       
       
-        <link rel="canonical" href="https://cc3-an.github.io/labs/lab02/">
+        <link rel="canonical" href="https://cc3-an.github.io/labs/lab06/">
       
       <link rel="icon" href="../../assets/img/common/logo.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
     
     
       
-        <title>02: C Avanzado - Estructura de Máquinas</title>
+        <title>05: Logisim Avanzado - Estructura de Máquinas</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-2-c-avanzado-y-manejo-de-memoria" class="md-skip">
+        <a href="#lab-5-logisim-avanzado" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              02: C Avanzado
+              05: Logisim Avanzado
             
           </span>
         </div>
@@ -349,120 +349,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          02: C Avanzado
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../lab02/" class="md-nav__link">
         02: C Avanzado
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#objetivos" class="md-nav__link">
-    Objetivos
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#preparacion" class="md-nav__link">
-    Preparación
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-1-operando-bits" class="md-nav__link">
-    Ejercicio 1: Operando Bits
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-2-registro-de-corrimiento-con-retroalimentacion-lineal" class="md-nav__link">
-    Ejercicio 2: Registro de Corrimiento con Retroalimentación Lineal
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 2: Registro de Corrimiento con Retroalimentación Lineal">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#diagrama-del-hardware-explicacion-mas-abajo" class="md-nav__link">
-    Diagrama del Hardware (Explicación Más Abajo)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#explicacion-del-diagrama-de-arriba" class="md-nav__link">
-    Explicación del Diagrama de Arriba
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-3-manejo-de-memoria" class="md-nav__link">
-    Ejercicio 3: Manejo de Memoria
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 3: Manejo de Memoria">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#como-funciona-un-vector_t" class="md-nav__link">
-    ¿Cómo funciona un vector_t?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#que-deben-hacer" class="md-nav__link">
-    ¿Qué deben hacer?
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -500,11 +391,121 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../lab06/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          05: Logisim Avanzado
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         05: Logisim Avanzado
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    Objetivo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristicas-avanzadas-de-logisim" class="md-nav__link">
+    Características Avanzadas de Logisim
+  </a>
+  
+    <nav class="md-nav" aria-label="Características Avanzadas de Logisim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tuneles-tunnels" class="md-nav__link">
+    Túneles (Tunnels)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#divisores-splitters" class="md-nav__link">
+    Divisores (Splitters)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extensores-extenders" class="md-nav__link">
+    Extensores (Extenders)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-divisores-splitters" class="md-nav__link">
+    Ejercicio 1: Divisores (Splitters)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-rotate-right" class="md-nav__link">
+    Ejercicio 2: Rotate Right
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-alu" class="md-nav__link">
+    Ejercicio 3: ALU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calificacion" class="md-nav__link">
+    Calificación
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -681,8 +682,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivos" class="md-nav__link">
-    Objetivos
+  <a href="#objetivo" class="md-nav__link">
+    Objetivo
   </a>
   
 </li>
@@ -695,30 +696,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-1-operando-bits" class="md-nav__link">
-    Ejercicio 1: Operando Bits
+  <a href="#caracteristicas-avanzadas-de-logisim" class="md-nav__link">
+    Características Avanzadas de Logisim
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-2-registro-de-corrimiento-con-retroalimentacion-lineal" class="md-nav__link">
-    Ejercicio 2: Registro de Corrimiento con Retroalimentación Lineal
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 2: Registro de Corrimiento con Retroalimentación Lineal">
+    <nav class="md-nav" aria-label="Características Avanzadas de Logisim">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#diagrama-del-hardware-explicacion-mas-abajo" class="md-nav__link">
-    Diagrama del Hardware (Explicación Más Abajo)
+  <a href="#tuneles-tunnels" class="md-nav__link">
+    Túneles (Tunnels)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#explicacion-del-diagrama-de-arriba" class="md-nav__link">
-    Explicación del Diagrama de Arriba
+  <a href="#divisores-splitters" class="md-nav__link">
+    Divisores (Splitters)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extensores-extenders" class="md-nav__link">
+    Extensores (Extenders)
   </a>
   
 </li>
@@ -729,29 +730,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-3-manejo-de-memoria" class="md-nav__link">
-    Ejercicio 3: Manejo de Memoria
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 3: Manejo de Memoria">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#como-funciona-un-vector_t" class="md-nav__link">
-    ¿Cómo funciona un vector_t?
+  <a href="#ejercicio-1-divisores-splitters" class="md-nav__link">
+    Ejercicio 1: Divisores (Splitters)
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#que-deben-hacer" class="md-nav__link">
-    ¿Qué deben hacer?
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-rotate-right" class="md-nav__link">
+    Ejercicio 2: Rotate Right
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-alu" class="md-nav__link">
+    Ejercicio 3: ALU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calificacion" class="md-nav__link">
+    Calificación
+  </a>
   
 </li>
       
@@ -768,119 +770,193 @@
               
                 
 
-<h1 id="lab-2-c-avanzado-y-manejo-de-memoria">Lab 2 - C Avanzado y Manejo de Memoria</h1>
-<h2 id="objetivos">Objetivos</h2>
-<ul>
-<li>Manipular los bits de números binarios.</li>
-<li>Aprendan a utilizar sus nuevos poderes.</li>
-<li>Practicar trabajar con la asignación de memoria de manera dinámica (esa cosa de <em>malloc</em>).</li>
-<li>Aprovechar toda la memoria no utilizada.</li>
-<li>Pensar cómo el manejo de memoria dinámica los puede hacer mejores personas.</li>
-<li>Son bromas, pero sólo los puede volver mejores programadores.</li>
-</ul>
+<h1 id="lab-5-logisim-avanzado">Lab 5 - Logisim Avanzado</h1>
+<h2 id="objetivo">Objetivo</h2>
+<p>En este laboratorio ustedes van a aprender sobre otros componentes esenciales de Logisim, en particular, los <strong>splitters</strong> que nos permiten hacer cosas como, descomponer un cable en subsets de bits para luego manipularlos individualmente.</p>
 <h2 id="preparacion">Preparación</h2>
-<p>De primero, deben de descargar todos los archivos que necesitarán para completar este laboratorio, estos se encuentran <a href="https://classroom.github.com/a/QP_J2KA_">aquí</a>. Recuerden que deben aceptar la asignación y se les creará automáticamente un repositorio con una extensión que termina con su usuario.
-Recuerden que este será revisado en búsqueda de copia o plagio, así que no lo hagan. De lo contrario, será sancionado acorde al reglamento de la universidad.</p>
-<p>Ahora, ya pueden ejecutar en la terminal el comando que les descargará los archivos base en el directorio a su elección:</p>
-<div class="highlight"><pre><span></span><code>git clone link_al_lab
+<p>Para este laboratorio, nuevamente, es necesario que tengan la aplicación de <a href="http://www.cburch.com/logisim/index.html">Logisim</a>. Adicionalmente pueden utilizar la <a href="http://www.cburch.com/logisim/docs.html">documentación</a> de Logisim para refrescar el conocimiento que adquirieron en el laboratorio pasado o leer el lab también <a href="https://cc3-an.github.io/labs/lab05/">aquí</a>.</p>
+<p>También tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/a/cN-3f21-">aquí</a>. Recuerden que deben aceptar la asignación de <strong>GitHub Classroom</strong> y se les creará automáticamente un repositorio con una extensión que termina con su usuario de GitHub. Cuando ya se haya creado el repositorio, pueden ejecutar los siguientes comandos abriendo una terminal (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span>):</p>
+<div class="highlight"><pre><span></span><code>git clone &lt;link del repositorio&gt;
 </code></pre></div>
-<h2 id="ejercicio-1-operando-bits">Ejercicio 1: Operando Bits</h2>
-<p>Para este inciso, su trabajo es completar los archivos <strong>ex1/get_bit.c</strong>, <strong>ex1/set_bit.c</strong> y <strong>ex1/flip_bit.c</strong> de manera que las funciones cumplan con su tarea (así como el nombre de las funciones sugiere). Para ello deberán utilizar las operaciones de bits básicas: and (&amp;), or (|), xor (^), not (~) y los corrimientos a la derecha (>>) y a la izquierda (&lt;&lt;). Deben evitar el uso de ciclos o condicionales.</p>
-<p>¡¡¡¡No usen ciclos ni condicionales!!!! Eso significa que mientras realicen el ejercicio no pueden y no deben de <strong>escribir</strong> las palabras: if, else, do, while, for, switch o algo de índole similar. Por favor no traten de engañarnos, todo el personal involucrado (esperamos) sabe cómo se miran todas estas palabras, entonces si encontramos una de ellas...</p>
+<h2 id="caracteristicas-avanzadas-de-logisim">Características Avanzadas de Logisim</h2>
+<p>Aquí pueden encontrar tres características más de logisim que ustedes van a encontrar bastante utiles, principalmente en el proyecto 2.</p>
+<h3 id="tuneles-tunnels">Túneles (Tunnels)</h3>
+<p>Un <a href="http://www.cburch.com/logisim/docs/2.6.0/en/libs/base/tunnel.html">túnel</a> les permite dibujar <em>un cable invisible</em> para unir dos puntos. Los túneles son agrupados por etiquetas (case-sensitive) que se les ponen a los cables para identificarlos. Generalmente son utilizados para conectar cables de la siguiente manera:</p>
 <p align="center">
-  <img src="/assets/img/labs/lab02/YouShallNotPassGIF.gif" alt="YOU SHALL NOT PASS" />
-  <br/>
-  <small>El autograder analiza su código de todas formas... ¯\_(ツ)_/¯ sorry not sorry</small>
+  <img src="/assets/img/labs/lab06/tunnels1.png" alt="tunnels 1" />
 </p>
 
-<p><strong>NOTA IMPORTANTE:</strong> Considerar que <em>n</em> es un valor que inicia en la posición cero, contando desde la derecha, por lo que el bit que se encuentra hasta la derecha es el bit cero.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Return the nth bit of x.</span>
-<span class="c1">// Assume 0 &lt;= n &lt;= 31</span>
-<span class="kt">unsigned</span><span class="w"> </span><span class="nf">get_bit</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
-<span class="w">                 </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
-
-<span class="c1">// Set the nth bit of the value of x to v.</span>
-<span class="c1">// Assume 0 &lt;= n &lt;= 31, and v is 0 or 1</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">set_bit</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
-<span class="w">             </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"></span>
-<span class="w">             </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">v</span><span class="p">);</span><span class="w"></span>
-
-<span class="c1">// Flip the nth bit of the value of x.</span>
-<span class="c1">// Assume 0 &lt;= n &lt;= 31</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">flip_bit</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
-<p><strong>Ayuda</strong> para <em>set_bit</em>: La parte complicada es no saber el valor del bit antes de cambiarlo. Pero, sabemos que <em>0 | x = x</em>, pero ¿podemos aprovecharnos de esto? ¿Es posible volverlo cero?</p>
-<p>Una vez terminen de editar las funciones, pueden compilar y correr el código con:</p>
-<div class="highlight"><pre><span></span><code>make bit_ops
-./bit_ops
-</code></pre></div>
-<p>Lo cual imprimirá el resultado de algunas pruebas. Si tienen curiosidad pueden revisar con libertad la carpeta tests/ que contiene las pruebas que se van a realizar en cada ejercicio de este laboratorio y que reflejan bastante lo que evaluará el autograder, por ejemplo el archivo que se utiliza para este ejercicio es <strong>tests/bit_ops_test.c</strong>. De ahora en adelante hasta que esten 100% seguros de que tienen completo el laboratorio o ya esté cerca la hora de entregar su laboratorio, pueden mandar sus archivos como en los laboratorios pasados utilizando <code>./submit &lt;TOKEN&gt;</code>.</p>
-<p>Acuérdense de realizar el proceso de "hacerle push" al archivo para subirlo al repositorio de GitHub.</p>
-<h2 id="ejercicio-2-registro-de-corrimiento-con-retroalimentacion-lineal">Ejercicio 2: Registro de Corrimiento con Retroalimentación Lineal</h2>
-<p>En este ejercicio deben de implementar una función que compute la siguiente iteración de un registro de corrimiento de retroalimentación lineal (LFSR por sus siglas en inglés). ¡Algunas aplicaciones que utilizan LFSRs son: televisión digital, teléfonos con acceso múltiple por división de código, Ethernet, USB 3.0 y mucho más! Esta función deberá generar números pseudo-aleatorios utilizando operadores binarios. Para un poco de información adicional, pueden visitar el siguiente <a href="https://es.wikipedia.org/wiki/LFSR">link de Wikipedia</a>.
-En el archivo <strong>ex2/lfsr_calculate.c</strong> deben de completar la función <em>lfsr_calculate()</em> de manera que realice lo siguiente:</p>
-<h3 id="diagrama-del-hardware-explicacion-mas-abajo">Diagrama del Hardware (Explicación Más Abajo)</h3>
+<p>Que se traduce (o tiene un efecto similar) a esto:</p>
 <p align="center">
-  <img src="/assets/img/labs/lab02/LFSR-F16.gif" alt="LFSR" />
+  <img src="/assets/img/labs/lab06/tunnels2.png" alt="tunnels 2" />
 </p>
 
-<h3 id="explicacion-del-diagrama-de-arriba">Explicación del Diagrama de Arriba</h3>
+<p>Hay que tener ciertas precauciones al utilizar los túneles y siempre mantener un registro de cuales cables están conectados con túneles hacia otros cables, para evitar situaciones como esta:</p>
+<p align="center">
+  <img src="/assets/img/labs/lab06/tunnels3.png" alt="tunnels 3" />
+</p>
+
+<p>Que se traduce (o tiene un efecto similar) a esto:</p>
+<p align="center">
+  <img src="/assets/img/labs/lab06/tunnels4.png" alt="tunnels 4" />
+</p>
+
+<p>Nosotros les recomendamos (<strong>bastante</strong>) utilizar túneles en Logisim, porque hacen los circuitos más limpios, claros y fáciles de depurar.</p>
+<h3 id="divisores-splitters">Divisores (Splitters)</h3>
+<p>Los divisores crean una correspondencia entre un valor de multiples bits y subsets de esos bits. A pesar de su nombre, puede dividir un valor de multiples bits en varias partes o subsets de bits (lo que se espera por el nombre), así como también puede combinar partes o subsets de bits en un valor de multiples bits. Por ejemplo para el primer caso, un valor float (IEEE 754) de precisión simple (32 bits) dividido en signo (1 bit), exponente (8 bits) y fracción (23 bits):</p>
+<p align="center">
+  <img src="/assets/img/labs/lab06/splitters1.png" alt="splitters 1" />
+</p>
+
+<p>Para el segundo caso se unen dos entradas de diferentes anchos de bits (3 y 2 bits) que se unen para formar un valor de 5 bits:</p>
+<p align="center">
+  <img src="/assets/img/labs/lab06/splitters2.png" alt="splitters 2" />
+</p>
+
+<h3 id="extensores-extenders">Extensores (Extenders)</h3>
+<p>Cuando estén cambiando el ancho de un cable, siempre deberían de utilizar un <a href="http://www.cburch.com/logisim/docs/2.6.0/en/libs/base/extender.html">extensor</a> para mayor claridad en su circuito. Por ejemplo, consideren la siguiente implementación en donde se extiende un cable de ancho 8 bits a un cable de ancho de 16 bits:</p>
+<p align="center">
+  <img src="/assets/img/labs/lab06/extend1.png" alt="extend 1" />
+</p>
+
+<p>A pesar de que hace lo que tiene que hacer, no es una buena práctica y alguien que esté revisando su proyecto posiblemente no pueda comprender la intención del circuito anterior. Algo mejor, más simple, fácil de leer y menos propenso a errores sería algo como lo siguiente:</p>
+<p align="center">
+  <img src="/assets/img/labs/lab06/extend2.png" alt="extend 2" />
+</p>
+
+<p>Esto tambíen aplica cuando se quiere pasar de un ancho de bits mayor a un ancho de bits menor. En el siguiente ejemplo, un cable de ancho 8 bits es convertido a un cable de ancho de 4 bits, tirando/ignorando los bits sobrantes:</p>
+<p align="center">
+  <img src="/assets/img/labs/lab06/extend3.png" alt="extend 3" />
+</p>
+
+<p>A pesar de las implicaciones de su nombre, un extensor se puede utilizar también para realizar la misma operación y así evitar el uso de <strong>splitters</strong> para esta tarea:</p>
+<p align="center">
+  <img src="/assets/img/labs/lab06/extend4.png" alt="extend 4" />
+</p>
+
+<h2 id="ejercicio-1-divisores-splitters">Ejercicio 1: Divisores (Splitters)</h2>
+<p>Para este ejercicio van a utilizar los splitters para crear un par de circuitos simples manipulando un numero de 8 bits. Van a estar trabajando en el archivo <strong>splitters.circ</strong>.</p>
 <ul>
-<li>En cada llamada de <em>lfsr_calculate()</em>, deben de correr el contenido del registro un bit hacia la derecha.</li>
-<li>Este corrimiento no es ni lógico, ni aritmético. En el lado izquierdo deben de colocar un bit equivalente a un XOR de los bits que estaban, originalmente, en las posiciones 1, 3, 4 y 6.</li>
-<li>El objeto que parece un faro de automóvil curvado es un XOR, el cual recibe dos entradas (a, b) y devuelve en su salida a^b.</li>
-<li>A diferencia del ejercicio 1, las posiciones de los bits <strong>inician con 1</strong>.</li>
+<li>
+<p>Vayan al folder llamado "Wiring" y seleccionen un splitter. Este circuito va a tomar un cable y lo va a dividir en un set de cables con un ancho de bits menor.</p>
+</li>
+<li>
+<p>Antes de colocar el circuito en el esquemático, cambien el ancho a 8 bits en las propiedades del circuito y "Fan Out" al tamano que considere conveniente, 3 es una buena idea para comenzar. Si ustedes mueven el cursor sobre el esquemático, su cursor debería de verse algo así: <img alt="Splitter" src="/assets/img/labs/lab06/splitter.gif" />.</p>
+</li>
+<li>
+<p>Tareas a realizar:</p>
+</li>
+<li>Out1: Realice un AND entre el bit más significativo y el menos significativo del input<ul>
+<li>Arriba le sugerimos que pusiera un fan out de 3. En el panel de la izquierda configure para que solo el bit 0 vaya a la salida 0 (Top), y que solo el bit 7 vaya a la salida 2 (Bottom), todos los demás bits puede mandarlos hacia la salida 1.</li>
+<li>Listo! Gracias al splitter, logró separar el bit más significativo y el menos significativo del resto.</li>
 </ul>
-<p>Después que hayan implementado de manera correcta <em>lfsr_calculate()</em>, compilen y córranlo. Su respuesta debe ser similar a lo siguiente:</p>
-<div class="highlight"><pre><span></span><code>make lfsr
-./lfsr
-My number is: <span class="m">1</span>
-My number is: <span class="m">5185</span>
-My number is: <span class="m">38801</span>
-My number is: <span class="m">52819</span>
-My number is: <span class="m">21116</span>
-My number is: <span class="m">54726</span>
-My number is: <span class="m">26552</span>
-My number is: <span class="m">46916</span>
-My number is: <span class="m">41728</span>
-My number is: <span class="m">26004</span>
-My number is: <span class="m">62850</span>
-My number is: <span class="m">40625</span>
-My number is: <span class="m">647</span>
-My number is: <span class="m">12837</span>
-My number is: <span class="m">7043</span>
-My number is: <span class="m">26003</span>
-My number is: <span class="m">35845</span>
-My number is: <span class="m">61398</span>
-My number is: <span class="m">42863</span>
-My number is: <span class="m">57133</span>
-My number is: <span class="m">59156</span>
-My number is: <span class="m">13312</span>
-My number is: <span class="m">16285</span>
- ... etc etc ...
-Got <span class="m">65535</span> numbers before cycling!
-Congratulations! It works!
+</li>
+<li>Out2: Trabajando en signo-magnitud, obtenga el inverso aditivo del input<ul>
+<li>Recordatorio: inverso aditivo significa cambiarle de signo de positivo a negativo, y viceversa.</li>
+<li>Recordatorio: <a href="https://en.wikipedia.org/wiki/Signed_number_representations#Signed_magnitude_representation">Signo Magnitud</a> es una otra forma de representar números con signo, la vimos la primera semana de clases.</li>
+<li>Usted ya partió al input en pedacitos para resolver Out1, puede usar algunos de esos pedacitos y alguna compuerta para obtener el inverso aditivo.</li>
+<li>Luego puede utilizar otro splitter, ahora colocado al revés para reconstruir su número: de varios pedacitos, pasará a tener un valor de 8 bits.</li>
+</ul>
+</li>
+</ul>
+<h2 id="ejercicio-2-rotate-right">Ejercicio 2: Rotate Right</h2>
+<p>Con el conocimiento que tienen acerca de los splitters y multiplexores, están listos para implementar un bloque de lógica combinacional no trivial: <code>rotr</code>, que significa <strong>Rotate Right</strong>.</p>
+<p>La idea es que <code>rotr A,B</code> va a rotar el patrón de bits de la entrada <code>A</code> a la derecha por <code>B</code> bits. Por ejemplo, si <code>A</code> fuera <span class="arithmatex">\(0\text{b}10110101011\color{blue}1\color{blue}0\color{blue}0\color{blue}1\color{blue}1\)</span> y <code>B</code> fuera <span class="arithmatex">\(0\text{b}0101\)</span> (5 en decimal), el output del bloque sería <span class="arithmatex">\(0\text{b}\color{red}1\color{red}0\color{red}0\color{red}1\color{red}110110101011\)</span>. Noten que los 5 bits de más a la derecha de <code>A</code> (azul) fueron rotados a la derecha y puestos de vuelta a la izquierda (rojo). En RTL, la operación sería algo como:</p>
+<div class="highlight"><pre><span></span><code><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="mi">16</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<p>De nuevo, recuérdense de hacer el push.</p>
-<h2 id="ejercicio-3-manejo-de-memoria">Ejercicio 3: Manejo de Memoria</h2>
-<p>Este ejercicio requiere de los archivos: <strong>tests/include/vector.h</strong>, <strong>tests/vector_test.c</strong> y <strong>ex3/vector.c</strong>, en donde les proveemos con la base para la implementación de un arreglo de longitud variable. Este inciso busca que se familiaricen con el uso de los "structs" de C, así como el manejo de memoria en este lenguaje. En otras palabras, no se preocupen por los detalles prácticos de esta estructura de datos un tanto extraña. Sólo no lo hagan.</p>
-<p><strong>Su trabajo es completar las funciones </strong> <em>vector_new()</em>, <em>vector_get()</em>, <em>vector_delete()</em> <strong>y</strong> <em>vector_set()</em> <strong>en</strong> <em>ex3/vector.c</em> <strong>de manera que</strong> <em>tests/vector-test.c</em> <strong>corra sin errores de manejo de memoria.</strong></p>
-<h3 id="como-funciona-un-vector_t">¿Cómo funciona un <em>vector_t</em>?</h3>
+<p>Ustedes tienen que implementar el subcircuito llamado <strong>rotr</strong> en el archivo <strong>rotr.circ</strong> que tiene las siguientes entradas y salida:</p>
 <ul>
-<li>Posee un <em>int size</em> que indica cuántos elementos posee actualmente. En otras palabras, el <em>size</em> es igual al índice de la última posición que ha sido alterada del vector. Por ejemplo, si se tiene un vector con un <em>size</em> de 5 y se altera su ducentécimo bit (índice iniciando en cero), su tamaño se verá actualizado a 201. La longitud por defecto del vector <em>vector_new</em> es de 1.</li>
-<li>Tiene un <em>int *data</em>, un arreglo dinámico de enteros que contiene los valores de los componentes del vector. Si se altera el ducentécimo elemento de un vector <em>v</em> a 8 entonces el elemento modificado (de nuevo, iniciando en cero) de <em>v-&gt;data</em> debería evaluar a 8. El valor de un vector <em>vector_new</em> es 0 por defecto.</li>
-<li>El valor de cualquier componente de algún vector que no ha sido explícitamente editado es 0. Si se deseara conocer el valor en la quinta posición de un vector, pero sólo se ha alterado el valor de los primeras dos, la interrogante tendría como respuesta 0. Además, si se quisiera el contenido en la séptima posición de un vector de longitud igual a 5, también sería 0. <strong>NO</strong> devolvería un error.</li>
+<li><strong>A</strong>, 16 bits, la entrada a ser rotada.</li>
+<li><strong>B</strong>, 4 bits, la cantidad de rotación (Respóndase a usted mismo, ¿por qué 4 bits? <i class="em em-thinking_face"></i>)</li>
+<li><strong>C</strong>, 16 bits, salida con el resultado de la rotación.</li>
 </ul>
-<p>Es momento de revisar el código de <em>ex3/vector.c</em> si no lo han hecho. Aquí hay comentarios complementarios que describen cómo deberían de correr las funciones. Recuerden que los usuarios de su estructura de datos <em>vector_t</em> deben asumir que todas las entradas al vector son 0, a menos que hayan sido definidas de otra manera por ellos. Tengan esto en mente, porque <em>malloc</em> no hace esto por ustedes.</p>
-<h3 id="que-deben-hacer">¿Qué deben hacer?</h3>
-<ul>
-<li>Completen <em>vector_new</em>, la versión correcta. Hay exactamente seis (6) espacios para que escriban una expresión en C, indicados con el comentario que dice <em>/* YOUR CODE HERE */</em>. Escriban una <em>expresión</em> en estos sitios. Esto significa no más de una línea de código. Existen comentarios adicionales que describen qué debería de suceder en la línea de código inferior a cada división.</li>
-<li>Terminen <em>vector_get()</em> de la misma manera en que lo hicieron para la función anterior: de manera respetuosa, dispuesto a aprender, con mente abierta y conscientes de qué es lo que están escribiendo, ya que esta es la mejor forma de programar.</li>
-<li>Complementen <em>vector_delete()</em>. Una solución satisfactoria no debería de llevar más de dos líneas de código.</li>
-<li>Corrijan a <em>vector_set()</em>. Esta es la más complicada. Bienvenidos a las ligas mayores. El problema de manipular una posición/índice arbitrario en un vector <em>v</em> es que es posible que no se haya reservado suficiente espacio con <em>malloc</em> en <em>vector-&gt;data</em> (sí, eso significa que tuvieron que haber guardado memoria con <em>malloc</em>). Piensen cómo administrar la memoria para lograr esto, para ver qué hacer con la data que estaba ahí antes y de qué otras cosas deben de hacer en su nuevo bloque de datos. Ayuda: Recuerden que los índices que no hayan sido alterados deben de ser cero. Hay distintas formas de acabar resolviendo esta función. Consideren el uso de las 3 funciones <em>__alloc</em>, porque pueden resultar útiles...</li>
-</ul>
-<p>Saber cómo reorganizar y liberar memoria es importante para la programación en C. Piensen que el manejo de memoria es como un parqueo, si hay carros parqueados y los dueños nunca se van, entonces no tienen espacio para nuevos carros. <strong>Y recuerden que deberían tener un 'heap' vacío al terminar su programa. Utilicen free y todo estará bien.</strong></p>
+<p>La salida en el output debería de ser <code>A</code> rotado por <code>B</code> bits, como se indicó anteriormente. Ustedes <strong>NO</strong> pueden utilizar los shifters que trae Logisim en su solución, pero todos los demás bloques combinacionales (multiplexores, splitters, túneles, constantes, compuertas, sumadores, etc) son permitidos.</p>
+<blockquote>
+<p><strong>HINT 1</strong>: Antes de empezar a cablear, deberían de pensar muuuuuuuy bien acerca de como pueden descomponer este problema en pequeñas partes y unirlas. Deberían de sentirse libres de implementar subcircuitos para implementar este ejercicio. Si no los utilizan, se van a arrepentir.</p>
+<p><strong>HINT 2</strong>: Solo porque les dimos una representación en RTL no significa que esta sea la mejor opción para abordar el problema. Piense en los bits de entrada de <code>B</code> y en como pueden utilizar efectivamente los splitters. Piense en cómo resolvio el multiplexor de 4 a 1 la semana pasada, usando su multiplexor de 2 a 1.</p>
+</blockquote>
+<p>Si su cableado de un splitter grande se está volviendo desordenado, a veces cambiar los splitters pueden mantener las cosas más limpias y localizables. Por ejemplo, en lugar de utilizar un splitter de 1 a 16, puede primero dividir en 4, y luego volver a dividir en 4.</p>
+<p>¡Este ejercicio lo hará pensar bastante!</p>
+<h2 id="ejercicio-3-alu">Ejercicio 3: ALU</h2>
+<p>En este ejercicio ustedes van a implementar un ALU de 32 bits. Van estar trabajando en el archivo llamado <strong>ALU.circ</strong>. Como un recordatorio, ALU significa <em>Arithmetic Logic Unit</em> (Unidad Arimética Lógica). Un ALU es una pieza fundamental de un CPU y realiza operaciones aritméticas y lógicas (bitwise). La función que el ALU realiza (ejemplo add, xor) es determinada por el control de nuestro datapath, que esta determinado por la instrucción que nuestro procesador está ejecutando. El ALU está resaltado en el siguiente diagrama de un datapath simplificado:</p>
+<p align="center">
+  <img src="/assets/img/labs/lab06/alu.png" alt="ALU" width="400" />
+</p>
+
+<p>Este ejercicio es una versión simplificada de lo que le tocará hacer en el proyecto 2. Esperamos que al realizar este ejercicio, el proyecto 2 se les haga un poco más fácil y suave de llevar.</p>
+<p>Las 8 funciones que tienen que implementar son: <strong>shift left logical</strong>, <strong>shift right logical</strong>, <strong>shift right arithmetic</strong>, <strong>rotate left</strong>, <strong>rotate right</strong>, <strong>and</strong>, <strong>or</strong> y <strong>xor</strong>. El ALU va a realizar la función deseada sobre 2 entradas de 32 bits y tendrá una salida de 32 bits como resultado. <strong>Noten que Logisim tiene compuertas que hacen todas estas funciones, NO tienen que implementar ninguna por su cuenta, por favor no lo hagan</strong>.</p>
+<blockquote>
+<p><strong>HINT 1</strong>: Busquen el folder en Logisim etiquetado como Arithmetic para poder encontrar shifter, que será útil para varias de las operaciones.</p>
+<p><strong>HINT 2</strong>: Utilizen túneles para mover todas las salidas del cuadro etiquetado "Compute All Possible Operations" al cuadro etiquetado como "Select the Requested Result".</p>
+</blockquote>
+<p>La función seleccionada va a ser determinada por el valor de la señal de control, la siguiente tabla resume todo:</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Control</strong></th>
+<th align="center"><strong>Operation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>000</code></td>
+<td align="center">Shift Left Logical</td>
+</tr>
+<tr>
+<td align="center"><code>001</code></td>
+<td align="center">Shift Right Logical</td>
+</tr>
+<tr>
+<td align="center"><code>010</code></td>
+<td align="center">Shift Right Arithmetic</td>
+</tr>
+<tr>
+<td align="center"><code>011</code></td>
+<td align="center">Rotate Left</td>
+</tr>
+<tr>
+<td align="center"><code>100</code></td>
+<td align="center">Rotate Right</td>
+</tr>
+<tr>
+<td align="center"><code>101</code></td>
+<td align="center">And</td>
+</tr>
+<tr>
+<td align="center"><code>110</code></td>
+<td align="center">Or</td>
+</tr>
+<tr>
+<td align="center"><code>111</code></td>
+<td align="center">Xor</td>
+</tr>
+</tbody>
+</table>
+<h2 id="calificacion">Calificación</h2>
+<p>Cuando crean que tengan ejercicios completos, pueden utilizar el autograder escribiendo en la terminal:</p>
+<div class="highlight"><pre><span></span><code>./check
+</code></pre></div>
+<p>Si todo esta correcto les saldrá algo como esto:</p>
+<div class="highlight"><pre><span></span><code>   ___       __                        __
+  / _ <span class="p">|</span>__ __/ /____  ___  _______ ____/ /__ ____
+ / __ / // / __/ _ <span class="se">\/</span> _ <span class="se">\/</span> __/ _ <span class="se">\/</span> _  / -_<span class="o">)</span> __/
+/_/ <span class="p">|</span>_<span class="se">\_</span>,_/<span class="se">\_</span>_/<span class="se">\_</span>__/<span class="se">\_</span>, /_/  <span class="se">\_</span>,_/<span class="se">\_</span>,_/<span class="se">\_</span>_/_/
+                   /___/
+
+             Machine Structures
+     Great Ideas <span class="k">in</span> Computer Architecture
+              Advanced Logisim
+
+
+Exercise           Grade   Message
+----------------  -------  ---------
+<span class="m">1</span>. Splitters       <span class="m">33</span>.333  passed
+<span class="m">2</span>. Rotate Right    <span class="m">33</span>.333  passed
+<span class="m">3</span>. ALU             <span class="m">33</span>.333  <span class="nv">passed</span>
+
+<span class="o">=</span>&gt; Score: <span class="m">100</span>/100
+</code></pre></div>
+<p>Al finalizar, recuerde hacer <code>add</code>, <code>commit</code> y <code>push</code> hacia Github. Luego envíe el link de su repositorio en el GES. Si no envía el link, no podremos ponerle nota!</p>
 
               
             </article>
@@ -894,7 +970,7 @@ Congratulations! It works!
     <nav class="md-footer__inner md-grid" aria-label="Pie">
       
         
-        <a href="../lab01/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 01: C y GDB" rel="prev">
+        <a href="../lab05/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 04: Logisim" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -903,20 +979,20 @@ Congratulations! It works!
               <span class="md-footer__direction">
                 Anterior
               </span>
-              01: C y GDB
+              04: Logisim
             </div>
           </div>
         </a>
       
       
         
-        <a href="../lab03/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 03: RISC-V" rel="next">
+        <a href="../lab07/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 06: Logisim ALU" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Siguiente
               </span>
-              03: RISC-V
+              06: Logisim ALU
             </div>
           </div>
           <div class="md-footer__button md-icon">
