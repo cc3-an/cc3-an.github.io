@@ -15,13 +15,17 @@
         <link rel="canonical" href="https://cc3-an.github.io/labs/lab01/">
       
       
+        <link rel="prev" href="../lab00/">
+      
+      
+        <link rel="next" href="../../tutorials/install/">
       
       <link rel="icon" href="../../assets/img/common/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
     
     
       
-        <title>Lab 1 - Punteros en C y GDB - Estructura de Máquinas</title>
+        <title>01: C y CGDB - Estructura de Máquinas</title>
       
     
     
@@ -105,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab 1 - Punteros en C y GDB
+              01: C y CGDB
             
           </span>
         </div>
@@ -197,13 +201,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../lab00/" class="md-tabs__link">
+      <a href="../lab00/" class="md-tabs__link md-tabs__link--active">
         Laboratorios
       </a>
     </li>
@@ -278,14 +284,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
       
       
       
@@ -294,7 +302,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Laboratorios
@@ -310,6 +318,130 @@
       <a href="../lab00/" class="md-nav__link">
         00: Git
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          01: C y CGDB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        01: C y CGDB
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compilando-y-ejecutando-un-programa-de-c" class="md-nav__link">
+    Compilando y ejecutando un programa de C
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-programa-simple-de-c" class="md-nav__link">
+    Ejercicio 1: Programa simple de C
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-debugger-depurador" class="md-nav__link">
+    Ejercicio 2: Debugger (depurador)
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 2: Debugger (depurador)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-un-debugger" class="md-nav__link">
+    ¿Qué es un debugger?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-depurando-un-problema-con-fallas-usando-gdb" class="md-nav__link">
+    Ejercicio 3: Depurando un problema con fallas usando GDB
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-4-debuggeando-un-programa-en-c-que-requiere-interaccion-del-usuario" class="md-nav__link">
+    Ejercicio 4: "Debuggeando" un programa en C que requiere interacción del usuario
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-5-punteros-y-estructuras-en-c" class="md-nav__link">
+    Ejercicio 5: Punteros y estructuras en C
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-y-calificacion" class="md-nav__link">
+    Entrega y calificación
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -358,6 +490,34 @@
     <li class="md-nav__item">
       <a href="../../tutorials/install/" class="md-nav__link">
         Máquina Virtual
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/git/" class="md-nav__link">
+        Git y GitHub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/autograder/" class="md-nav__link">
+        Autograder
       </a>
     </li>
   
@@ -466,8 +626,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#entrega-de-laboratorio" class="md-nav__link">
-    Entrega de laboratorio
+  <a href="#entrega-y-calificacion" class="md-nav__link">
+    Entrega y calificación
   </a>
   
 </li>
@@ -498,11 +658,12 @@
 <li>Ganar más confianza al trabajar con punteros.</li>
 </ul>
 <h2 id="preparacion">Preparación</h2>
-<p>Visiten este <a href="https://classroom.github.com/a/Hp7ReI2W">link</a>. Aquí encontrarán todos los archivos necesarios para completar este lab. En esta página, encontrarán un botón que dice "Accept assignment". Al presionar este botón, se creará automáticamente un repositorio en Github llamado <code>www.github.com/cc3-an/2022-lab-01-c-gdb-USUARIO</code>. Noten que el "dueño" de este repositorio es un usuario llamado <code>cc3-an</code>, y el usuario de ustedes es únicamente el sufijo del nombre del repo. De esta forma, nos encargamos de tener acceso siempre a su código, en caso existan copias o cualquier otro tipo de trampa. Sepan de una vez que, si encontramos plagio o cualquier otro tipo de trampa en sus laboratorios, su nota será AUTOMÁTICAMENTE 0, sin posibilidad de cambiarla. De repetirse nuevamente este acontecimiento, el staff del curso organizará una reunión con ustedes y sus directores de carrera para contarles lo ocurrido y sancionarlos conforme al reglamento de la universidad.</p>
+<p>Visiten este <a href="https://classroom.github.com/a/gQGq8DUA">link</a>. Aquí encontrarán todos los archivos necesarios para completar este lab. En esta página, encontrarán un botón que dice "Accept assignment". Al presionar este botón, se creará automáticamente un repositorio en Github llamado <code>www.github.com/cc3-an/2023-lab-01-c-gdb-USUARIO</code>. Noten que el "dueño" de este repositorio es un usuario llamado <code>cc3-an</code>, y el usuario de ustedes es únicamente el sufijo del nombre del repo. De esta forma, nos encargamos de tener acceso siempre a su código, en caso existan copias o cualquier otro tipo de trampa. Sepan de una vez que, si encontramos plagio o cualquier otro tipo de trampa en sus laboratorios, su nota será AUTOMÁTICAMENTE 0, sin posibilidad de cambiarla. De repetirse nuevamente este acontecimiento, el staff del curso organizará una reunión con ustedes y sus directores de carrera para contarles lo ocurrido y sancionarlos conforme al reglamento de la universidad.</p>
 <p>Después de realizar esto, en la máquina virtual (o sus propias computadoras) abran una terminal en el directorio que prefieran, y ejecuten el siguiente comando:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/cc3-an/2022-lab-01-c-gdb-&lt;USUARIO<span class="w"> </span>DE<span class="w"> </span>GITHUB<span class="w"> </span>AQUI&gt;
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/cc3-an/2023-lab-01-c-gdb-&lt;USUARIO<span class="w"> </span>DE<span class="w"> </span>GITHUB<span class="w"> </span>AQUI&gt;
 </code></pre></div>
 <p>Esto descargará en el directorio que escogieron todos los archivos base para este laboratorio. Un <code>clone</code> solo lo hacemos la primera vez que vamos a bajar el codigo de un repositorio a nuestra maquina. Nunca bajen el zip que Github les ofrece, por favor, eso solo nos va a causar problemas.</p>
+<p>Recuerden que es necesario que hayan leído el tutorial de <a href="https://cc3-an.github.io/tutorials/git/">git y GitHub</a> que se encuentra en la página del curso, así como también el tutorial del <a href="https://cc3-an.github.io/tutorials/autograder/">autograder</a>.</p>
 <h2 id="compilando-y-ejecutando-un-programa-de-c">Compilando y ejecutando un programa de C</h2>
 <p>En este laboratorio, estaremos usando el programa <code>gcc</code> para compilar programas en c. La manera más sencilla de ejecutar <code>gcc</code> es la siguiente:</p>
 <div class="highlight"><pre><span></span><code>gcc<span class="w"> </span>program.c
@@ -510,7 +671,7 @@
 <p>Esto compila el archivo <code>program.c</code> y crea un archivo ejecutable llamado <code>a.out</code>. Si tienen experiencia en Java, pueden más o menos considerar a <code>gcc</code> como el equivalente en C de <code>javac</code>. Este archivo se puede ejecutar con el siguiente comando:</p>
 <div class="highlight"><pre><span></span><code>./a.out
 </code></pre></div>
-<p>El archivo ejecutable es <code>a.out</code>, así que, ¿qué rayos es eso de punto y diagonal? La respuesta: cuando quieren ejecutar un ejecutable, es necesario preponer una ruta de archivo para distinguirlo de un comando como <code>python</code> (no se utiliza <code>./python</code>). El punto se refiere al "directorio actual". De paso, dos puntos (..) se referirían al directorio que está un nivel arriba.</p>
+<p>El archivo ejecutable es <code>a.out</code>, así que, ¿qué es eso de punto y diagonal? La respuesta: cuando quieren ejecutar un ejecutable, es necesario preponer una ruta de archivo para distinguirlo de un comando como <code>python</code> (no se utiliza <code>./python</code>). El punto se refiere al "directorio actual". De paso, dos puntos (..) se referirían al directorio que está un nivel arriba.</p>
 <p><code>gcc</code> tiene varias opciones (o argumentos) de línea de comandos, los cuales les recomendamos explorar. En este laboratorio, vamos a estar usando solamente -o, que se usa para especificar el nombre del ejecutable que <code>gcc</code> genera. Usando -o, se utilizarían estos comandos para compilar <code>program.c</code> en un archivo llamado <code>program</code>, y ejecutarlo. Eso nos sirve si no queremos que todos nuestros archivos ejecutables se llamen <code>a.out</code>.</p>
 <div class="highlight"><pre><span></span><code>gcc<span class="w"> </span>-o<span class="w"> </span>program<span class="w"> </span>program.c
 ./program
@@ -716,44 +877,74 @@ $<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </spa
 $<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
 </code></pre></div>
 <p>Para finalizar, la fábula de <a href="http://read.gov/aesop/025.html">la tortuga y la liebre</a> es relevante siempre, especialmente en este curso. Escribir sus programas en C a paso lento pero seguro (ayudándose de programas como CGDB) es lo que les hará ganar la carrera.</p>
-<h2 id="entrega-de-laboratorio">Entrega de laboratorio</h2>
-<p>A partir de este laboratorio contaremos con autograders, por lo que podrán conocer su nota de inmediato. Para poder utilizarlo debemos realizar una pequena instalación. <a href="/tutorials/autograders">Guía de Instalación de Autograders</a>.</p>
-<p>Una vez esté instalado ustedes deberán iniciar sesión en la carpeta raiz del repositorio.</p>
-<div class="highlight"><pre><span></span><code>autograders<span class="w"> </span>--sign-in
+<h2 id="entrega-y-calificacion">Entrega y calificación</h2>
+<p>Por favor subir el link de su repositorio al <strong>GES</strong>. Siempre es necesario que suban su repositorio al GES, incluso si no completaron todos los ejercicios, de lo contrario la nota será de 0 puntos.</p>
+<p>La calificación de este laboratorio será de 0 a 100 puntos, donde 100 puntos es la calificación máxima. La calificación se basará en la cantidad de ejercicios completados. Si tienen alguna duda sobre la calificación, por favor envíen un correo a los auxiliares.</p>
+<p>Para subir su laboratorio al autograder deben hacer lo siguiente, estando en la carpeta del laboratorio:</p>
+<div class="highlight"><pre><span></span><code>autograder<span class="w"> </span>assignment<span class="w"> </span>submit
 </code></pre></div>
-<p>Y hacer submit</p>
-<div class="highlight"><pre><span></span><code>autograders<span class="w"> </span>--submit
+<p>Si por alguna razon les pide que ingresen el id de la asignación, pueden ingresar el siguiente id: <strong><code>bf955a5e-35fe-4408-b796-9eb3bf55cd63</code></strong>.</p>
+<p>Una vez suban su laboratorio al autograder, les va a salir un mensaje como el siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>_
+<span class="p">|</span>-<span class="p">|</span><span class="w">  </span>__
+<span class="p">|</span><span class="o">=</span><span class="p">|</span><span class="w"> </span><span class="o">[</span>Ll<span class="o">]</span><span class="w">        </span>Autograder
+<span class="s2">&quot;^&quot;</span><span class="w"> </span><span class="o">====</span><span class="sb">`</span><span class="nv">o</span>
+
+<span class="o">=</span>&gt;<span class="w">    </span>Assignment<span class="w"> </span><span class="p">|</span><span class="w"> </span>Submit
+
+✔<span class="w"> </span>Got<span class="w"> </span>assignment<span class="w"> </span>info<span class="w"> </span>successfully!
+✔<span class="w"> </span>Files<span class="w"> </span>zipped<span class="w"> </span>successfully!
+✔<span class="w"> </span>Files<span class="w"> </span>uploaded<span class="w"> </span>successfully!
+✔<span class="w"> </span>Assignment<span class="w"> </span>submitted<span class="w"> </span>successfully!
+
+╔══════════════╤══════════════════════════════════════╗
+║<span class="w"> </span>Id<span class="w">           </span>│<span class="w"> </span>e58e7f1c-96ae-477a-8851-77ba16bf7443<span class="w"> </span>║
+╟──────────────┼──────────────────────────────────────╢
+║<span class="w"> </span>Status<span class="w">       </span>│<span class="w"> </span>SUBMITTED<span class="w">                            </span>║
+╟──────────────┼──────────────────────────────────────╢
+║<span class="w"> </span>Submitted<span class="w"> </span>At<span class="w"> </span>│<span class="w"> </span><span class="m">10</span><span class="w"> </span>Feb,<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">06</span>:18:21<span class="w"> </span>pm<span class="w">             </span>║
+╚══════════════╧══════════════════════════════════════╝
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>╭<span class="w"> </span>Autograders<span class="w"> </span>╮
-│<span class="w">             </span>│
-│<span class="w">   </span>Submit<span class="w">    </span>│
-│<span class="w">             </span>│
-╰─────────────╯
+<p>Para ver el estado de su laboratorio pueden hacer lo siguiente:</p>
+<div class="highlight"><pre><span></span><code>autograder<span class="w"> </span>submit<span class="w"> </span>last
+</code></pre></div>
+<p>Si ya está calificado, les va a salir un mensaje como el siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>_
+<span class="p">|</span>-<span class="p">|</span><span class="w">  </span>__
+<span class="p">|</span><span class="o">=</span><span class="p">|</span><span class="w"> </span><span class="o">[</span>Ll<span class="o">]</span><span class="w">        </span>Autograder
+<span class="s2">&quot;^&quot;</span><span class="w"> </span><span class="o">====</span><span class="sb">`</span><span class="nv">o</span>
 
-✔<span class="w"> </span>Files<span class="w"> </span>zipped
-✔<span class="w"> </span>Submission<span class="w"> </span>created<span class="w"> </span>successfully.
+<span class="o">=</span>&gt;<span class="w">    </span>Submission<span class="w"> </span><span class="p">|</span><span class="w"> </span>Last
 
-Assignment:
+✔<span class="w"> </span>Got<span class="w"> </span>submission<span class="w"> </span>info<span class="w"> </span>successfully!
 
-╔═══════════╤══════════════════════════╗
-║<span class="w"> </span>id<span class="w">        </span>│<span class="w"> </span>61fcc9f510a10341e78bc4ac<span class="w"> </span>║
-╟───────────┼──────────────────────────╢
-║<span class="w"> </span>name<span class="w">      </span>│<span class="w"> </span>Lab<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>C<span class="w"> </span>y<span class="w"> </span>GDB<span class="w">          </span>║
-╟───────────┼──────────────────────────╢
-║<span class="w"> </span>createdAt<span class="w"> </span>│<span class="w"> </span><span class="m">2022</span>-02-04T06:38:45.587Z<span class="w"> </span>║
-╟───────────┼──────────────────────────╢
-║<span class="w"> </span>updatedAt<span class="w"> </span>│<span class="w"> </span><span class="m">2022</span>-02-04T06:38:45.587Z<span class="w"> </span>║
-╚═══════════╧══════════════════════════╝
+╔════════╤══════════════════════════════════════╗
+║<span class="w"> </span>Id<span class="w">     </span>│<span class="w"> </span>a1f1f397-0e08-448a-86e6-aab8c47fff57<span class="w"> </span>║
+╟────────┼──────────────────────────────────────╢
+║<span class="w"> </span>Grade<span class="w">  </span>│<span class="w"> </span><span class="m">100</span><span class="w">                                  </span>║
+╟────────┼──────────────────────────────────────╢
+║<span class="w"> </span>Status<span class="w"> </span>│<span class="w"> </span>GRADED<span class="w">                               </span>║
+╚════════╧══════════════════════════════════════╝
+
+Stdout:
+
+<span class="m">1</span>.<span class="w"> </span>Eccentric
+
+...
+
+<span class="m">2</span>.<span class="w"> </span>CGDB
+
+...
+
+<span class="m">3</span>.<span class="w"> </span>LL<span class="w"> </span>Equal
+
+...
+
+<span class="m">4</span>.<span class="w"> </span>LL<span class="w"> </span>Cycle
 
 ...
 </code></pre></div>
-<p>Para ver el status de su ultimo submit:</p>
-<div class="highlight"><pre><span></span><code>autograders<span class="w"> </span>--get-last-submit
-</code></pre></div>
-<p>Para obtener el resultado con mejor nota pueden hacer lo siguiente:</p>
-<div class="highlight"><pre><span></span><code>autograders<span class="w"> </span>--get-best-submit
-</code></pre></div>
-<p>Felicidades! Termino su lab 1. Envie el link de su repo en el GES (el GES le permite enviar links, no pegue su link en un TXT u otro documento, es incómodo).</p>
+<p>Pueden subir su laboratorio <strong>10</strong> veces, pero solo se tomará en cuenta la entrega que tenga la calificación más alta. Si no les gusta la calificación que obtuvieron, pueden volver a subir su laboratorio hasta que obtengan la calificación que desean.</p>
 
 
 
@@ -798,7 +989,7 @@ Assignment:
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight"], "search": "../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.6df46069.min.js"></script>
+      <script src="../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
       
     
   </body>
