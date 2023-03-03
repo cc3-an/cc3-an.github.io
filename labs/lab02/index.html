@@ -15,20 +15,24 @@
         <link rel="canonical" href="https://cc3-an.github.io/labs/lab02/">
       
       
+        <link rel="prev" href="../lab01/">
+      
+      
+        <link rel="next" href="../../tutorials/install/">
       
       <link rel="icon" href="../../assets/img/common/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.0">
     
     
       
-        <title>Lab 2 - C Avanzado y Manejo de Memoria - Estructura de Máquinas</title>
+        <title>02: C y MM - Estructura de Máquinas</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0d440cfe.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.402914a4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
 
@@ -105,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab 2 - C Avanzado y Manejo de Memoria
+              02: C y MM
             
           </span>
         </div>
@@ -179,7 +183,7 @@
           
             
 <nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
@@ -197,13 +201,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../lab00/" class="md-tabs__link">
+      <a href="../lab00/" class="md-tabs__link md-tabs__link--active">
         Laboratorios
       </a>
     </li>
@@ -278,14 +284,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
       
       
       
@@ -294,7 +302,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Laboratorios
@@ -324,6 +332,143 @@
       <a href="../lab01/" class="md-nav__link">
         01: C y CGDB
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          02: C y MM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        02: C y MM
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-operando-bits" class="md-nav__link">
+    Ejercicio 1: Operando Bits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-registro-de-corrimiento-con-retroalimentacion-lineal" class="md-nav__link">
+    Ejercicio 2: Registro de Corrimiento con Retroalimentación Lineal
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 2: Registro de Corrimiento con Retroalimentación Lineal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-del-hardware-explicacion-mas-abajo" class="md-nav__link">
+    Diagrama del Hardware (Explicación Más Abajo)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicacion-del-diagrama-de-arriba" class="md-nav__link">
+    Explicación del Diagrama de Arriba
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-manejo-de-memoria" class="md-nav__link">
+    Ejercicio 3: Manejo de Memoria
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicio 3: Manejo de Memoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-funciona-un-vector_t" class="md-nav__link">
+    ¿Cómo funciona un vector_t?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-deben-hacer" class="md-nav__link">
+    ¿Qué deben hacer?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-y-calificacion" class="md-nav__link">
+    Entrega y Calificación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-y-calificacion_1" class="md-nav__link">
+    Entrega y calificación
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -513,6 +658,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#entrega-y-calificacion" class="md-nav__link">
+    Entrega y Calificación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-y-calificacion_1" class="md-nav__link">
+    Entrega y calificación
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -528,7 +687,6 @@
                   
 
 
-
 <h1 id="lab-2-c-avanzado-y-manejo-de-memoria">Lab 2 - C Avanzado y Manejo de Memoria</h1>
 <h2 id="objetivos">Objetivos</h2>
 <ul>
@@ -540,7 +698,7 @@
 <li>Son bromas, pero sólo los puede volver mejores programadores.</li>
 </ul>
 <h2 id="preparacion">Preparación</h2>
-<p>De primero, deben de descargar todos los archivos que necesitarán para completar este laboratorio, estos se encuentran <a href="https://classroom.github.com/a/QP_J2KA_">aquí</a>. Recuerden que deben aceptar la asignación y se les creará automáticamente un repositorio con una extensión que termina con su usuario.
+<p>De primero, deben de descargar todos los archivos que necesitarán para completar este laboratorio, estos se encuentran <a href="https://classroom.github.com/a/buXamYD2">aquí</a>. Recuerden que deben aceptar la asignación y se les creará automáticamente un repositorio con una extensión que termina con su usuario.
 Recuerden que este será revisado en búsqueda de copia o plagio, así que no lo hagan. De lo contrario, será sancionado acorde al reglamento de la universidad.</p>
 <p>Ahora, ya pueden ejecutar en la terminal el comando que les descargará los archivos base en el directorio a su elección:</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>link_al_lab
@@ -642,6 +800,71 @@ Congratulations!<span class="w"> </span>It<span class="w"> </span>works!
 <li>Corrijan a <em>vector_set()</em>. Esta es la más complicada. Bienvenidos a las ligas mayores. El problema de manipular una posición/índice arbitrario en un vector <em>v</em> es que es posible que no se haya reservado suficiente espacio con <em>malloc</em> en <em>vector-&gt;data</em> (sí, eso significa que tuvieron que haber guardado memoria con <em>malloc</em>). Piensen cómo administrar la memoria para lograr esto, para ver qué hacer con la data que estaba ahí antes y de qué otras cosas deben de hacer en su nuevo bloque de datos. Ayuda: Recuerden que los índices que no hayan sido alterados deben de ser cero. Hay distintas formas de acabar resolviendo esta función. Consideren el uso de las 3 funciones <em>__alloc</em>, porque pueden resultar útiles...</li>
 </ul>
 <p>Saber cómo reorganizar y liberar memoria es importante para la programación en C. Piensen que el manejo de memoria es como un parqueo, si hay carros parqueados y los dueños nunca se van, entonces no tienen espacio para nuevos carros. <strong>Y recuerden que deberían tener un 'heap' vacío al terminar su programa. Utilicen free y todo estará bien.</strong></p>
+<h2 id="entrega-y-calificacion">Entrega y Calificación</h2>
+<h2 id="entrega-y-calificacion_1">Entrega y calificación</h2>
+<p>Por favor subir el link de su repositorio al <strong>GES</strong>. Siempre es necesario que suban su repositorio al GES, incluso si no completaron todos los ejercicios, de lo contrario la nota será de 0 puntos.</p>
+<p>La calificación de este laboratorio será de 0 a 100 puntos, donde 100 puntos es la calificación máxima. La calificación se basará en la cantidad de ejercicios completados. Si tienen alguna duda sobre la calificación, por favor envíen un correo a los auxiliares.</p>
+<p>Para subir su laboratorio al autograder deben hacer lo siguiente, estando en la carpeta del laboratorio:</p>
+<div class="highlight"><pre><span></span><code>autograder<span class="w"> </span>assignment<span class="w"> </span>submit
+</code></pre></div>
+<p>Si por alguna razon les pide que ingresen el id de la asignación, pueden ingresar el siguiente id: <strong><code>0118eecf-e7ec-4967-ba6f-2f8910338e9e</code></strong>.</p>
+<p>Una vez suban su laboratorio al autograder, les va a salir un mensaje como el siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>_
+<span class="p">|</span>-<span class="p">|</span><span class="w">  </span>__
+<span class="p">|</span><span class="o">=</span><span class="p">|</span><span class="w"> </span><span class="o">[</span>Ll<span class="o">]</span><span class="w">        </span>Autograder
+<span class="s2">&quot;^&quot;</span><span class="w"> </span><span class="o">====</span><span class="sb">`</span><span class="nv">o</span>
+
+<span class="o">=</span>&gt;<span class="w">    </span>Assignment<span class="w"> </span><span class="p">|</span><span class="w"> </span>Submit
+
+✔<span class="w"> </span>Got<span class="w"> </span>assignment<span class="w"> </span>info<span class="w"> </span>successfully!
+✔<span class="w"> </span>Files<span class="w"> </span>zipped<span class="w"> </span>successfully!
+✔<span class="w"> </span>Files<span class="w"> </span>uploaded<span class="w"> </span>successfully!
+✔<span class="w"> </span>Assignment<span class="w"> </span>submitted<span class="w"> </span>successfully!
+
+╔══════════════╤══════════════════════════════════════╗
+║<span class="w"> </span>Id<span class="w">           </span>│<span class="w"> </span>e58e7f1c-96ae-477a-8851-77ba16bf7443<span class="w"> </span>║
+╟──────────────┼──────────────────────────────────────╢
+║<span class="w"> </span>Status<span class="w">       </span>│<span class="w"> </span>SUBMITTED<span class="w">                            </span>║
+╟──────────────┼──────────────────────────────────────╢
+║<span class="w"> </span>Submitted<span class="w"> </span>At<span class="w"> </span>│<span class="w"> </span><span class="m">10</span><span class="w"> </span>Feb,<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">06</span>:18:21<span class="w"> </span>pm<span class="w">             </span>║
+╚══════════════╧══════════════════════════════════════╝
+</code></pre></div>
+<p>Para ver el estado de su laboratorio pueden hacer lo siguiente:</p>
+<div class="highlight"><pre><span></span><code>autograder<span class="w"> </span>submit<span class="w"> </span>last
+</code></pre></div>
+<p>Si ya está calificado, les va a salir un mensaje como el siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>_
+<span class="p">|</span>-<span class="p">|</span><span class="w">  </span>__
+<span class="p">|</span><span class="o">=</span><span class="p">|</span><span class="w"> </span><span class="o">[</span>Ll<span class="o">]</span><span class="w">        </span>Autograder
+<span class="s2">&quot;^&quot;</span><span class="w"> </span><span class="o">====</span><span class="sb">`</span><span class="nv">o</span>
+
+<span class="o">=</span>&gt;<span class="w">    </span>Submission<span class="w"> </span><span class="p">|</span><span class="w"> </span>Last
+
+✔<span class="w"> </span>Got<span class="w"> </span>submission<span class="w"> </span>info<span class="w"> </span>successfully!
+
+╔════════╤══════════════════════════════════════╗
+║<span class="w"> </span>Id<span class="w">     </span>│<span class="w"> </span>62b44820-9b95-4efa-8da3-0c7db59f95f1<span class="w"> </span>║
+╟────────┼──────────────────────────────────────╢
+║<span class="w"> </span>Grade<span class="w">  </span>│<span class="w"> </span><span class="m">100</span><span class="w">                                  </span>║
+╟────────┼──────────────────────────────────────╢
+║<span class="w"> </span>Status<span class="w"> </span>│<span class="w"> </span>GRADED<span class="w">                               </span>║
+╚════════╧══════════════════════════════════════╝
+
+Stdout:
+
+<span class="m">1</span>.<span class="w"> </span>Bitwise<span class="w"> </span>Operands
+
+...
+
+<span class="m">2</span>.<span class="w"> </span>LFSR
+
+...
+
+<span class="m">3</span>.<span class="w"> </span>Vector
+
+...
+</code></pre></div>
+<p>Pueden subir su laboratorio <strong>10</strong> veces, pero solo se tomará en cuenta la entrega que tenga la calificación más alta. Si no les gusta la calificación que obtuvieron, pueden volver a subir su laboratorio hasta que obtengan la calificación que desean.</p>
 
 
 
@@ -683,10 +906,10 @@ Congratulations!<span class="w"> </span>It<span class="w"> </span>works!
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight"], "search": "../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ce72ebac.min.js"></script>
       
     
   </body>
