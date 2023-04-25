@@ -15,13 +15,17 @@
         <link rel="canonical" href="https://cc3-an.github.io/labs/lab05/">
       
       
+        <link rel="prev" href="../lab03/">
+      
+      
+        <link rel="next" href="../../projects/pj01/">
       
       <link rel="icon" href="../../assets/img/common/logo.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Lab 4 - Logisim - Estructura de Máquinas</title>
+        <title>04: Logisim - Estructura de Máquinas</title>
       
     
     
@@ -105,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab 4 - Logisim
+              04: Logisim
             
           </span>
         </div>
@@ -203,13 +207,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../lab00/" class="md-tabs__link">
+      <a href="../lab00/" class="md-tabs__link md-tabs__link--active">
         Laboratorios
       </a>
     </li>
@@ -300,14 +306,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
       
       
       
@@ -316,7 +324,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Laboratorios
@@ -374,6 +382,110 @@
       <a href="../lab03/" class="md-nav__link">
         03: RISCV
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          04: Logisim
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        04: Logisim
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vista-general" class="md-nav__link">
+    Vista General
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-0-las-bases" class="md-nav__link">
+    Ejercicio 0: Las Bases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-nand-nor-xor-y-multiplexores" class="md-nav__link">
+    Ejercicio 1: NAND, NOR, XOR y Multiplexores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-contador" class="md-nav__link">
+    Ejercicio 2: Contador
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-3-afd-a-logica-digital" class="md-nav__link">
+    Ejercicio 3: AFD a Lógica Digital
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calificacion" class="md-nav__link">
+    Calificación
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -632,7 +744,7 @@
 </ul>
 <h2 id="preparacion">Preparación</h2>
 <p>Para este laboratorio, que descarguen la aplicación <strong>Logisim</strong>. El archivo lo pueden descargar en el siguiente <a href="http://www.cburch.com/logisim/index.html">link</a>.</p>
-<p>También tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/a/PzcWEIzF">aquí</a>. Recuerden que deben aceptar la asignación de <strong>GitHub Classroom</strong> y se les creará automáticamente un repositorio con una extensión que termina con su usuario de GitHub. Cuando ya se haya creado el repositorio, pueden ejecutar los siguientes comandos abriendo una terminal (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span>):</p>
+<p>También tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/a/CkC6ACKP">aquí</a>. Recuerden que deben aceptar la asignación de <strong>GitHub Classroom</strong> y se les creará automáticamente un repositorio con una extensión que termina con su usuario de GitHub. Cuando ya se haya creado el repositorio, pueden ejecutar los siguientes comandos abriendo una terminal (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span>):</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>&lt;link<span class="w"> </span>del<span class="w"> </span>repositorio&gt;
 </code></pre></div>
 <h2 id="vista-general">Vista General</h2>
