@@ -15,17 +15,21 @@
         <link rel="canonical" href="https://cc3-an.github.io/projects/pj02/">
       
       
+        <link rel="prev" href="../pj01/">
+      
+      
+        <link rel="next" href="../../tutorials/install/">
       
       <link rel="icon" href="../../assets/img/common/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.0">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Proyecto 1: C y RISC-V - Estructura de Máquinas</title>
+        <title>02: RISCV - Estructura de Máquinas</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.402914a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -105,32 +109,38 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Proyecto 1: C y RISC-V
+              02: RISCV
             
           </span>
         </div>
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
+      
+        <form class="md-header__option" data-md-component="palette">
           
-          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+              </label>
+            
           
-            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
-            </label>
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+              </label>
+            
           
-        
-          
-          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
-            </label>
-          
-        
-      </form>
+        </form>
+      
     
     
     
@@ -213,13 +223,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../pj01/" class="md-tabs__link">
+      <a href="../pj01/" class="md-tabs__link md-tabs__link--active">
         Proyectos
       </a>
     </li>
@@ -371,14 +383,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
       
@@ -387,7 +401,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Proyectos
@@ -403,6 +417,294 @@
       <a href="../pj01/" class="md-nav__link">
         01: Snake (Culebrita)
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          02: RISCV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        02: RISCV
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-de-conocimiento" class="md-nav__link">
+    Requisitos de Conocimiento
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecturas-recomendadas" class="md-nav__link">
+    Lecturas Recomendadas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risc-v-green-card" class="md-nav__link">
+    RISC-V Green Card
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-del-proyecto" class="md-nav__link">
+    Estructura del Proyecto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-emulador-de-risc-v" class="md-nav__link">
+    El emulador de RISC-V
+  </a>
+  
+    <nav class="md-nav" aria-label="El emulador de RISC-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-de-instrucciones" class="md-nav__link">
+    Set de Instrucciones
+  </a>
+  
+    <nav class="md-nav" aria-label="Set de Instrucciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipo-r" class="md-nav__link">
+    Tipo R
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-i" class="md-nav__link">
+    Tipo I
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-s" class="md-nav__link">
+    Tipo S
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-sb" class="md-nav__link">
+    Tipo SB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-u" class="md-nav__link">
+    Tipo U
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-uj" class="md-nav__link">
+    Tipo UJ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructura-del-codigo" class="md-nav__link">
+    Estructura del Código
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones-en-la-linea-de-comandos" class="md-nav__link">
+    Opciones en la línea de comandos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-1" class="md-nav__link">
+    Parte 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requisitos-parte-1" class="md-nav__link">
+    Requisitos Parte 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probando-la-parte-1" class="md-nav__link">
+    Probando la Parte 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calificacion-parte-1" class="md-nav__link">
+    Calificación Parte 1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-2" class="md-nav__link">
+    Parte 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requisitos" class="md-nav__link">
+    Requisitos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probando-la-parte-2" class="md-nav__link">
+    Probando la Parte 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calificacion-parte-2" class="md-nav__link">
+    Calificación Parte 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preguntas-frecuentes" class="md-nav__link">
+    Preguntas Frecuentes
+  </a>
+  
+    <nav class="md-nav" aria-label="Preguntas Frecuentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-como-puedo-empezar" class="md-nav__link">
+    1. ¿Cómo puedo empezar?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-me-da-floating-point-exception-core-dumped-al-hacer-algunas-operaciones-aritmeticas-por-que" class="md-nav__link">
+    2. Me da Floating-point Exception (core dumped) al hacer algunas operaciones aritméticas, ¿por qué?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-en-la-parte-1-el-formato-nunca-es-el-esperado-por-las-pruebas-por-que" class="md-nav__link">
+    3. En la parte 1 el formato nunca es el esperado por las pruebas, ¿por qué?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-puedo-crear-mis-propias-funciones" class="md-nav__link">
+    4. ¿Puedo crear mis propias funciones?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -732,29 +1034,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-en-mi-maquina-local-saco-100-y-en-el-autograder-0-por-que" class="md-nav__link">
-    2. En mi máquina local saco 100% y en el autograder 0, ¿por qué?
+  <a href="#2-me-da-floating-point-exception-core-dumped-al-hacer-algunas-operaciones-aritmeticas-por-que" class="md-nav__link">
+    2. Me da Floating-point Exception (core dumped) al hacer algunas operaciones aritméticas, ¿por qué?
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-me-da-floating-point-exception-core-dumped-al-hacer-algunas-operaciones-aritmeticas-por-que" class="md-nav__link">
-    3. Me da Floating-point Exception (core dumped) al hacer algunas operaciones aritméticas, ¿por qué?
+  <a href="#3-en-la-parte-1-el-formato-nunca-es-el-esperado-por-las-pruebas-por-que" class="md-nav__link">
+    3. En la parte 1 el formato nunca es el esperado por las pruebas, ¿por qué?
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-en-la-parte-1-el-formato-nunca-es-el-esperado-por-las-pruebas-por-que" class="md-nav__link">
-    4. En la parte 1 el formato nunca es el esperado por las pruebas, ¿por qué?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-puedo-crear-mis-propias-funciones" class="md-nav__link">
-    5. ¿Puedo crear mis propias funciones?
+  <a href="#4-puedo-crear-mis-propias-funciones" class="md-nav__link">
+    4. ¿Puedo crear mis propias funciones?
   </a>
   
 </li>
@@ -784,7 +1079,6 @@
 <ul>
 <li>Mejorar sus habilidades de programación en C.</li>
 <li>Conocer algunos de los detalles de RISC-V.</li>
-<li>Prepararse para lo que viene más adelante en el curso.</li>
 </ul>
 <h2 id="requisitos-de-conocimiento">Requisitos de Conocimiento</h2>
 <p>Para realizar este proyecto ustedes tienen que tener claros algunos conceptos, de lo contrario será bastante difícil e incómodo empezar a trabajar. Les recomendamos que antes de empezar estén totalmente seguros que dominan al 100% los siguientes puntos:</p>
@@ -811,7 +1105,7 @@
 <li>P&amp;H: B-43</li>
 </ul>
 <h2 id="introduccion">Introducción</h2>
-<p>En este proyecto ustedes deben de crear un emulador que pueda ejecutar un subconjunto de instrucciones de <strong>RISC-V</strong>. Ustedes se van a encargar de hacer un programa que decodifique y ejecute varias instrucciones de RISC-V. Considérenlo como una versión miniatura de <strong>Jupiter</strong>.</p>
+<p>En este proyecto ustedes deben de crear un emulador que pueda ejecutar un subconjunto de instrucciones de <strong>RISC-V</strong>. Ustedes se van a encargar de hacer un programa que decodifique y ejecute varias instrucciones de RISC-V. Considérenlo como una versión miniatura de <strong>Venus</strong>.</p>
 <h2 id="risc-v-green-card">RISC-V Green Card</h2>
 <p>Aquí hay dos <strong>RISC-V Green Cards</strong> que pueden consultar y así tener más herramientras que les pueden ayudar a completar el proyecto. La primera tiene información acerca de los <em>opcodes</em> y otros campos de cada uno de los diferentes formatos de instrucción, por lo que esta sería su mejor opción.</p>
 <p align="center">
@@ -821,7 +1115,7 @@
 
 <h2 id="preparacion">Preparación</h2>
 <p><strong>Antes de comenzar asegúrense de que hayan <span style="color: red">leído y comprendido</span> todas las instrucciones del proyecto de principio a fin</strong>. Si tienen alguna pregunta pueden consultar la sección de preguntas frecuentes para ver si ya ha sido resuelta, de lo contrario por favor diríjanse a <strong>Slack</strong> y pregunten en los canales correspondientes.</p>
-<p>Para comenzar con el proyecto, primero tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/g/wGyx9BSw">aquí</a>. Tienen permitido trabajar en parejas o de forma individual, por lo que al aceptar la asignación les preguntará si desean crear un grupo nuevo o unirse a uno ya existente. Si crean un grupo nuevo, ingresen un nombre que represente al grupo y que no esté ya en los grupos existentes.</p>
+<p>Para comenzar con el proyecto, primero tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/a/aO76NKWj">aquí</a>. Tienen permitido trabajar en parejas o de forma individual, por lo que al aceptar la asignación les preguntará si desean crear un grupo nuevo o unirse a uno ya existente. Si crean un grupo nuevo, ingresen un nombre que represente al grupo y que no esté ya en los grupos existentes.</p>
 <p><img alt="Create group" src="/assets/img/projs/proj01/classroom1.png" /></p>
 <p>Si desean unirse a un grupo ya creado, tienen que buscar el nombre del grupo y pulsar el botón que dice <strong>join</strong></p>
 <p><img alt="Join group" src="/assets/img/projs/proj01/classroom2.png" /></p>
@@ -834,17 +1128,20 @@
 </blockquote>
 <h2 id="estructura-del-proyecto">Estructura del Proyecto</h2>
 <p>Cuando hayan clonado el repositorio, se van a encontrar con los siguientes archivos:</p>
-<div class="highlight"><pre><span></span><code>Makefile
-part1.c
-part2.c
-README.md
-riscv.c
-riscvcode/
-riscv.h
-autograder.json
-types.h
-utils.c
-utils.h
+<div class="highlight"><pre><span></span><code>.
+├──<span class="w"> </span>LICENSE
+├──<span class="w"> </span>Makefile
+├──<span class="w"> </span>README.md
+├──<span class="w"> </span>check
+├──<span class="w"> </span>grading
+├──<span class="w"> </span>part1.c
+├──<span class="w"> </span>part2.c
+├──<span class="w"> </span>riscv.c
+├──<span class="w"> </span>riscv.h
+├──<span class="w"> </span>riscvcode
+├──<span class="w"> </span>types.h
+├──<span class="w"> </span>utils.c
+└──<span class="w"> </span>utils.h
 </code></pre></div>
 <p>Los únicos archivos que pueden modificar son:</p>
 <ul>
@@ -1398,10 +1695,7 @@ random_disasm<span class="w"> </span>TEST<span class="w"> </span>PASSED!
 <p>Los tests que se les dieron no evalúan todas las posibilidades, por eso mismo ustedes pueden (<strong>deben</strong>) crear sus propios archivos de prueba para comprobar su funcionamiento. Si ustedes desean correr un test en específico, pueden usar el siguiente comando para ello:</p>
 <div class="highlight"><pre><span></span><code>make [test_name]_disasm
 </code></pre></div>
-<p>Para crear sus propios archivos de prueba, primero necesitarán crear código de máquina. Para ello pueden ayudarse de V-Sim o hacerlo a mano. Si utilizan V-Sim tienen que crear un archivo <code>.s</code> y hacer un <code>dump</code> del código de máquina utilizando la bandera <code>-code</code> en la terminal:</p>
-<div class="highlight"><pre><span></span><code>jupiter<span class="w"> </span>&lt;archivo&gt;.s<span class="w"> </span>--dump-code<span class="w"> </span>&lt;test_name&gt;.input
-</code></pre></div>
-<p>Recuerde que Jupiter requiere el .global <strong>start y la etiqueta </strong>start: para poder ensamblar. Luego que hizo el --dump-code entre al archivo generado y elimine las primeras dos líneas, estas corresponden al __start y su proyecto no necesita preocuparse de esto.</p>
+<p>Para crear sus propios archivos de prueba, primero necesitarán crear código de máquina. Para ello pueden ayudarse de Venus o hacerlo a mano. Si utilizan Venus tienen que crear un archivo en el editor online y hacer un <code>dump</code> del código de máquina utilizando las opciones de la interfaz gráfica.</p>
 <p>Ustedes deben de poner las instrucciones en código de máquina en un archivo llamado <code>[test_name].input</code>
 y colocar el archivo dentro de la carpeta <code>riscvcode/code</code>. Después, deben crear el archivo <code>[test_name].solution</code> el cual contendrá las instrucciones que se espera obtener; y colocar el archivo en la carpeta <code>riscvcode/ref</code>. Vean las pruebas proporcionadas como ejemplos de este tipo de archivos. Para integrar sus pruebas en el comando <code>make</code>, ustedes deben de modificar el archivo <code>Makefile</code>. En la línea 4 del archivo <code>Makefile</code>, donde dice <code>ASM_TESTS</code>, agregar <code>[test_name]</code> a la lista con espacios entre cada nombre de archivo:</p>
 <div class="highlight"><pre><span></span><code>SOURCES := utils.c part1.c part2.c riscv.c
@@ -1461,9 +1755,7 @@ Ahora compilen su test de ensamblador y ejecútenlo escribiendo el siguiente com
 <div class="highlight"><pre><span></span><code><span class="n">instruction</span><span class="p">.</span><span class="n">opcode</span>
 </code></pre></div>
 <p>siendo <code>instruction</code> una variable que representa una "instancia" de la estructura <code>Instruction</code>. Luego de esto, pueden ver cómo accediendo a estos campos pueden decodificar la instrucción y así lograr imprimirla.</p>
-<h3 id="2-en-mi-maquina-local-saco-100-y-en-el-autograder-0-por-que">2. En mi máquina local saco 100% y en el autograder 0, ¿por qué?</h3>
-<p>Al trabajar con uniones y estructuras de C y al utilizar la bandera <code>-O2</code> pueden pasar cosas muy raras, una de ellas es el <a href="https://cellperformance.beyond3d.com/articles/2006/06/understanding-strict-aliasing.html">strict aliasing</a>, por eso les recomendamos probar su código en la máquina virtual que les proporcionamos, así están totalmente seguros de que código funciona correctamente.</p>
-<h3 id="3-me-da-floating-point-exception-core-dumped-al-hacer-algunas-operaciones-aritmeticas-por-que">3. Me da Floating-point Exception (core dumped) al hacer algunas operaciones aritméticas, ¿por qué?</h3>
+<h3 id="2-me-da-floating-point-exception-core-dumped-al-hacer-algunas-operaciones-aritmeticas-por-que">2. Me da Floating-point Exception (core dumped) al hacer algunas operaciones aritméticas, ¿por qué?</h3>
 <p>Generalmente esto se da porque se divide por <code>0</code> o hay <code>overflow</code> utilizando variables enteras con signo. Por ejemplo:</p>
 <p><strong>Division por 0</strong></p>
 <div class="highlight"><pre><span></span><code>int x = 10;
@@ -1478,7 +1770,7 @@ int z = x / y;
 <p>La solución para la división por <code>0</code> es simplemente tienen que devolver <code>-1</code> como dice la especificación de RISC-V y para el residuo devolver el primer argumento de la operación, en el caso de <code>overflow</code> la solución es castear las variables a un tipo con más bytes:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int32_t</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int32_t</span><span class="p">)((</span><span class="kt">int64_t</span><span class="p">)</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="kt">int64_t</span><span class="p">)</span><span class="n">y</span><span class="p">);</span>
 </code></pre></div>
-<h3 id="4-en-la-parte-1-el-formato-nunca-es-el-esperado-por-las-pruebas-por-que">4. En la parte 1 el formato nunca es el esperado por las pruebas, ¿por qué?</h3>
+<h3 id="3-en-la-parte-1-el-formato-nunca-es-el-esperado-por-las-pruebas-por-que">3. En la parte 1 el formato nunca es el esperado por las pruebas, ¿por qué?</h3>
 <p>Seguramente no están utilizando el formato correcto, les recomendamos que utilicen las siguientes <code>macros</code> para imprimir las instrucciones que se encuentran en el archivo <code>utils.h</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#define RTYPE_FORMAT &quot;%s\tx%d, x%d, x%d\n&quot;</span>
 <span class="cp">#define ITYPE_FORMAT &quot;%s\tx%d, x%d, %d\n&quot;</span>
@@ -1490,7 +1782,7 @@ int z = x / y;
 <span class="cp">#define BRANCH_FORMAT &quot;%s\tx%d, x%d, %d\n&quot;</span>
 <span class="cp">#define ECALL_FORMAT &quot;ecall\n&quot;</span>
 </code></pre></div>
-<h3 id="5-puedo-crear-mis-propias-funciones">5. ¿Puedo crear mis propias funciones?</h3>
+<h3 id="4-puedo-crear-mis-propias-funciones">4. ¿Puedo crear mis propias funciones?</h3>
 <p>Sí, siempre y cuando estas estén declaradas, ya sea en <code>part1.c</code>, <code>part2.c</code> o <code>utils.c</code>, ya que son los únicos archivos que se envían al autograder. Sin embargo, <strong><span style="color: red">NO</span> está permitido renombrar o eliminar las siguientes funciones</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/* archivo part1.c */</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">decode_instruction</span><span class="p">(</span><span class="n">Instruction</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
@@ -1545,7 +1837,7 @@ int z = x / y;
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ce72ebac.min.js"></script>
+      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
       
     
   </body>
