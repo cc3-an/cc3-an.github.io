@@ -15,13 +15,17 @@
         <link rel="canonical" href="https://cc3-an.github.io/labs/lab07/">
       
       
+        <link rel="prev" href="../lab05/">
+      
+      
+        <link rel="next" href="../../projects/pj01/">
       
       <link rel="icon" href="../../assets/img/common/logo.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Lab 6 - ALU Proyecto 2 - Estructura de Máquinas</title>
+        <title>05: Logisim ALU - Estructura de Máquinas</title>
       
     
     
@@ -73,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-6-alu-proyecto-2" class="md-skip">
+        <a href="#lab-5-alu" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -105,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab 6 - ALU Proyecto 2
+              05: Logisim ALU
             
           </span>
         </div>
@@ -203,13 +207,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../lab00/" class="md-tabs__link">
+      <a href="../lab00/" class="md-tabs__link md-tabs__link--active">
         Laboratorios
       </a>
     </li>
@@ -300,14 +306,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
       
       
       
@@ -316,7 +324,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Laboratorios
@@ -388,6 +396,82 @@
       <a href="../lab05/" class="md-nav__link">
         04: Logisim
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          05: Logisim ALU
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        05: Logisim ALU
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    Objetivo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparacion" class="md-nav__link">
+    Preparación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-arithmetic-logic-unit-alu" class="md-nav__link">
+    Ejercicio 1: Arithmetic Logic Unit (ALU)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calificacion" class="md-nav__link">
+    Calificación
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -608,17 +692,16 @@
                   
 
 
-<h1 id="lab-6-alu-proyecto-2">Lab 6 - ALU Proyecto 2</h1>
+<h1 id="lab-5-alu">Lab 5 - ALU</h1>
 <h2 id="objetivo">Objetivo</h2>
-<p>Este laboratorio es bastante corto y representa los primeros <strong>25 puntos</strong> de su proyecto 2 (procesador de RISC-V en Logisim). El motivo principal es que tengan más tiempo para invertir en otras partes del proyecto. Si logran sacar 100 en el laboratorio tendrán una de tres partes terminadas... éxitos.</p>
+<p>Este laboratorio es bastante corto. El motivo principal es que tengan más tiempo para invertir en el segundo proyecto...</p>
 <h2 id="preparacion">Preparación</h2>
 <p>Para este laboratorio, nuevamente, es necesario que tengan la aplicación de <a href="http://www.cburch.com/logisim/index.html">Logisim</a>. Adicionalmente pueden utilizar la <a href="http://www.cburch.com/logisim/docs.html">documentación</a> de Logisim para refrescar el conocimiento que adquirieron en los laboratorios anteriores.</p>
-<p>También tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/a/In8_5LX1">aquí</a>. Cuando ya se haya creado el repositorio, pueden ejecutar los siguientes comandos abriendo una terminal (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span>):</p>
+<p>También tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/a/byJeOiIB">aquí</a>. Cuando ya se haya creado el repositorio, pueden ejecutar los siguientes comandos abriendo una terminal (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span>):</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>&lt;link<span class="w"> </span>del<span class="w"> </span>repositorio&gt;
 </code></pre></div>
 <h2 id="ejercicio-1-arithmetic-logic-unit-alu">Ejercicio 1: Arithmetic Logic Unit (ALU)</h2>
-<p><strong>Las instrucciones de este ejercicio son una copia literal de las instrucciones del proyecto 2, por favor lean cuidadosamente</strong>.</p>
-<p>Su tarea es crear un ALU que soporte todas las operaciones que necesitan las instrucciones de nuestro ISA. Van a estar trabajando en el archivo <strong>alu.circ</strong>. Este tiene tres entradas:</p>
+<p>Su tarea es crear un ALU que soporte todas las operaciones que necesitan las instrucciones de un ISA simplificado RISC-V. Van a estar trabajando en el archivo <strong>alu.circ</strong>. Este tiene tres entradas:</p>
 <table>
 <thead>
 <tr>
@@ -677,7 +760,7 @@
 </tr>
 </tbody>
 </table>
-<p>Esta es la lista de operaciones que necesitan implementar. Ustedes tienen que utilizar y les recomendamos utilizar los componentes de logisim que ya efectuan estas operaciones, por favor no las implementen desde 0, sería muy tardado y no es el objetivo del proyecto ni del laboratorio.</p>
+<p>Esta es la lista de operaciones que necesitan implementar. Ustedes tienen que utilizar y les recomendamos utilizar los componentes de logisim que ya efectuan estas operaciones, por favor no las implementen desde 0, sería muy tardado y no es el objetivo del laboratorio.</p>
 <table>
 <thead>
 <tr>
@@ -737,9 +820,9 @@
 </tbody>
 </table>
 <p>Algunas cosas adicionales que tienen que tener en mente:</p>
-<p>La salidas <code>Equal</code>, <code>LT</code>, <code>LTU</code> siempre tienen que sacar el valor correcto de comparación sin importar el valor de <code>ALU Op</code>. Ustedes no pueden modificar (mover, reemplazar, cortar, pegar, eliminar, etc) los pines de entrada ni de salida que nosotros les damos de lo contrario el autograder no va a funcionar correctamente, tengan en cuenta esto para evitar problemas con el autograder a la hora de hacer submit.</p>
+<p>La salidas <code>Equal</code>, <code>LT</code>, <code>LTU</code> siempre tienen que sacar el valor correcto de comparación sin importar el valor de <code>ALU Op</code>. Ustedes no pueden modificar (mover, reemplazar, cortar, pegar, eliminar, etc) los pines de entrada ni de salida que nosotros les damos de lo contrario el checker no va a funcionar correctamente, tengan en cuenta esto para evitar problemas con el <code>./check</code>.</p>
 <h2 id="calificacion">Calificación</h2>
-<p>Al finalizar su circuito puede usar <code>./check</code> para probarlo de forma local. Debido a lo importante que sera el ALU para su proyecto, este lab se calificara con 0 o 100 unicamente.</p>
+<p>Al finalizar su circuito puede usar <code>./check</code> para probarlo de forma local, este lab se calificara con 0 o 100 unicamente.</p>
 <div class="highlight"><pre><span></span><code>./check
 </code></pre></div>
 <p>Si todo esta correcto les saldrá algo como esto:</p>
@@ -751,7 +834,7 @@
 
 <span class="w">             </span>Machine<span class="w"> </span>Structures
 <span class="w">     </span>Great<span class="w"> </span>Ideas<span class="w"> </span><span class="k">in</span><span class="w"> </span>Computer<span class="w"> </span>Architecture
-<span class="w">               </span>Lab<span class="w"> </span><span class="m">7</span>:<span class="w"> </span>PJ2<span class="w"> </span>ALU
+<span class="w">               </span>Lab<span class="w"> </span><span class="m">5</span>:<span class="w"> </span>Logisim<span class="w"> </span>ALU
 
 
 Exercise<span class="w">      </span>Grade<span class="w">  </span>Message
