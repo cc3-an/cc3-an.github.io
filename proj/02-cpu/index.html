@@ -1,0 +1,794 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.1.8"><meta name="description"><title>Proyecto 02: CPU RISC-V</title><link rel="icon" href="/favicon.ico" sizes="any"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"><!-- Facebook Meta Tags --><meta property="og:type" content="website"><meta property="og:title" content="Proyecto 02: CPU RISC-V"><meta property="og:description"><!-- Twitter Meta Tags --><meta name="twitter:card" content="summary_large_image"><meta property="twitter:domain" content="cc3an.site"><meta name="twitter:title" content="Proyecto 02: CPU RISC-V"><meta name="twitter:description"><script>
+      const storageKey = "cc3-theme";
+      const el = document.documentElement;
+      const systemThemes = ["light", "dark"];
+      const defaultTheme = "system";
+      const media = "(prefers-color-scheme: dark)";
+
+      function setColorScheme(theme) {
+        if (systemThemes.includes(theme)) {
+          el.style.colorScheme = theme;
+        }
+      }
+
+      function updateDOM(theme) {
+        el.classList.remove(...systemThemes);
+        el.classList.add(theme);
+        setColorScheme(theme);
+      }
+
+      function getSystemTheme() {
+        return window.matchMedia(media).matches ? "dark" : "light";
+      }
+
+      try {
+        const themeName = localStorage.getItem(storageKey) || defaultTheme;
+        const isSystem = themeName === "system";
+        const theme = isSystem ? getSystemTheme() : themeName;
+        updateDOM(theme);
+      } catch {
+        // ignore (localStorage might be disabled)
+      }
+    </script><link rel="stylesheet" href="/assets/calendar.C18IijOU.css">
+<link rel="stylesheet" href="/assets/index.BIyfTlV9.css"></head> <body> <header class="bg-background/90 fixed z-50 w-full border-b backdrop-blur backdrop-filter"> <div class="mx-auto flex h-16 w-full max-w-screen-2xl items-center justify-between gap-2 px-4 md:px-8 lg:px-16"> <div class="items-center space-x-2.5 hidden lg:flex"> <a href="/" aria-label="CC3 AN" class="tracking- flex items-center gap-2 font-medium no-underline"> <span class="bg-tertiary text-tertiary-foreground inline-flex items-center justify-center rounded-full p-1"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cpu h-5 w-5"><rect width="16" height="16" x="4" y="4" rx="2"></rect><rect width="6" height="6" x="9" y="9" rx="1"></rect><path d="M15 2v2"></path><path d="M15 20v2"></path><path d="M2 15h2"></path><path d="M2 9h2"></path><path d="M20 15h2"></path><path d="M20 9h2"></path><path d="M9 2v2"></path><path d="M9 20v2"></path></svg> </span> <span class="hidden font-semibold tracking-tighter lg:inline">
+CC3 AN
+</span> </a> <span class="items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 hidden lg:inline-flex">2025</span> </div> <nav class="divide-border flex flex-1 grow items-center justify-end divide-x"> <div class="flex flex-1 grow items-center pr-2 md:max-w-64 lg:space-x-4 lg:pr-8"> <button id="command-k" class="inline-flex items-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 bg-muted/30 group relative w-full justify-between pl-8 pr-2 lg:cursor-text"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search absolute left-2 h-4 w-4"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg> <span>Buscar</span> <span class="items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 group-hover:border-tertiary group-hover:bg-background hidden lg:inline-flex">
+⌘K
+</span> </button> </div> <div class="flex items-center gap-2 lg:pl-8 pl-2"> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="1ASBXX" prefix="r18" component-url="/assets/theme.DzuktpZx.js" component-export="ThemeToggle" renderer-url="/assets/client.CBw73trT.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ThemeToggle&quot;,&quot;value&quot;:true}" await-children><div class="bg-background flex items-center justify-center gap-0.5 rounded-full border p-1"><button type="button" aria-pressed="false" data-state="off" aria-label="System Theme" class="text-foreground ring-ring data-[state=on]:border-tertiary data-[state=on]:bg-tertiary data-[state=on]:text-tertiary-foreground inline-flex h-7 w-7 items-center justify-center rounded-full border border-transparent transition-colors focus-visible:outline-none focus-visible:ring-1 data-[state=on]:shadow-lg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor h-4 w-4"><rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg></button><button type="button" aria-pressed="false" data-state="off" aria-label="Dark Theme" class="text-foreground ring-ring data-[state=on]:border-tertiary data-[state=on]:bg-tertiary data-[state=on]:text-tertiary-foreground inline-flex h-7 w-7 items-center justify-center rounded-full border border-transparent transition-colors focus-visible:outline-none focus-visible:ring-1 data-[state=on]:shadow-lg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon h-4 w-4"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button><button type="button" aria-pressed="false" data-state="off" aria-label="Light Theme" class="text-foreground ring-ring data-[state=on]:border-tertiary data-[state=on]:bg-tertiary data-[state=on]:text-tertiary-foreground inline-flex h-7 w-7 items-center justify-center rounded-full border border-transparent transition-colors focus-visible:outline-none focus-visible:ring-1 data-[state=on]:shadow-lg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun h-4 w-4"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></button></div><!--astro:end--></astro-island>  <a target="_blank" rel="noreferrer" href="https://github.com/cc3-an"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github h-4 w-4"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg> <span class="sr-only">Github</span> </a>   <a target="_blank" rel="noreferrer" href="https://cc3-an-2024.slack.com/"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-slack h-4 w-4"><rect width="3" height="8" x="13" y="2" rx="1.5"></rect><path d="M19 8.5V10h1.5A1.5 1.5 0 1 0 19 8.5"></path><rect width="3" height="8" x="8" y="14" rx="1.5"></rect><path d="M5 15.5V14H3.5A1.5 1.5 0 1 0 5 15.5"></path><rect width="8" height="3" x="14" y="13" rx="1.5"></rect><path d="M15.5 19H14v1.5a1.5 1.5 0 1 0 1.5-1.5"></path><rect width="8" height="3" x="2" y="8" rx="1.5"></rect><path d="M8.5 5H10V3.5A1.5 1.5 0 1 0 8.5 5"></path></svg> <span class="sr-only">Slack</span> </a>  </div> </nav> </div> </header> <div class="flex min-h-svh flex-col justify-between"> <main class="w-full pt-16"> <div class="mx-auto flex w-full max-w-screen-2xl px-4 md:px-8 lg:px-16"> <aside class="sticky top-16 z-10 hidden w-80 shrink-0 lg:block lg:h-[calc(100svh-4rem-5rem)]"> <div class="h-full w-full overflow-y-auto py-8"> <div class="flex w-full flex-col items-start gap-2 pr-4"> <astro-island uid="ZN0rTv" prefix="r23" component-url="/assets/AsideLink.Q08yiomP.js" component-export="AsideLink" renderer-url="/assets/client.CBw73trT.js" props="{&quot;exact&quot;:[0,true],&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;href&quot;:[0,&quot;/&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AsideLink&quot;,&quot;value&quot;:true}" await-children><a href="/" data-state="closed" class="rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 text-muted-foreground flex w-full grow items-center justify-start gap-2"><span class="line-clamp-1"><astro-slot>
+Inicio
+</astro-slot></span></a><!--astro:end--></astro-island> <astro-island uid="1yErNu" prefix="r24" component-url="/assets/AsideLink.Q08yiomP.js" component-export="AsideLink" renderer-url="/assets/client.CBw73trT.js" props="{&quot;exact&quot;:[0,true],&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;href&quot;:[0,&quot;/calendar&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AsideLink&quot;,&quot;value&quot;:true}" await-children><a href="/calendar" data-state="closed" class="rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 text-muted-foreground flex w-full grow items-center justify-start gap-2"><span class="line-clamp-1"><astro-slot>
+Calendario
+</astro-slot></span></a><!--astro:end--></astro-island> <span class="flex h-8 grow items-center px-3 text-sm font-medium leading-none">
+Laboratorios
+</span> <div class="ml-3 w-full flex flex-col items-start gap-2 border-l pl-3"> <astro-island uid="Z22CLKt" prefix="r26" component-url="/assets/AsideLink.Q08yiomP.js" component-export="AsideLink" renderer-url="/assets/client.CBw73trT.js" props="{&quot;exact&quot;:[0,true],&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;href&quot;:[0,&quot;/lab/00-git-y-representacion-de-numeros&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AsideLink&quot;,&quot;value&quot;:true}" await-children><a href="/lab/00-git-y-representacion-de-numeros" data-state="closed" class="rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 text-muted-foreground flex w-full grow items-center justify-start gap-2"><span class="line-clamp-1"><astro-slot>Lab 0: Git y Representación de Números</astro-slot></span></a><!--astro:end--></astro-island><astro-island uid="Z2teKMT" prefix="r27" component-url="/assets/AsideLink.Q08yiomP.js" component-export="AsideLink" renderer-url="/assets/client.CBw73trT.js" props="{&quot;exact&quot;:[0,true],&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;href&quot;:[0,&quot;/lab/01-c-gdb&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AsideLink&quot;,&quot;value&quot;:true}" await-children><a href="/lab/01-c-gdb" data-state="closed" class="rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 text-muted-foreground flex w-full grow items-center justify-start gap-2"><span class="line-clamp-1"><astro-slot>Lab 1: C y GDB</astro-slot></span></a><!--astro:end--></astro-island><astro-island uid="1H3gaB" prefix="r28" component-url="/assets/AsideLink.Q08yiomP.js" component-export="AsideLink" renderer-url="/assets/client.CBw73trT.js" props="{&quot;exact&quot;:[0,true],&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;href&quot;:[0,&quot;/lab/02-c-mm&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AsideLink&quot;,&quot;value&quot;:true}" await-children><a href="/lab/02-c-mm" data-state="closed" class="rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 text-muted-foreground flex w-full grow items-center justify-start gap-2"><span class="line-clamp-1"><astro-slot>Lab 2: C y MM</astro-slot></span></a><!--astro:end--></astro-island><astro-island uid="Z2wWIuB" prefix="r29" component-url="/assets/AsideLink.Q08yiomP.js" component-export="AsideLink" renderer-url="/assets/client.CBw73trT.js" props="{&quot;exact&quot;:[0,true],&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;href&quot;:[0,&quot;/lab/03-riscv&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AsideLink&quot;,&quot;value&quot;:true}" await-children><a href="/lab/03-riscv" data-state="closed" class="rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 text-muted-foreground flex w-full grow items-center justify-start gap-2"><span class="line-clamp-1"><astro-slot>Lab 3: RISC-V</astro-slot></span></a><!--astro:end--></astro-island> </div> <span class="flex h-8 grow items-center px-3 text-sm font-medium leading-none">
+Proyectos
+</span> <div class="ml-3 w-full flex flex-col items-start gap-2 border-l pl-3"> <astro-island uid="ZkboTk" prefix="r30" component-url="/assets/AsideLink.Q08yiomP.js" component-export="AsideLink" renderer-url="/assets/client.CBw73trT.js" props="{&quot;exact&quot;:[0,true],&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;href&quot;:[0,&quot;/proj/01-snake&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AsideLink&quot;,&quot;value&quot;:true}" await-children><a href="/proj/01-snake" data-state="closed" class="rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 text-muted-foreground flex w-full grow items-center justify-start gap-2"><span class="line-clamp-1"><astro-slot>Proyecto 01: C Snake</astro-slot></span></a><!--astro:end--></astro-island><astro-island uid="1DkuLf" prefix="r31" component-url="/assets/AsideLink.Q08yiomP.js" component-export="AsideLink" renderer-url="/assets/client.CBw73trT.js" props="{&quot;exact&quot;:[0,true],&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;href&quot;:[0,&quot;/proj/02-cpu&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AsideLink&quot;,&quot;value&quot;:true}" await-children><a href="/proj/02-cpu" data-state="closed" class="rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 text-muted-foreground flex w-full grow items-center justify-start gap-2"><span class="line-clamp-1"><astro-slot>Proyecto 02: CPU RISC-V</astro-slot></span></a><!--astro:end--></astro-island> </div> <span class="flex h-8 grow items-center px-3 text-sm font-medium leading-none">
+Tutoriales
+</span> <div class="ml-3 w-full flex flex-col items-start gap-2 border-l pl-3"> <astro-island uid="ZswgP8" prefix="r32" component-url="/assets/AsideLink.Q08yiomP.js" component-export="AsideLink" renderer-url="/assets/client.CBw73trT.js" props="{&quot;exact&quot;:[0,true],&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;href&quot;:[0,&quot;/tutorial/git-github&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AsideLink&quot;,&quot;value&quot;:true}" await-children><a href="/tutorial/git-github" data-state="closed" class="rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 text-muted-foreground flex w-full grow items-center justify-start gap-2"><span class="line-clamp-1"><astro-slot>Git y GitHub</astro-slot></span></a><!--astro:end--></astro-island><astro-island uid="2cGton" prefix="r33" component-url="/assets/AsideLink.Q08yiomP.js" component-export="AsideLink" renderer-url="/assets/client.CBw73trT.js" props="{&quot;exact&quot;:[0,true],&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;href&quot;:[0,&quot;/tutorial/maquina&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AsideLink&quot;,&quot;value&quot;:true}" await-children><a href="/tutorial/maquina" data-state="closed" class="rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 text-muted-foreground flex w-full grow items-center justify-start gap-2"><span class="line-clamp-1"><astro-slot>Instalación de Material</astro-slot></span></a><!--astro:end--></astro-island> </div> <span class="flex h-8 grow items-center px-3 text-sm font-medium leading-none">
+Notas
+</span> <div class="ml-3 w-full flex flex-col items-start gap-2 border-l pl-3"> <astro-island uid="2sKsdU" prefix="r34" component-url="/assets/AsideLink.Q08yiomP.js" component-export="AsideLink" renderer-url="/assets/client.CBw73trT.js" props="{&quot;exact&quot;:[0,true],&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;href&quot;:[0,&quot;/note/00-numbers&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AsideLink&quot;,&quot;value&quot;:true}" await-children><a href="/note/00-numbers" data-state="closed" class="rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 text-muted-foreground flex w-full grow items-center justify-start gap-2"><span class="line-clamp-1"><astro-slot>Números</astro-slot></span></a><!--astro:end--></astro-island><astro-island uid="Z24CDVo" prefix="r35" component-url="/assets/AsideLink.Q08yiomP.js" component-export="AsideLink" renderer-url="/assets/client.CBw73trT.js" props="{&quot;exact&quot;:[0,true],&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;href&quot;:[0,&quot;/note/01-c&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AsideLink&quot;,&quot;value&quot;:true}" await-children><a href="/note/01-c" data-state="closed" class="rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 text-muted-foreground flex w-full grow items-center justify-start gap-2"><span class="line-clamp-1"><astro-slot>Introducción a C</astro-slot></span></a><!--astro:end--></astro-island> </div> </div> </div> <div class="from-background/0 to-card/100 absolute inset-x-0 top-0 h-8 bg-gradient-to-t"></div> <div class="from-background/0 to-card/100 absolute inset-x-0 bottom-0 h-8 bg-gradient-to-b"></div> <astro-island uid="Z2X9QB" prefix="r19" component-url="/assets/Search.aI1pTcoJ.js" component-export="Search" renderer-url="/assets/client.CBw73trT.js" props="{&quot;pathname&quot;:[0,&quot;/proj/02-cpu/&quot;],&quot;labs&quot;:[1,[[0,{&quot;title&quot;:[0,&quot;Lab 0: Git y Representación de Números&quot;],&quot;href&quot;:[0,&quot;/lab/00-git-y-representacion-de-numeros&quot;]}],[0,{&quot;title&quot;:[0,&quot;Lab 1: C y GDB&quot;],&quot;href&quot;:[0,&quot;/lab/01-c-gdb&quot;]}],[0,{&quot;title&quot;:[0,&quot;Lab 2: C y MM&quot;],&quot;href&quot;:[0,&quot;/lab/02-c-mm&quot;]}],[0,{&quot;title&quot;:[0,&quot;Lab 3: RISC-V&quot;],&quot;href&quot;:[0,&quot;/lab/03-riscv&quot;]}]]],&quot;projects&quot;:[1,[[0,{&quot;title&quot;:[0,&quot;Proyecto 01: C Snake&quot;],&quot;href&quot;:[0,&quot;/proj/01-snake&quot;]}],[0,{&quot;title&quot;:[0,&quot;Proyecto 02: CPU RISC-V&quot;],&quot;href&quot;:[0,&quot;/proj/02-cpu&quot;]}]]],&quot;tutorials&quot;:[1,[[0,{&quot;title&quot;:[0,&quot;Git y GitHub&quot;],&quot;href&quot;:[0,&quot;/tutorial/git-github&quot;]}],[0,{&quot;title&quot;:[0,&quot;Instalación de Material&quot;],&quot;href&quot;:[0,&quot;/tutorial/maquina&quot;]}]]],&quot;notes&quot;:[1,[[0,{&quot;title&quot;:[0,&quot;Números&quot;],&quot;href&quot;:[0,&quot;/note/00-numbers&quot;]}],[0,{&quot;title&quot;:[0,&quot;Introducción a C&quot;],&quot;href&quot;:[0,&quot;/note/01-c&quot;]}]]]}" ssr client="load" opts="{&quot;name&quot;:&quot;Search&quot;,&quot;value&quot;:true}"></astro-island> </aside> <div class="w-full lg:flex lg:w-[calc(100%-20rem)] lg:items-start"> <div class="flex w-full"> <div class="relative w-full pt-8 2xl:w-[calc(100%-20rem)]"> <astro-island uid="ZbzF1B" prefix="r17" component-url="/assets/Banner.CSoGvjBL.js" component-export="default" renderer-url="/assets/client.CBw73trT.js" props="{&quot;title&quot;:[0,&quot;Proyecto 02: CPU RISC-V&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;Banner&quot;,&quot;value&quot;:true}" await-children><div class="bg-background animate-in fade-in-0 sticky top-16 z-10 ml-16 hidden h-16 w-[calc(100%-6rem)] duration-500"><ul class="flex h-full items-center space-x-2 text-sm"><li class="flex items-center space-x-2"><a href="/docs" class="text-muted-foreground inline whitespace-nowrap">Documentación</a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right text-muted-foreground h-4 w-4"><path d="m9 18 6-6-6-6"></path></svg></li><li class="text-muted-foreground line-clamp-1 hidden lg:block">Proyecto 02: CPU RISC-V</li></ul></div><!--astro:end--></astro-island> <header class="relative w-full"> <div class="mx-auto w-full max-w-3xl space-y-2 px-4 py-8 md:px-8 lg:max-w-full lg:px-16"> <ul class="-mx-1 flex flex-wrap items-center text-sm"> <li class="mx-1 flex items-center space-x-2"> <span class="text-muted-foreground inline whitespace-nowrap">
+Documentación
+</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right text-muted-foreground w-4"><path d="m9 18 6-6-6-6"></path></svg> </li> </ul> <h1 class="text-2xl font-semibold md:text-3xl lg:text-4xl"> Proyecto 02: CPU RISC-V </h1> </div> </header> <div class="docs prose-headings:scroll-mt-32 prose prose-lg prose-inline-code:px-1.5 prose-inline-code:py-0.5 prose-inline-code:rounded-md prose-inline-code:bg-muted prose-slate prose-yellow dark:prose-invert prose-headings:font-semibold prose-a:font-normal prose-code:font-normal prose-code:before:content-none prose-code:after:content-none mx-auto mb-4 w-full min-w-0 max-w-3xl shrink p-4 pb-8 md:mb-8 md:px-8 lg:mx-0 lg:max-w-full lg:pl-16 lg:pr-8"> <p>En este proyecto utilizaremos <code>Logisim</code> para implementar <code>un procesador de 32-bits</code>, cuyo <code>ISA</code> es un <code>subset de las instrucciones de RISC-V</code>. Algunos componentes del proyecto serán más sencillos que los componentes de hardware verdaderos para evitar realizar trabajo repetitivo. Nuestro <code>ISA</code> utiliza <code>32 registros de 32 bits cada uno y una memoria, cuyas direcciones son de 32 bits</code>.</p>
+<p><img src="https://cdn.sanity.io/images/hmy77kmc/production/f752b828e783314730df35ec3388230ce8630abb-1762x856.png?w=1762&fit=max&auto=format" alt/></p>
+<p>A continuación, algunos detalles importantes que debemos leer antes de iniciar.</p>
+<ul>
+<li>Pueden utilizar cualquier bloque ya existente en Logisim para el proyecto.</li>
+<li>Guarden constantemente. Realicen commits y hagan push al menos una vez por cada día que trabajen.</li>
+<li><code>Logisim</code> es un excelente simulador pero ocasionalmente tiene errores, entonces hagamos caso a la indicación anterior: Guarden constantemente.</li>
+<li>Trabajemos de la misma forma que en un proyecto de software: Construyamos el proyecto pieza por pieza y realicemos pruebas antes de unir un bloque con otros. Podemos construir todos los subcircuitos adicionales que necesitemos, siempre y cuando sigamos las reglas específicas que cada parte impone (más de esto a continuación).</li>
+<li>Se incluyen algunos tests. Sólo se debe correr el script <code>./check</code> (esto seguramente tendrán que hacerlo en Linux, se requiere Python 3.X instalado).</li>
+<li><strong>¡Necesitaremos más tests!</strong> Cada equipo debería hacer sus propios tests adicionales. En la sección de Testing hay algunas indicaciones de cómo hacer pruebas adicionales.</li>
+</ul>
+<p>Finalmente, las dos indicaciones más importantes:</p>
+<ul>
+<li><strong>No modifique (es decir no mueva, no renombre, no elimine) ninguna de las entradas y salidas que se le dan en los circuitos base. Si lo hace nuestro autograder no podrá conectarse con su circuito y tendrá 0 de nota.</strong></li>
+<li>En el camino nos hemos encontrado con algunos problemas de <code>git merge</code> si ambos miembros del equipo estaban trabajando en el mismo archivo. En el proyecto 1 a veces git los resolvía automáticamente y a veces no. En Logisim es garantizado que git <strong>NO RESOLVERÁ ESTO DE FORMA CORRECTA</strong>, entonces si trabajamos en equipo <strong>NO DEBEMOS MODIFICAR EL MISMO ARCHIVO AL MISMO TIEMPO</strong>.</li>
+</ul>
+<h2 id="preparación">Preparación</h2>
+<p><strong>Antes de comenzar asegúrense de que hayan leído y comprendido todas las instrucciones del proyecto de principio a fin.</strong> Si tienen alguna pregunta pueden consultar la sección de preguntas frecuentes para ver si ya ha sido resuelta, de lo contrario por favor diríjanse a <code>Slack</code> y pregunten de forma directa o en general.</p>
+<p>Para comenzar con el proyecto, primero tienen que tener todos los archivos base, estos se encuentran <a href="https://classroom.github.com/assignment-invitations/4d5757802bfa5ccbb4e3540ed8bb5da9/team">aquí</a>. Tienen permitido trabajar en parejas o de forma individual, por lo que al aceptar la asignación les preguntará si desean crear un grupo nuevo o unirse a uno ya existente. Si crean un grupo nuevo, ingresen un nombre que represente al grupo y que no esté ya en los grupos existentes.</p>
+<p><img src="https://cdn.sanity.io/images/hmy77kmc/production/f44c223eda04404f0c0280e9adaa98a560cc5240-650x107.webp?w=650&fit=max&auto=format" alt/></p>
+<p>Si desean unirse a un grupo ya creado, tienen que buscar el nombre del grupo y pulsar el botón que dice <code>Join</code>:</p>
+<p><img src="https://cdn.sanity.io/images/hmy77kmc/production/fb67ac4db63734526356e608e05240a1ab51bea0-1526x1254.webp?w=1526&fit=max&auto=format" alt/></p>
+<blockquote>
+<p><strong>Tienen que tener mucho cuidado al unirse a un grupo ya existente, ya que esto no se puede cambiar después, además lo consideraremos como PLAGIO si lo realizan de manera incorrecta, ya que al hacer esto pueden tener acceso al repositorio del otro miembro del grupo.</strong></p>
+</blockquote>
+<p>Ya sea que se unan o creen un nuevo grupo, al finalizar el proceso les creará automáticamente un repositorio con una extensión que termina con su nombre de grupo. Ya habiendo hecho todo eso, pueden ejecutar los siguientes comandos abriendo una terminal <code>(CTRL + T)</code>:</p>
+<pre class="astro-code dark-plus" style="background-color:#1E1E1E;color:#D4D4D4;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#DCDCAA">git</span><span style="color:#CE9178"> clone</span><span style="color:#D4D4D4"> &lt;</span><span style="color:#CE9178">link</span><span style="color:#CE9178"> del</span><span style="color:#CE9178"> repositori</span><span style="color:#D4D4D4">o&gt;</span></span></code></pre>
+<blockquote>
+<p><strong>NOTA</strong>: Tienen que reemplazar <code>&lt;link del repositorio&gt;</code> con el link del repositorio que se creó</p>
+</blockquote>
+<h2 id="parte-1-register-file">Parte 1: Register File</h2>
+<p>Como aprendimos en clase, <code>RISC-V</code> tiene <code>32 registros</code>. En el proyecto sólo implementaremos <code>9</code> (abajo se indica cuales) para evitar realizar trabajo repetitivo. Todas nuestras señales <code>rs1, rs2, rd</code> siguen siendo de <code>5-bits</code>, pero sólo se estarán usando los registros indicados.</p>
+<p>El <code>register file</code> debe poder leer y escribir a los registros que se especifiquen según la instrucción, sin afectar o modificar a cualquier otro registro. Existe una excepción: El registro cero está alambrado a tierra y su valor no puede ser cambiado por ningún motivo.</p>
+<p>Los registros que utilizaremos son los siguientes:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Número de Registro</th><th>Nombre de Registro</th></tr></thead><tbody><tr><td>x0</td><td>zero</td></tr><tr><td>x1</td><td>ra</td></tr><tr><td>x2</td><td>sp</td></tr><tr><td>x5</td><td>t0</td></tr><tr><td>x6</td><td>t1</td></tr><tr><td>x8</td><td>s0</td></tr><tr><td>x9</td><td>s1</td></tr><tr><td>x10</td><td>a0</td></tr><tr><td>x11</td><td>a1</td></tr></tbody></table>
+<p>En el archivo <code>regfile.circ</code> se encuentra el esqueleto de un register file.</p>
+<p><img src="https://cdn.sanity.io/images/hmy77kmc/production/c036ab6537d461758a2ca89b64803aa25e3de05d-1486x819.png?w=1486&fit=max&auto=format" alt/></p>
+<p>Este tiene seis entradas:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Nombre</th><th>Ancho en Bits</th><th>Descripción</th></tr></thead><tbody><tr><td>Clock</td><td>1</td><td>Señal de reloj. Aquí se recibirá una señal de reloj “non gated”, es decir, se recibe la señal directa sin ser afectada por ANDs, NOTs o cualquier compuerta.</td></tr><tr><td>Write Enable</td><td>1</td><td>Indica si se debería escribir a un registro en el siguiente flanco de subida del reloj.</td></tr><tr><td>Read Register 1</td><td>5</td><td>Registro a leer y cuyo valor será enviado a Read Data 1.</td></tr><tr><td>Read Register 2</td><td>5</td><td>Registro a leer y cuyo valor será enviado a Read Data 2.</td></tr><tr><td>Write Register</td><td>5</td><td>Determina cuál registro será modificado en el siguiente flanco de subida (asumiendo que Write Enable = 1).</td></tr><tr><td>Write Data</td><td>32</td><td>Los 32 bits de datos a guardarse en el registro, en el siguiente flanco de subida (asumiendo que Write Enable = 1).</td></tr></tbody></table>
+<p>El register file tiene las siguientes salidas:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Nombre</th><th>Ancho en Bits</th><th>Descripción</th></tr></thead><tbody><tr><td>Read Data 1</td><td>32</td><td>Datos que se están leyendo, según el registro que Read Register 1 pidió.</td></tr><tr><td>Read Data 2</td><td>32</td><td>Datos que se están leyendo, según el registro que Read Register 2 pidió.</td></tr><tr><td>s0 Value</td><td>32</td><td>Valor de s0 (salida para DEBUG/TEST).</td></tr><tr><td>s1 Value</td><td>32</td><td>Valor de s1 (salida para DEBUG/TEST).</td></tr><tr><td>t0 Value</td><td>32</td><td>Valor de t0 (salida para DEBUG/TEST).</td></tr><tr><td>t1 Value</td><td>32</td><td>Valor de t1 (salida para DEBUG/TEST).</td></tr><tr><td>a0 Value</td><td>32</td><td>Valor de a0 (salida para DEBUG/TEST).</td></tr><tr><td>ra Value</td><td>32</td><td>Valor de ra (salida para DEBUG/TEST).</td></tr><tr><td>sp Value</td><td>32</td><td>Valor de sp (salida para DEBUG/TEST).</td></tr></tbody></table>
+<p>Las salidas para <strong>DEBUG/TEST</strong> están presentes porque son registros de uso frecuente (por ejemplo, tienen un trabajo importante en las llamadas a funciones). Se utilizarán <strong>sólo para pruebas del autograder</strong>. En un register file real, estas salidas no existirían. Para el proyecto deben estar presentes y funcionar bien para facilitar la calificación.</p>
+<blockquote>
+<p><strong>IMPORTANTE:</strong> En la primera tabla aparecen nueve registros y en la tabla anterior aparecen siete salidas, eso es intencional. Se estarán usando nueve, pero solo se estará revisando el valor de siete de ellos.</p>
+</blockquote>
+<p>Pueden modificar <code>regfile.circ</code> como deseen, pero las salidas deben cumplir con el comportamiento que se indica. Deben ser cuidadosos de <strong>no modificar</strong> (mover, reemplazar, cortar, pegar, eliminar, etc.) los <strong>pines de entrada o salida</strong>. Si necesitan más espacio, pueden moverlos mientras sean cuidadosos de mantener el <strong>posicionamiento relativo</strong> que estos tienen.</p>
+<p>Para verificar que nuestros cambios no “rompan” nada, podemos abrir <code>regfile-harness.circ</code> y revisar que <strong>no existan errores</strong> allí (cables rojos de error o cables azules de desconectado) y que todo funcione bien.</p>
+<h3 id="hints">HINTS</h3>
+<ul>
+<li>Cuidado con los <strong>muxes</strong>. Si estos tienen un <code>enable</code>, ese debería estar activo (o mejor aún, buscamos cómo eliminar el <code>enable</code> para evitarnos problemas).</li>
+</ul>
+<h2 id="parte-2-alu">Parte 2: ALU</h2>
+<p>Su segunda tarea es crear un <code>ALU</code> que soporte todas las operaciones que necesitan las instrucciones de nuestro <code>ISA</code> (se detallan más adelante). Van a estar trabajando en el archivo <code>alu.circ</code>.</p>
+<p><img src="https://cdn.sanity.io/images/hmy77kmc/production/fd01f60254c9ae5c902e43c0ab020b197c57bd9a-1389x455.png?w=1389&fit=max&auto=format" alt/></p>
+<p>Este tiene tres entradas:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Nombre</th><th>Ancho en Bits</th><th>Descripción</th></tr></thead><tbody><tr><td>A</td><td>32</td><td>Datos para usar por A en la operación del ALU</td></tr><tr><td>B</td><td>32</td><td>Datos para usar por B en la operación del ALU</td></tr><tr><td>ALU Op</td><td>4</td><td>Selecciona la operación que el ALU debe de efectuar</td></tr></tbody></table>
+<p>y una salida:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Nombre</th><th>Ancho en Bits</th><th>Descripción</th></tr></thead><tbody><tr><td>Out</td><td>32</td><td>Resultado de la operación efectuada por el ALU</td></tr></tbody></table>
+<p>Esta es la lista de operaciones que necesitan implementar. Ustedes tienen que utilizar los componentes de Logisim que ya efectúan estas operaciones. Si las intenta implementar desde cero, sería muy tardado y no es el objetivo del proyecto.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Valor de ALU Op</th><th>Operación</th></tr></thead><tbody><tr><td>0</td><td>sll: Out = A &lt;&lt; B[4:0]</td></tr><tr><td>1</td><td>srl: Out = (unsigned) A &gt;&gt; B[4:0]</td></tr><tr><td>2</td><td>add: Out = A + B</td></tr><tr><td>3</td><td>and: Out = A &amp; B</td></tr><tr><td>4</td><td>or: Out = A | B</td></tr><tr><td>5</td><td>xor: Out = A ^ B</td></tr><tr><td>6</td><td>slt: Out = (A &lt; B) ? 1 : 0 Signed</td></tr><tr><td>7</td><td>mul: Out = (X * Y)[31:0]</td></tr><tr><td>8</td><td>mulh: Out = (A * B)[63:32]</td></tr><tr><td>9</td><td>div: Out =(unsigned) A / B</td></tr><tr><td>10</td><td>rem: Out = A % B</td></tr><tr><td>11</td><td>sub: Out = A - B</td></tr></tbody></table>
+<p>Algunas cosas adicionales que tienen que tener en mente:</p>
+<p>Su <code>ALU</code> debería de encajar con el harness <code>alu-harness.circ</code>. Sigan las mismas instrucciones que en el register file. En particular, ustedes deberían de asegurar que su <code>ALU</code> encaja correctamente en el <code>harness</code>.</p>
+<p>Quedan espacios disponibles por si necesitan agregar alguna operación más adelante.</p>
+<h2 id="parte-3-cpu">Parte 3: CPU</h2>
+<p>Se les provee un esqueleto del procesador en <code>cpu.circ</code>. Su procesador tendrá una instancia de su <code>ALU</code> y <code>Register File</code>, así como <code>una unidad de memoria</code> que ya se les provee. Ustedes son los responsables de construir el <code>datapath</code> y <code>control</code> completos, desde cero. Su procesador debe implementar el ISA que se detalla más abajo.</p>
+<p><img src="https://cdn.sanity.io/images/hmy77kmc/production/ed9ee56146df09c1f2b954ff8cfd5e4d4e54ec80-1349x554.png?w=1349&fit=max&auto=format" alt/></p>
+<p>Su procesador obtendrá un programa desde el harness <code>riscv.circ</code>. Su procesador tendrá un output llamado <code>FETCH_ADDRESS</code> que indica cuál instrucción queremos, esta dirección será entregada al harness y este nos dará una instrucción. La instrucción será recibida por el procesador y será ejecutada. Revisen <code>riscv.circ</code> para ver exactamente qué sucede.</p>
+<p>El procesador tiene dos inputs que vienen del harness:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Nombre</th><th>Ancho en Bits</th><th>Descripción</th></tr></thead><tbody><tr><td>INSTRUCTION</td><td>32</td><td>Aquí se recibe la instrucción que se obtuvo en la dirección identificada por FETCH_ADDRESS.</td></tr><tr><td>CLOCK</td><td>1</td><td>Input del reloj. Puede ser necesario estar enviando esta señal a varios subcircuitos.</td></tr></tbody></table>
+<p>El procesador debe tener los siguientes outputs, que entregará al harness:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Nombre</th><th>Ancho en Bits</th><th>Descripción</th></tr></thead><tbody><tr><td>s0</td><td>32</td><td>Contenido de s0, sólo para pruebas.</td></tr><tr><td>s1</td><td>32</td><td>Contenido de s1, sólo para pruebas.</td></tr><tr><td>t0</td><td>32</td><td>Contenido de t0, sólo para pruebas.</td></tr><tr><td>t1</td><td>32</td><td>Contenido de t1, sólo para pruebas.</td></tr><tr><td>a0</td><td>32</td><td>Contenido de a0, sólo para pruebas.</td></tr><tr><td>ra</td><td>32</td><td>Contenido de ra, sólo para pruebas.</td></tr><tr><td>sp</td><td>32</td><td>Contenido de sp, sólo para pruebas.</td></tr><tr><td>FETCH_ADDRESS</td><td>32</td><td>Dirección que indica qué instrucción queremos obtener del harness. En respuesta a esto, el harness enviará alguna instrucción a través de INSTRUCTION.</td></tr></tbody></table>
+<p>Como en la parte 1, tengan cuidado al mover componentes y asegúrense que los pines de input y output coincidan con el harness.</p>
+<h3 id="memoria">Memoria</h3>
+<p>Se les provee una memoria ya implementada. Un resumen de sus inputs y outputs.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Nombre</th><th>Tipo</th><th>Ancho en Bits</th><th>Descripción</th></tr></thead><tbody><tr><td>ADDRESS</td><td>input</td><td>32</td><td>Dirección a leer o escribir en la memoria.</td></tr><tr><td>WRITE DATA</td><td>input</td><td>32</td><td>Valor a escribirse en la memoria.</td></tr><tr><td>WRITE ENABLE</td><td>input</td><td>1</td><td>En = 1 en las instrucciones que escriben; En = 0 en las demás.</td></tr><tr><td>Clk</td><td>input</td><td>1</td><td>Señal de reloj que viene desde cpu.circ.</td></tr><tr><td>READ DATA</td><td>output</td><td>32</td><td>Datos leídos en la dirección especificada.</td></tr></tbody></table>
+<h3 id="control">Control</h3>
+<p>Las señales de control tienen un papel muy importante en el proyecto. Revise de nuevo los diagramas de datapath vistos en clase y la tabla resumen de control que llenamos para tener frescas en su mente las señales.</p>
+<p>Existen varias formas de implementar las señales de control. Por ejemplo, pueden construir una palabra de control y guardarla en una memoria ROM (microcódigo) o pueden construir un circuito que elija qué acción tomar basándose en algunos bits del <strong>opcode</strong>, <strong>func3</strong> y <strong>func7</strong>.</p>
+<p>Es obligatorio que sus componentes estén unidos y las señales de control necesarias estén implementadas. Si en la calificación del proyecto sólo tiene componentes sueltos (como el ALU y Reg File de la primera fase) y estos no se comunican entre sí, su nota será cero.</p>
+<blockquote>
+<p>Consejo final
+¡Modularicen! Creen los subcircuitos que sean necesarios y diséñenlos bien antes de empezar a construirlos.</p>
+</blockquote>
+<h2 id="isa">ISA</h2>
+<p><img src="https://cdn.sanity.io/images/hmy77kmc/production/1875ccc24400da801754eaf05656782662fa5699-1020x332.png?w=1020&fit=max&auto=format" alt/></p>
+<p>Las instrucciones a implementar son las siguientes:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Instrucción</th><th>Formato</th><th>Opcode</th><th>Funct3</th><th>Funct7/Imm</th><th>Operación</th></tr></thead><tbody><tr><td>add rd, rs1, rs2</td><td>R</td><td>0x33</td><td>0x0</td><td>0x00</td><td>R[rd] = R[rs1] + R[rs2]</td></tr><tr><td>mul rd, rs1, rs2</td><td>R</td><td>0x33</td><td>0x0</td><td>0x01</td><td>R[rd] = (R[rs1] * R[rs2])[31:0]</td></tr><tr><td>sub rd, rs1, rs2</td><td>R</td><td>0x33</td><td>0x0</td><td>0x20</td><td>R[rd] = R[rs1] - R[rs2]</td></tr><tr><td>sll rd, rs1, rs2</td><td>R</td><td>0x33</td><td>0x1</td><td>0x00</td><td>R[rd] = R[rs1] SLL R[rs2]</td></tr><tr><td>mulh rd, rs1, rs2</td><td>R</td><td>0x33</td><td>0x1</td><td>0x01</td><td>R[rd] = (R[rs1] * R[rs2])[63:32]</td></tr><tr><td>slt rd, rs1, rs2</td><td>R</td><td>0x33</td><td>0x2</td><td>0x00</td><td>R[rd] = (R[rs1] &lt; R[rs2]) ? 1 : 0 (signed)</td></tr><tr><td>xor rd, rs1, rs2</td><td>R</td><td>0x33</td><td>0x4</td><td>0x00</td><td>R[rd] = R[rs1] ^ R[rs2]</td></tr><tr><td>div rd, rs1, rs2</td><td>R</td><td>0x33</td><td>0x4</td><td>0x01</td><td>R[rd] = R[rs1] / R[rs2]</td></tr><tr><td>srl rd, rs1, rs2</td><td>R</td><td>0x33</td><td>0x5</td><td>0x00</td><td>R[rd] = R[rs1] &gt;&gt; R[rs2]</td></tr><tr><td>or rd, rs1, rs2</td><td>R</td><td>0x33</td><td>0x6</td><td>0x00</td><td>R[rd] = R[rs1] | R[rs2]</td></tr><tr><td>rem rd, rs1, rs2</td><td>R</td><td>0x33</td><td>0x6</td><td>0x01</td><td>R[rd] = R[rs1] % R[rs2]</td></tr><tr><td>and rd, rs1, rs2</td><td>R</td><td>0x33</td><td>0x7</td><td>0x00</td><td>R[rd] = R[rs1] &amp; R[rs2]</td></tr><tr><td>lb rd, offset(rs1)</td><td>I</td><td>0x03</td><td>0x0</td><td>offset</td><td>R[rd] = SignExt(Mem(R[rs1] + offset, byte))</td></tr><tr><td>lh rd, offset(rs1)</td><td>I</td><td>0x03</td><td>0x1</td><td>offset</td><td>R[rd] = SignExt(Mem(R[rs1] + offset, half))</td></tr><tr><td>lw rd, offset(rs1)</td><td>I</td><td>0x03</td><td>0x2</td><td>offset</td><td>R[rd] = Mem(R[rs1] + offset, word)</td></tr><tr><td>addi rd, rs1, imm</td><td>I</td><td>0x13</td><td>0x0</td><td>imm</td><td>R[rd] = R[rs1] + imm</td></tr><tr><td>slli rd, rs1, imm</td><td>I</td><td>0x13</td><td>0x1</td><td>0x00</td><td>R[rd] = R[rs1] <code>&lt;&lt;</code> imm</td></tr><tr><td>slti rd, rs1, imm</td><td>I</td><td>0x13</td><td>0x2</td><td>imm</td><td>R[rd] = (R[rs1] &lt; imm) ? 1 : 0</td></tr><tr><td>xori rd, rs1, imm</td><td>I</td><td>0x13</td><td>0x4</td><td>imm</td><td>R[rd] = R[rs1] ^ imm</td></tr><tr><td>srli rd, rs1, imm</td><td>I</td><td>0x13</td><td>0x5</td><td>0x00</td><td>R[rd] = R[rs1] &gt;&gt; imm</td></tr><tr><td>ori rd, rs1, imm</td><td>I</td><td>0x13</td><td>0x6</td><td>imm</td><td>R[rd] = R[rs1] | imm</td></tr><tr><td>andi rd, rs1, imm</td><td>I</td><td>0x13</td><td>0x7</td><td>imm</td><td>R[rd] = R[rs1] &amp; imm</td></tr><tr><td>sw rs2, offset(rs1)</td><td>S</td><td>0x23</td><td>0x2</td><td>offset</td><td>Mem(R[rs1] + offset) = R[rs2]</td></tr><tr><td>beq rs1, rs2, offset</td><td>B</td><td>0x63</td><td>0x0</td><td>offset</td><td>if(R[rs1] == R[rs2]) then PC = PC + offset, 1b’0</td></tr><tr><td>blt rs1, rs2, offset</td><td>B</td><td>0x63</td><td>0x4</td><td>offset</td><td>if(R[rs1] less than R[rs2] (signed)) then PC = PC + offset, 1b’0</td></tr><tr><td>bltu rs1, rs2, offset</td><td>B</td><td>0x63</td><td>0x6</td><td>offset</td><td>if(R[rs1] less than R[rs2] (unsigned)) then PC = PC + offset, 1b’0</td></tr><tr><td>lui rd, offset</td><td>U</td><td>0x37</td><td>offset</td><td>offset</td><td>R[rd] = offset, 12b’0</td></tr><tr><td>jal rd, offset</td><td>J</td><td>0x6f</td><td>offset</td><td>offset</td><td>R[rd] = PC + 4, PC = PC + imm, 1b’0</td></tr><tr><td>jalr rd, rs, offset</td><td>I</td><td>0x67</td><td>offset</td><td>offset</td><td>R[rd] = PC + 4, PC = R[rs] + imm</td></tr></tbody></table>
+<h2 id="testing">Testing</h2>
+<p>Para el ALU y Resister File es suficiente usar el <code>./check</code> para probar. Para el procesador completo el check también es bastante útil, pero necesitarán pruebas adicionales. Como no podemos probar cada componente que ustedes vayan implementando, la mejor opción es escribir programas de RISC-V pequeños e ir revisando su datapath de diferentes maneras.</p>
+<p>Una vez que hayan escrito su programa de RISC-V, lo van a tener que cargar en la ROM que está en <code>riscv.circ</code> y empezar la ejecución. Para eso, primero, abran <code>riscv.circ</code> y localicen la memoria ROM.</p>
+<p><img src="https://cdn.sanity.io/images/hmy77kmc/production/7978e4ad1adc2a98b19b9d68a6ce45bee3a9942d-375x181.png?w=375&fit=max&auto=format" alt/></p>
+<p>Hagan click a la <code>memoria</code> y, después, en la <code>barra de herramientas de la izquierda</code>, hagan click en <strong>(click here to edit)</strong>, esto va a abrir un diálogo en donde ustedes pueden cargar su archivo con el código de RISC-V y este ensamblará y generará código de máquina por ustedes que va a ser la salida de la memoria ROM.</p>
+<p><img src="https://cdn.sanity.io/images/hmy77kmc/production/ef7e3c4be1f0177c1ed86edcfad5151684430acb-1210x682.png?w=1210&fit=max&auto=format" alt/></p>
+<h2 id="notas-sobre-logisim">Notas sobre Logisim</h2>
+<ul>
+<li>
+<p>Si Logisim les da algún problema extraño, <strong>REINICIEN LOGISIM Y VUELVAN A CARGAR SU CIRCUITO</strong>. No pierdan tiempo buscando errores si no han hecho esto. Si reiniciar no ha resuelto el problema, allí sí ya les corresponde revisar su circuito.</p>
+</li>
+<li>
+<p>Logisim tiene un <code>Reference</code> en la pestaña <code>Help</code>, y les dice las especificaciones de cada componente.</p>
+</li>
+<li>
+<p>Si están usando varias ventanas de Logisim, tengan mucho cuidado cuando hagan <code>copy-paste</code> de una ventana a otra. Asegúrense que sí se copió el circuito completo que querían y que funcione bien después de pegarlo.</p>
+</li>
+<li>
+<p>Si su máquina tiene poca RAM, se recomienda que no tenga muchas ventanas de Logisim abiertas para evitar errores.</p>
+</li>
+<li>
+<p>Pueden cambiar los atributos antes de colocar un componente para cambiar el default. Si quieren colocar varios pines de 32 bits (por ejemplo), habría que cambiarlo antes de colocar el primero. Si sólo quieren cambiar algún valor para un componente, primero lo colocan y, luego, lo cambian.</p>
+</li>
+<li>
+<p>Cuando cambian los inputs y outputs de un subcircuito que ya colocaron en main, Logisim automáticamente añade o remueve puertos según los cambios que hagan. Esto, muchas veces, afecta el tamaño o posición del subcircuito. Si ya habían cables conectados, Logisim intentará moverlos, pero no siempre lo hace bien. Se recomienda que si van a cambiar los inputs y outputs de un circuito, primero desconecten todos los cables que este pueda tener en main o lo eliminen del main y lo vuelvan a colocar después de cambiarlo. <strong>Recuerden que sólo pueden hacer esto para los subcircuitos que USTEDES agregan.</strong></p>
+</li>
+<li>
+<p>Los cables rojos significan que algo está mal conectado. Algunos casos pueden no ser tan obvios, revisen bien todas las conexiones cercanas.</p>
+</li>
+</ul>
+<p>Logisim tiene algunas herramientas de análisis combinacional (nos puede construir mapas de Karnaugh o circuitos completos con sólo darle una tabla :D). Esta herramienta les puede ser útil en algún momento de sus vidas, pero la recomendación es <strong>no usarla en CC3</strong>. Recuerden que durante los exámenes tendrán que hacer mapas o circuitos a mano, sin acceso a su computadora.</p>
+<p>Finalmente, guarde seguido y haga <strong>push seguido</strong>. Para bien o para mal Logisim está hecho en Java y tiene algunos errores. Logisim incluso puede llegar a borrar su circuito completo si su computadora llega a trabarse, entonces es importante tener una copia de seguridad siempre en Github.</p>
+<h2 id="calificación">Calificación</h2>
+<p>Ustedes pueden verificar que cada parte funcione correctamente utilizando el autograder local, corriendo el siguiente comando en la terminal:</p>
+<pre class="astro-code dark-plus" style="background-color:#1E1E1E;color:#D4D4D4;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#DCDCAA">./check</span></span></code></pre>
+<p>Si las tres partes del proyecto están correctas les saldrá algo como esto:</p>
+<pre class="astro-code dark-plus" style="background-color:#1E1E1E;color:#D4D4D4;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#DCDCAA">  ___</span><span style="color:#CE9178">       __</span><span style="color:#CE9178">                        __</span></span>
+<span class="line"><span style="color:#DCDCAA">  /</span><span style="color:#CE9178"> _</span><span style="color:#D4D4D4"> |</span><span style="color:#DCDCAA">__</span><span style="color:#CE9178"> __/</span><span style="color:#CE9178"> /____</span><span style="color:#CE9178">  ___</span><span style="color:#CE9178">  _______</span><span style="color:#CE9178"> ____/</span><span style="color:#CE9178"> /__</span><span style="color:#CE9178"> ____</span></span>
+<span class="line"><span style="color:#DCDCAA"> /</span><span style="color:#CE9178"> __</span><span style="color:#CE9178"> /</span><span style="color:#CE9178"> //</span><span style="color:#CE9178"> /</span><span style="color:#CE9178"> __/</span><span style="color:#CE9178"> _</span><span style="color:#D7BA7D"> \/</span><span style="color:#CE9178"> _</span><span style="color:#D7BA7D"> \/</span><span style="color:#CE9178"> __/</span><span style="color:#CE9178"> _</span><span style="color:#D7BA7D"> \/</span><span style="color:#CE9178"> _</span><span style="color:#CE9178">  /</span><span style="color:#569CD6"> -_</span><span style="color:#D4D4D4">) __/</span></span>
+<span class="line"><span style="color:#DCDCAA">/_/</span><span style="color:#D4D4D4"> |</span><span style="color:#DCDCAA">_\_,_/\__/\___/\_,</span><span style="color:#CE9178"> /_/</span><span style="color:#D7BA7D">  \_</span><span style="color:#CE9178">,_/</span><span style="color:#D7BA7D">\_</span><span style="color:#CE9178">,_/</span><span style="color:#D7BA7D">\_</span><span style="color:#CE9178">_/_/</span></span>
+<span class="line"><span style="color:#DCDCAA">                   /___/</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#DCDCAA">             Machine</span><span style="color:#CE9178"> Structures</span></span>
+<span class="line"><span style="color:#DCDCAA">     Great</span><span style="color:#CE9178"> Ideas</span><span style="color:#CE9178"> in</span><span style="color:#CE9178"> Computer</span><span style="color:#CE9178"> Architecture</span></span>
+<span class="line"><span style="color:#DCDCAA">               Project</span><span style="color:#CE9178"> 2:</span><span style="color:#CE9178"> CPU</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#DCDCAA">Exercise</span><span style="color:#CE9178">            Grade</span><span style="color:#CE9178">  Message</span></span>
+<span class="line"><span style="color:#DCDCAA">----------------</span><span style="color:#569CD6">  -------</span><span style="color:#569CD6">  ---------</span></span>
+<span class="line"><span style="color:#DCDCAA">1.</span><span style="color:#CE9178"> ALU</span><span style="color:#B5CEA8">                 10</span><span style="color:#CE9178">  passed</span></span>
+<span class="line"><span style="color:#DCDCAA">2.</span><span style="color:#CE9178"> Register</span><span style="color:#CE9178"> File</span><span style="color:#B5CEA8">       10</span><span style="color:#CE9178">  passed</span></span>
+<span class="line"><span style="color:#DCDCAA">3.</span><span style="color:#CE9178"> CPU</span><span style="color:#B5CEA8">                 80</span><span style="color:#CE9178">  passed</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CE9178">=</span><span style="color:#D4D4D4">&gt; </span><span style="color:#CE9178">Score:</span><span style="color:#CE9178"> 100/100</span></span></code></pre>
+<blockquote>
+<p><strong>IMPORTANTE:</strong> Para tener derecho a nota debe presentar un procesador conectado y funcionando, no puede presentar solamente componentes sueltos. Si solo tiene los 20 puntos de ALU y Register File, esto se convierte en cero.</p>
+</blockquote>
+<h2 id="entrega-y-calificación">Entrega y calificación</h2>
+<p>Por favor subir el <code>link</code> de su repositorio al GES. Siempre es necesario que suban su repositorio al GES, incluso si no completaron todos los ejercicios, de lo contrario la nota será de 0 puntos automáticamente.</p>
+<p>Tienen más de una semana para completar el proyecto, es decir, el link para subir el link al GES estará habilitado hasta el 04 de Junio del 2025 a las 11:55 PM.</p>
+<p>La calificación de este Proyecto será de 0 a 100 puntos, donde 100 puntos es la calificación máxima. La calificación se basará en la cantidad de ejercicios completados. Si tienen alguna duda sobre la calificación, por favor envíen un correo a los auxiliares o por medio de los canales correspondientes.</p> </div> </div> <div class="sticky top-24 max-h-[calc(100svh-16rem)] hidden w-80 shrink-0 py-8 2xl:block"> <div class="text-sm w-full h-full overflow-y-auto"> <h4 class="mb-4 font-medium">En esta página</h4> <ul class="space-y-2"> <li class="space-y-2"> <a href="#preparación" class="text-muted-foreground hover:text-foreground items-center flex transition-colors" style="margin-left: 0px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2 mt-1 h-3.5 w-3.5 shrink-0"><path d="m9 18 6-6-6-6"></path></svg> <span class="line-clamp-1">Preparación</span> </a>  </li><li class="space-y-2"> <a href="#parte-1-register-file" class="text-muted-foreground hover:text-foreground items-center flex transition-colors" style="margin-left: 0px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2 mt-1 h-3.5 w-3.5 shrink-0"><path d="m9 18 6-6-6-6"></path></svg> <span class="line-clamp-1">Parte 1: Register File</span> </a> <ul class="ml-5 mt-2 space-y-2"> <li class="space-y-2"> <a href="#hints" class="text-muted-foreground hover:text-foreground items-center flex transition-colors" style="margin-left: 0px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2 mt-1 h-3.5 w-3.5 shrink-0"><path d="m9 18 6-6-6-6"></path></svg> <span class="line-clamp-1">HINTS</span> </a>  </li> </ul> </li><li class="space-y-2"> <a href="#parte-2-alu" class="text-muted-foreground hover:text-foreground items-center flex transition-colors" style="margin-left: 0px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2 mt-1 h-3.5 w-3.5 shrink-0"><path d="m9 18 6-6-6-6"></path></svg> <span class="line-clamp-1">Parte 2: ALU</span> </a>  </li><li class="space-y-2"> <a href="#parte-3-cpu" class="text-muted-foreground hover:text-foreground items-center flex transition-colors" style="margin-left: 0px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2 mt-1 h-3.5 w-3.5 shrink-0"><path d="m9 18 6-6-6-6"></path></svg> <span class="line-clamp-1">Parte 3: CPU</span> </a> <ul class="ml-5 mt-2 space-y-2"> <li class="space-y-2"> <a href="#memoria" class="text-muted-foreground hover:text-foreground items-center flex transition-colors" style="margin-left: 0px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2 mt-1 h-3.5 w-3.5 shrink-0"><path d="m9 18 6-6-6-6"></path></svg> <span class="line-clamp-1">Memoria</span> </a>  </li><li class="space-y-2"> <a href="#control" class="text-muted-foreground hover:text-foreground items-center flex transition-colors" style="margin-left: 0px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2 mt-1 h-3.5 w-3.5 shrink-0"><path d="m9 18 6-6-6-6"></path></svg> <span class="line-clamp-1">Control</span> </a>  </li> </ul> </li><li class="space-y-2"> <a href="#isa" class="text-muted-foreground hover:text-foreground items-center flex transition-colors" style="margin-left: 0px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2 mt-1 h-3.5 w-3.5 shrink-0"><path d="m9 18 6-6-6-6"></path></svg> <span class="line-clamp-1">ISA</span> </a>  </li><li class="space-y-2"> <a href="#testing" class="text-muted-foreground hover:text-foreground items-center flex transition-colors" style="margin-left: 0px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2 mt-1 h-3.5 w-3.5 shrink-0"><path d="m9 18 6-6-6-6"></path></svg> <span class="line-clamp-1">Testing</span> </a>  </li><li class="space-y-2"> <a href="#notas-sobre-logisim" class="text-muted-foreground hover:text-foreground items-center flex transition-colors" style="margin-left: 0px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2 mt-1 h-3.5 w-3.5 shrink-0"><path d="m9 18 6-6-6-6"></path></svg> <span class="line-clamp-1">Notas sobre Logisim</span> </a>  </li><li class="space-y-2"> <a href="#calificación" class="text-muted-foreground hover:text-foreground items-center flex transition-colors" style="margin-left: 0px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2 mt-1 h-3.5 w-3.5 shrink-0"><path d="m9 18 6-6-6-6"></path></svg> <span class="line-clamp-1">Calificación</span> </a>  </li><li class="space-y-2"> <a href="#entrega-y-calificación" class="text-muted-foreground hover:text-foreground items-center flex transition-colors" style="margin-left: 0px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2 mt-1 h-3.5 w-3.5 shrink-0"><path d="m9 18 6-6-6-6"></path></svg> <span class="line-clamp-1">Entrega y calificación</span> </a>  </li> </ul> </div> </div> </div> </div> </div> </main> <footer class="bg-background w-full border-t shrink-0"> <div class="mx-auto flex h-20 w-full max-w-screen-2xl items-center px-4 md:px-8 lg:px-16"> <div class="space-y-4"> <div class="text-muted-foreground space-y-2 text-sm"> <p>Licencia MIT</p> <p>
+Hecho con 💛 por  <a target="_blank" rel="noreferrer" href="https://github.com/andrescv" class="hover:text-primary transition-colors">
+@andrescv
+</a> </p> </div> </div> </div> </footer> </div> </body></html>
